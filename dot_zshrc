@@ -1,3 +1,7 @@
+# language
+export LANG=en_US.UTF-8
+
+# homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # starship
@@ -16,4 +20,3 @@ export PATH="$PYENV_ROOT/shims:$PATH"
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
-
