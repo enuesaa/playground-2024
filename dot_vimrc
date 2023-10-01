@@ -1,0 +1,9 @@
+"syntax highlight
+set term=xterm-256color 
+syntax on
+colorscheme lucius
+
+"highlight search results
+set hlsearch
+
+hi Comment ctermfg=DarkYellow
