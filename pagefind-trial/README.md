@@ -11,6 +11,7 @@
 ## Commands
 ```bash
 pnpm add pagefind
+pnpm dlx pagefind --site dist --serve
 ```
 
 ## `pagefind --site dist`
