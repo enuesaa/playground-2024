@@ -21,6 +21,8 @@ bin/rails db:migrate
 3.3.0
 ### gem
 3.5.3
+### bundler
+2.5.3
 ### rails
 7.1.2 (latest)
 
@@ -28,3 +30,4 @@ bin/rails db:migrate
 - vscode に lsp を入れた
 - import 的なものがどうなっているのか分からない. グローバルに Note クラス?が存在する?
 - view で静的解析みたいなのできないのか. 存在しないプロパティを指定しても vscode でエラー表示にならず戸惑っている
+  - rubocop で phpstan & prettier 的なものができるらしい
