@@ -7,6 +7,9 @@ require:
 AllCops:
   NewCops: enable
 
+Rails:
+  Enabled: true
+
 # Offense count: 7
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
