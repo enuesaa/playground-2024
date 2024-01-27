@@ -1,0 +1,56 @@
+[[package]]
+name = "greenlet"
+version = "3.0.3"
+description = "Lightweight in-process concurrent programming"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["sphinx", "furo"]
+test = ["objgraph", "psutil"]
+
+[[package]]
+name = "playwright"
+version = "1.41.1"
+description = "A high-level API to automate web browsers"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+greenlet = "3.0.3"
+pyee = "11.0.1"
+
+[[package]]
+name = "pyee"
+version = "11.0.1"
+description = "A rough port of Node.js's EventEmitter to Python with a few tricks of its own"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+typing-extensions = "*"
+
+[package.extras]
+dev = ["flake8", "flake8-black", "pytest", "black", "isort", "jupyter-console", "mkdocs", "mkdocs-include-markdown-plugin", "mkdocstrings", "toml", "tox", "trio", "twine", "twisted", "validate-pyproject", "trio", "trio-typing", "pytest-asyncio", "pytest-trio"]
+
+[[package]]
+name = "typing-extensions"
+version = "4.9.0"
+description = "Backported and Experimental Type Hints for Python 3.8+"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "1a1a7c076e8426cd1962b569f1de727770e0e5749f8f69dad2b02be9b05540a0"
+
+[metadata.files]
+greenlet = []
+playwright = []
+pyee = []
+typing-extensions = []
