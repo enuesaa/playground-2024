@@ -5,8 +5,9 @@ import functools
 def log(func, prefix=''):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        print(prefix, func.__name__, args)
-        return func(*args, **kwargs)
+        result = func(*args, **kwargs)
+        print(prefix, func.__name__, args, result)
+        return result
     return wrapper
 
 def debugroll(val):
