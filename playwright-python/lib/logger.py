@@ -1,28 +1,37 @@
 import inspect
 from types import ModuleType
 import functools
-import asyncio
 
 def log(func, prefix=''):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         print(prefix, func.__name__, args)
-        try:
-            result = func(*args, **kwargs)
-        except Exception as e:
-            raise e
-        return result
+        return func(*args, **kwargs)
     return wrapper
 
-def debugroll(obj):
-    for attr in dir(obj):
-        if attr.startswith('__') or attr.startswith('_'):
-            continue
-        val = getattr(obj, attr)
-        if callable(val):
-            if asyncio.iscoroutinefunction(val):
+def debugroll(val):
+    if isinstance(val, ModuleType):
+        for attr in dir(val):
+            if attr.startswith('__') or attr.startswith('_'):
                 continue
-            if isinstance(obj, ModuleType):
-                setattr(obj, attr, log(val, prefix=f"instance {obj.__name__}", ))
-            else:
-                setattr(obj, attr, log(val, prefix=f"module {obj.__class__.__name__}"))
+            attrVal = getattr(val, attr)
+            if callable(attrVal):
+                setattr(val, attr, log(attrVal, prefix=f"module {val.__name__}", ))
+    elif inspect.isclass(val):
+        if callable(val):
+            for attr in dir(val):
+                if attr.startswith('__') or attr.startswith('_'):
+                    continue
+                attrVal = getattr(val, attr)
+                if callable(attrVal):
+                    setattr(val, attr, log(attrVal, prefix=f"class {val.__class__.__name__}", ))
+    elif isinstance(val, object):
+        if callable(val):
+            for attr in dir(val):
+                if attr.startswith('__') or attr.startswith('_'):
+                    continue
+                attrVal = getattr(val, attr)
+                if callable(attrVal):
+                    setattr(val, attr, log(attrVal, prefix=f"instance {val.__class__.__name__}", ))
+    else:
+        print('not matched')
