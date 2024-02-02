@@ -24,7 +24,12 @@ class Roller:
     def fmtmessage(self, ctx: LogCtx) -> str:
         # TODO
         code = ctx.code_context.replace('\n', '')
-        return f"{ctx.path}:{ctx.lineno} | {code} | {ctx.args}| {ctx.result}"
+        text = ''
+        text += f"{ctx.path}:{ctx.lineno}\n"
+        text += f"  code      | {code}\n"
+        text += f"  arguments | {ctx.args}\n"
+        text += f"  return    | {ctx.result}"
+        return text
 
     def log(self, func: Callable, prefix:str='') -> Callable:
         @functools.wraps(func)
@@ -71,8 +76,8 @@ class Roller:
             self.inject_callable(val)
         elif isinstance(val, object) and callable(val):
             self.inject_callable(val)
-        else:
-            print('not matched')
+        # else:
+        #     print('not matched')
 
     def __call__(self, val: Any) -> None:
         self.inject(val)
