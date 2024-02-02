@@ -22,4 +22,4 @@ jobs:
       - run: poetry config pypi-token.pypi $TESTPYPI_TOKEN
         env:
           TESTPYPI_TOKEN: ${{ secrets.TESTPYPI_TOKEN }}
-      - run: poetry publish -r testpypi
+      - run: poetry publish -u __token__ -r testpypi
