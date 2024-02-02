@@ -2,11 +2,17 @@
 name = "debugroll"
 version = "0.0.1"
 description = ""
-authors = []
+authors = ["nua <enuesaa@gmail.com>"]
 packages = [
   { include = "debugroll" },
   { include = "example" },
 ]
+classifiers=[
+  'Programming Language :: Python :: 3.11',
+]
+
+[tool.poetry.urls]
+repository = "https://github.com/enuesaa/debugroll"
 
 [tool.poetry.dependencies]
 python = "^3.11"
