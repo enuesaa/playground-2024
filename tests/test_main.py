@@ -7,4 +7,4 @@ def test_example():
     roller(json)
     json.loads('[0]')
 
-    assert roller.printer.out == "module json| tests/test_main.py:8 | loads| ('[0]',)| [0]"
+    assert roller.printer.out == "tests/test_main.py:8 |     json.loads('[0]') | ('[0]',)| [0]"

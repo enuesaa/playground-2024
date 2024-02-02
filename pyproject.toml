@@ -24,3 +24,4 @@ build-backend = "poetry.core.masonry.api"
 [tool.taskipy.tasks]
 test = "pytest"
 req = "python3 example/req.py"
+browse = "python3 example/browse.py"

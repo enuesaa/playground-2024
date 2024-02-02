@@ -12,6 +12,7 @@ class LogCtx:
     prefix: str # should change
     path: str
     lineno: int
+    code_context: str
     name: str
     args: Any
     result: Any
@@ -21,7 +22,9 @@ class Roller:
 
     # this should be changeable.
     def fmtmessage(self, ctx: LogCtx) -> str:
-        return f"{ctx.prefix}| {ctx.path}:{ctx.lineno} | {ctx.name}| {ctx.args}| {ctx.result}"
+        # TODO
+        code = ctx.code_context.replace('\n', '')
+        return f"{ctx.path}:{ctx.lineno} | {code} | {ctx.args}| {ctx.result}"
 
     def log(self, func: Callable, prefix:str='') -> Callable:
         @functools.wraps(func)
@@ -35,6 +38,7 @@ class Roller:
                 prefix=prefix,
                 path=callerpath,
                 lineno=caller.lineno,
+                code_context=caller.code_context[0] if caller.code_context is not None and len(caller.code_context) > 0 else '',
                 name=func.__name__,
                 args=args,
                 result=result,
@@ -43,30 +47,30 @@ class Roller:
             return result
         return wrapper
     
+    def inject_module(self, val: ModuleType) -> None:
+        for attr in dir(val):
+            if attr.startswith('__') or attr.startswith('_'):
+                continue
+            attrVal = getattr(val, attr)
+            if callable(attrVal):
+                setattr(val, attr, self.log(attrVal, prefix=val.__name__))
+
+    # is this true?
+    def inject_callable(self, val: Callable) -> None:
+        for attr in dir(val):
+            if attr.startswith('__') or attr.startswith('_'):
+                continue
+            attrVal = getattr(val, attr)
+            if callable(attrVal):
+                setattr(val, attr, self.log(attrVal, prefix=val.__class__.__name__))
+
     def inject(self, val: Any) -> None:
         if isinstance(val, ModuleType):
-            for attr in dir(val):
-                if attr.startswith('__') or attr.startswith('_'):
-                    continue
-                attrVal = getattr(val, attr)
-                if callable(attrVal):
-                    setattr(val, attr, self.log(attrVal, prefix=f"module {val.__name__}"))
-        elif inspect.isclass(val):
-            if callable(val):
-                for attr in dir(val):
-                    if attr.startswith('__') or attr.startswith('_'):
-                        continue
-                    attrVal = getattr(val, attr)
-                    if callable(attrVal):
-                        setattr(val, attr, self.log(attrVal, prefix=f"class {val.__class__.__name__}"))
-        elif isinstance(val, object):
-            if callable(val):
-                for attr in dir(val):
-                    if attr.startswith('__') or attr.startswith('_'):
-                        continue
-                    attrVal = getattr(val, attr)
-                    if callable(attrVal):
-                        setattr(val, attr, self.log(attrVal, prefix=f"instance {val.__class__.__name__}"))
+           self.inject_module(val)
+        elif inspect.isclass(val) and callable(val):
+            self.inject_callable(val)
+        elif isinstance(val, object) and callable(val):
+            self.inject_callable(val)
         else:
             print('not matched')
 
