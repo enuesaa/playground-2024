@@ -1,22 +1,45 @@
 import inspect
 from types import ModuleType
 import functools
-from inspect import getframeinfo, stack
-from typing import Any
+from inspect import stack
+from typing import Any, Callable
 from debugroll.printer import PrinterProtocol, StdoutPrinter
+import os
+from dataclasses import dataclass
+
+@dataclass
+class LogCtx:
+    prefix: str # should change
+    path: str
+    lineno: int
+    name: str
+    args: Any
+    result: Any
 
 class Roller:
     printer: PrinterProtocol = StdoutPrinter()
 
-    def log(self, func, prefix=''):
+    # this should be changeable.
+    def fmtmessage(self, ctx: LogCtx) -> str:
+        return f"{ctx.prefix}| {ctx.path}:{ctx.lineno} | {ctx.name}| {ctx.args}| {ctx.result}"
+
+    def log(self, func: Callable, prefix:str='') -> Callable:
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
             # see https://stackoverflow.com/questions/24438976
-            caller = getframeinfo(stack()[1][0])
-            filename = caller.filename.split('/')[-1]
-            text = f"{prefix}| {filename}:{caller.lineno} | {func.__name__}| {args}| {result}"
-            self.printer.print(text)
+            caller = stack()[1]
+            workdir = os.getcwd()
+            callerpath = os.path.relpath(caller.filename, start=workdir)
+            ctx = LogCtx(
+                prefix=prefix,
+                path=callerpath,
+                lineno=caller.lineno,
+                name=func.__name__,
+                args=args,
+                result=result,
+            )
+            self.printer.print(self.fmtmessage(ctx))
             return result
         return wrapper
     
