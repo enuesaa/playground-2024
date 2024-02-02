@@ -1,11 +1,10 @@
-from debugroll import debugroll
+from debugroll import Roller, MockPrinter
 import json
 
 def test_example():
-    out = {'value': ''}
-    def printermock(text: str):
-        out['value'] = text
-    debugroll(json, printer=printermock)
+    roller = Roller()
+    roller.printer = MockPrinter()
+    roller(json)
     json.loads('[0]')
 
-    assert out['value'] == "module json| test_main.py:9 | loads| ('[0]',)| [0]"
+    assert roller.printer.out == "module json| test_main.py:8 | loads| ('[0]',)| [0]"
