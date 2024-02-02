@@ -4,8 +4,7 @@ version = "0.0.1"
 description = ""
 authors = ["nua <enuesaa@gmail.com>"]
 packages = [
-  { include = "debugroll" },
-  { include = "example" },
+  { include = "debugroll", format = "sdist" },
 ]
 classifiers=[
   'Programming Language :: Python :: 3.11',
