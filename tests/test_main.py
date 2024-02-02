@@ -8,4 +8,4 @@ def test_example():
     debugroll(json, printer=printermock)
     json.loads('[0]')
 
-    assert out['value'] == "module json| loads| ('[0]',)| [0]"
+    assert out['value'] == "module json| test_main.py:9 | loads| ('[0]',)| [0]"
