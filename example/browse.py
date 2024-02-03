@@ -1,17 +1,11 @@
 from playwright import sync_api
-import time
 from debugroll import debugroll
 
-debugroll(sync_api)
+# debugroll(sync_api)
 
-pw = sync_api.sync_playwright().start()
-browser = pw.chromium.launch(
-    headless=False,
-)
-page = browser.new_page()
-debugroll(page)
-page.goto("http://playwright.dev")
-print(page.title())
-time.sleep(2)
-browser.close()
-pw.stop()
+with sync_api.sync_playwright() as pw:
+    browser = pw.chromium.launch(headless=True)
+    page = browser.new_page()
+    debugroll(page)
+    page.goto("http://playwright.dev")
+    browser.close()

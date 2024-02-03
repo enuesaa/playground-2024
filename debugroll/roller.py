@@ -74,10 +74,14 @@ class Roller:
            self.inject_module(val)
         elif inspect.isclass(val) and callable(val):
             self.inject_callable(val)
-        elif isinstance(val, object) and callable(val):
-            self.inject_callable(val)
-        # else:
-        #     print('not matched')
+        elif isinstance(val, object):
+            if callable(val):
+                self.inject_callable(val)
+            else:
+                print('callable')
+                self.inject_callable(val) # type: ignore
+        else:
+            print('not matched')
 
     def __call__(self, val: Any) -> None:
         self.inject(val)
