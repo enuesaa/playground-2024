@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  gitea:
+    image: gitea/gitea:latest
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=postgres:5432
+      - GITEA__database__NAME=gitea
+      - GITEA__database__USER=postgres
+      - GITEA__database__PASSWD=postgres
+    volumes:
+      - ./docker/gitea:/data
+    ports:
+      - '3000:3000'
+      - '3022:22'
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=gitea
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./docker/postgres:/var/lib/postgresql/data
+
+  pgadmin:
+    image: elestio/pgadmin
+    ports:
+      - 3001:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=example@example.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    depends_on:
+      - postgres
