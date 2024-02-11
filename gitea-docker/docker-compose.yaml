@@ -39,3 +39,26 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=postgres
     depends_on:
       - postgres
+  
+  # studio:
+  #   image: supabase/studio
+  #   ports:
+  #     - 3002:3000
+  #   environment:
+  #     - STUDIO_PG_META_URL=http://meta:8080
+  #     - POSTGRES_PASSWORD=postgres
+  #     # - DEFAULT_ORGANIZATION_NAME=main
+  #     - DEFAULT_PROJECT_NAME=main
+  #   depends_on:
+  #     - meta
+
+  # meta:
+  #   image: supabase/postgres-meta
+  #   environment:
+  #     - PG_META_PORT=8080
+  #     - PG_META_DB_HOST=postgres
+  #     - PG_META_DB_NAME=gitea
+  #     - PG_META_DB_USER=postgres
+  #     - PG_META_DB_PASSWORD=postgres
+  #   depends_on:
+  #     - postgres
