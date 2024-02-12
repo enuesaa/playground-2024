@@ -1,0 +1,16 @@
+{
+  "name": "valibot-trial",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run"
+  },
+  "dependencies": {
+    "valibot": "^0.28.1",
+    "vitest": "^1.2.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.1"
+  }
+}
