@@ -1,5 +1,7 @@
 # misc
 .DS_Store
+
+# editor
 .vscode
 
 # python
