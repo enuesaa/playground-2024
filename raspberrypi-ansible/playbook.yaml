@@ -1,24 +1,23 @@
 ---
 - name: setup
   hosts: all 
-  become: yes
+  become: true
 
   tasks:
     - ansible.builtin.apt:
         update_cache: yes
     
-    - ansible.builtin.apt:
-        name:
-          - vim-common
-          - vim-tiny
-        purge: yes
-        state: absent
+    # - ansible.builtin.apt:
+    #     name:
+    #       - vim-common
+    #       - vim-tiny
+    #     purge: yes
+    #     state: absent
 
     - ansible.builtin.apt:
         name:
           - wget
           - tar
-          - vim
         state: present
 
     - ansible.builtin.file:
@@ -36,9 +35,10 @@
         dest: '/usr/local'
         remote_src: yes
 
-    - ansible.builtin.lineinfile:
-        path: '{{ ansible_env.HOME }}/.bashrc'
-        line: 'export PATH=$PATH:/usr/local/go/bin'
+    - ansible.builtin.file:
+        src: '/usr/local/go/bin/go'
+        dest: '/usr/local/bin/go'
+        state: link
 
     - ansible.builtin.file:
         path: '{{ ansible_env.HOME }}/workdir'
