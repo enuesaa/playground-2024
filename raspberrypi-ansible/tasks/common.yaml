@@ -1,0 +1,9 @@
+---
+- ansible.builtin.apt:
+    update_cache: yes
+
+- ansible.builtin.apt:
+    name:
+      - wget
+      - tar
+    state: present

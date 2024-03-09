@@ -1,0 +1,17 @@
+---
+- ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/workdir'
+    state: directory
+    recurse: yes
+
+- ansible.builtin.get_url:
+    url: https://get.docker.com
+    dest: '{{ ansible_env.HOME }}/workdir/docker.sh'
+
+- ansible.builtin.command:
+    cmd: sh docker.sh
+    chdir: '{{ ansible_env.HOME }}/workdir'
+
+- ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/workdir'
+    state: absent

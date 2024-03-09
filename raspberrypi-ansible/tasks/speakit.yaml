@@ -1,0 +1,27 @@
+---
+- ansible.builtin.apt:
+    name:
+      - libasound2-dev
+    state: present
+
+- ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/workdir'
+    state: directory
+    recurse: yes
+
+- ansible.builtin.command:
+    cmd: git clone https://github.com/enuesaa/speakit.git
+    chdir: '{{ ansible_env.HOME }}/workdir'
+
+- ansible.builtin.command:
+    cmd: go install
+    chdir: '{{ ansible_env.HOME }}/workdir/speakit'
+
+- ansible.builtin.file:
+    src: '{{ ansible_env.HOME }}/go/bin/speakit'
+    dest: '/usr/local/bin/speakit'
+    state: link
+
+- ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/workdir'
+    state: absent

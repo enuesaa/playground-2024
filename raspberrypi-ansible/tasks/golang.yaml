@@ -1,0 +1,24 @@
+---
+- ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/workdir'
+    state: directory
+    recurse: yes
+
+- ansible.builtin.get_url:
+    url: https://go.dev/dl/go1.22.0.linux-arm64.tar.gz
+    dest: '{{ ansible_env.HOME }}/workdir/go122.tar.gz'
+    checksum: sha256:6a63fef0e050146f275bf02a0896badfe77c11b6f05499bb647e7bd613a45a10
+
+- ansible.builtin.unarchive:
+    src: '{{ ansible_env.HOME }}/workdir/go122.tar.gz'
+    dest: '/usr/local'
+    remote_src: yes
+
+- ansible.builtin.file:
+    src: '/usr/local/go/bin/go'
+    dest: '/usr/local/bin/go'
+    state: link
+
+- ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/workdir'
+    state: absent
