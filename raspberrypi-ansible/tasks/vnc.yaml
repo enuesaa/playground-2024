@@ -1,0 +1,7 @@
+---
+- ansible.builtin.apt:
+    name:
+      - tightvncserver
+    state: present
+
+# vncserver

@@ -5,6 +5,7 @@
 
   tasks:
     - include_tasks: tasks/common.yaml
-    # - include_tasks: tasks/golang.yaml
-    # - include_tasks: tasks/speakit.yaml
+    - include_tasks: tasks/golang.yaml
+    - include_tasks: tasks/speakit.yaml
     - include_tasks: tasks/docker.yaml
+    - include_tasks: tasks/vnc.yaml
