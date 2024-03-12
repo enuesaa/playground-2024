@@ -1,0 +1,13 @@
+version: '3.8'
+
+# see https://docs.n8n.io/hosting/installation/server-setups/docker-compose/
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    restart: always
+    ports:
+      - 5678:5678
+    environment:
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - NODE_ENV=production
