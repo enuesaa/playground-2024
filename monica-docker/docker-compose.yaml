@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    image: monica
+    depends_on:
+      - db
+    ports:
+      - 3000:80
+    environment:
+      - DB_HOST=db
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+    tty: true
+
+  db:
+    image: mariadb:11
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=monica
