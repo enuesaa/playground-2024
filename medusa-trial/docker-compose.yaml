@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=medusa
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./docker/postgres:/var/lib/postgresql/data
+
+  pgadmin:
+    image: elestio/pgadmin
+    ports:
+      - 3001:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=example@example.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    depends_on:
+      - postgres
+
