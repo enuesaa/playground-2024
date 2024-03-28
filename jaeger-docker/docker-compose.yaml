@@ -1,17 +1,10 @@
 version: '3.8'
 
-# see https://github.com/hkford/opentelemetry-go-sdk-deep-dive/blob/main/compose.yaml
 services:
-  collector:
-    image: public.ecr.aws/aws-observability/aws-otel-collector
-    ports:
-      - 4317:4317
-    depends_on:
-      - jaeger
-
   jaeger:
     image: jaegertracing/all-in-one:latest
     ports:
+      - 4318:4318
       - 16686:16686
       - 14268:14268
     environment:
