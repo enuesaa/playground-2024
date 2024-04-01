@@ -1,0 +1,20 @@
+{
+  "name": "vitepress-try",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev --port 3000",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^1.0.2"
+  },
+  "dependencies": {
+    "vitepress-plugin-auto-sidebar": "^1.1.0"
+  }
+}
