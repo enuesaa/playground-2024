@@ -1,0 +1,11 @@
+# misc
+.DS_Store
+
+# editor
+.vscode
+
+# python
+__pycache__
+.venv
+.pytest_cache
+dist

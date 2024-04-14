@@ -1,0 +1,24 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: abatilo/actions-poetry@v2
+      
+      - run: poetry install
+      - run: poetry build
+
+      - run: poetry config repositories.testpypi https://test.pypi.org/legacy/
+      - run: poetry publish -u __token__ -p "$TESTPYPI_TOKEN" -r testpypi
+        env:
+          TESTPYPI_TOKEN: ${{ secrets.TESTPYPI_TOKEN }}

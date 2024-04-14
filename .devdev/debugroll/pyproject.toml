@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "debugroll"
+version = "0.0.3"
+description = ""
+authors = ["nua <enuesaa@gmail.com>"]
+packages = [
+  { include = "debugroll", format = "sdist" },
+]
+classifiers=[
+  'Programming Language :: Python :: 3.11',
+]
+
+[tool.poetry.urls]
+repository = "https://github.com/enuesaa/debugroll"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.0.0"
+taskipy = "^1.12.2"
+requests = "^2.31.0"
+playwright = "^1.41.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+test = "pytest"
+req = "python3 example/req.py"
+browse = "python3 example/browse.py"
