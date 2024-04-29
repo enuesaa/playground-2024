@@ -3,10 +3,13 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite dev --port 3001"
+    "dev": "vite dev --port 3001",
+    "build": "vite build",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.1.0",
+    "@tsconfig/svelte": "^5.0.4",
     "prettier": "^3.2.5",
     "prettier-plugin-svelte": "^3.2.3",
     "svelte": "^4.2.15",
