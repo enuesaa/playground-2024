@@ -28,10 +28,16 @@ func main() {
 		if err := db.Open(cli.Filename); err != nil {
 			log.Fatalf("Error: %s", err.Error())
 		}
-		res, err := db.Query(".schema")
+		res, err := db.Query("SELECT name FROM sqlite_master WHERE type='table';")
 		if err != nil {
 			log.Fatalf("Error: %s", err.Error())
 		}
-		log.Printf("%+v\n", res)
+		for res.Next() {
+			var schema string
+			if err := res.Scan(&schema); err != nil {
+				log.Fatalf("Error: %s", err.Error())
+			}
+			log.Println(schema)
+		}
 	}
 }
