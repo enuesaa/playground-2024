@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/alecthomas/kong"
+	"github.com/enuesaa/txtsout/presenter"
 	"github.com/enuesaa/txtsout/repository"
 )
 
@@ -25,33 +26,8 @@ func main() {
 	}
 
 	if cli.Filename != "" && strings.HasSuffix(cli.Filename, ".db") {
-		db := repository.DBRepository{}
-		if err := db.Open(cli.Filename); err != nil {
-			log.Fatalf("Error: %s", err.Error())
-		}
-		defer db.Close()
-		res, err := db.Query("SELECT name FROM sqlite_master WHERE type='table';")
-		if err != nil {
-			log.Fatalf("Error: %s", err.Error())
-		}
-		for res.Next() {
-			var tableName string
-			if err := res.Scan(&tableName); err != nil {
-				log.Fatalf("Error: %s", err.Error())
-			}
-			log.Println(tableName)
-			//TODO: DO NOT EMBED SQL. FIX THIS.
-			rows, err := db.Query(fmt.Sprintf("SELECT id FROM %s;", tableName))
-			if err != nil {
-				log.Fatalf("Error: %s", err.Error())
-			}
-			for rows.Next() {
-				var record string
-				if err := rows.Scan(&record); err != nil {
-					log.Fatalf("Error: %s", err.Error())
-				}
-				log.Println(record)
-			}
+		if err := presenter.HandleSqlite(cli.Filename); err != nil {
+			log.Fatalf(err.Error())
 		}
 	}
 }
