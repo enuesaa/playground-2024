@@ -1,13 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"strings"
 
 	"github.com/alecthomas/kong"
 	"github.com/enuesaa/txtsout/presenter"
-	"github.com/enuesaa/txtsout/repository"
 )
 
 var cli struct {
