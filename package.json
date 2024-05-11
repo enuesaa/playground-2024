@@ -1,22 +1,44 @@
 {
-  "name": "ui",
-  "version": "0.0.1",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite dev --port 3001",
-    "build": "vite build",
-    "format": "prettier --write ."
-  },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^3.1.0",
-    "@tsconfig/svelte": "^5.0.4",
-    "prettier": "^3.2.5",
-    "prettier-plugin-svelte": "^3.2.3",
-    "svelte": "^4.2.15",
-    "svelte-routing": "^2.12.0",
-    "tsx": "^4.7.3",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.10"
-  }
+	"name": "ui",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev --port 3001",
+		"build": "vite build",
+		"format": "prettier --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/vite-plugin-svelte": "^3.1.0",
+		"@tsconfig/svelte": "^5.0.4",
+		"@types/node": "^20.12.11",
+		"postcss": "^8.4.38",
+		"prettier": "^3.2.5",
+		"prettier-plugin-svelte": "^3.2.3",
+		"svelte": "^4.2.15",
+		"svelte-routing": "^2.12.0",
+		"tailwindcss": "^3.4.3",
+		"tsx": "^4.7.3",
+		"typescript": "^5.4.5",
+		"vite": "^5.2.10"
+	},
+	"prettier": {
+		"printWidth": 120,
+		"tabWidth": 2,
+		"semi": false,
+		"singleQuote": true,
+		"endOfLine": "lf",
+		"trailingComma": "es5",
+		"plugins": [
+			"prettier-plugin-svelte"
+		],
+		"useTabs": true,
+		"overrides": [
+			{
+				"files": "*.svelte",
+				"options": {
+					"parser": "svelte"
+				}
+			}
+		]
+	}
 }
