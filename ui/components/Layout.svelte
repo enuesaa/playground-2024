@@ -3,7 +3,7 @@
 		<div class="w-48">
 			<slot name="left" />
 		</div>
-		<div class="flex-auto">
+		<div class="flex-auto overflow-hidden">
 			<slot name="right" />
 		</div>
 	</main>
@@ -11,7 +11,7 @@
 
 <style lang="postcss">
 	main {
-		height: 85vh;
-		@apply flex gap-5 mt-9 mx-auto p-3;
+		min-height: 85vh;
+		@apply flex gap-5 mt-6 mx-auto p-3;
 	}
 </style>

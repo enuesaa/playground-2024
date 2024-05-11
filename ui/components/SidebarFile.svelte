@@ -25,4 +25,7 @@
 		@apply font-zenkaku text-lg font-medium m-3 px-5 py-3;
 		@apply bg-blackgray text-graywhite rounded-xl;
 	}
+	button:hover {
+		color: #ff6633;
+	}
 </style>

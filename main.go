@@ -7,14 +7,8 @@ import (
 	"github.com/enuesaa/lkaw/repository"
 )
 
-type CLI struct {
-	Port int `help:"port to serve." default:"3000"`
-    Filenames []string `arg:"" required:"" name:"filename" help:"Files to open"`
-	Version   Version `name:"version" short:"v" help:"Print version"`
-}
-
 func main() {
-	var cli CLI
+	var cli Cli
 	kong.Parse(&cli,
 		kong.UsageOnError(),
 		kong.Name("lkaw"),
@@ -22,6 +16,14 @@ func main() {
 	)
 
 	repos := repository.New()
+	if cli.Filenames[0] == "." {
+		filenames, err := repos.Fs.ListFiles(".")
+		if err != nil {
+			log.Fatalf("Error: %s", err.Error())
+		}
+		cli.Filenames = filenames
+	}
+
 	if err := Serve(repos, cli); err != nil {
 		log.Fatalf("Error: %s", err.Error())
 	}

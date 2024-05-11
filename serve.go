@@ -1,13 +1,16 @@
 package main
 
 import (
+	"embed"
 	"encoding/json"
 	"fmt"
+	"mime"
 	"net/http"
+	"path/filepath"
+	"strings"
 
 	"github.com/enuesaa/lkaw/repository"
 	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 )
 
@@ -20,19 +23,23 @@ type File struct {
 	Content string `json:"content"`
 }
 
-func Serve(repos repository.Repos, cli CLI) error {
+//go:embed dist/*
+var dist embed.FS
+
+func Serve(repos repository.Repos, cli Cli) error {
 	r := chi.NewRouter()
-	r.Use(middleware.Logger)
+
 	r.Use(cors.Handler(cors.Options{
 		AllowedOrigins: []string{"http://localhost:3001"},
 	}))
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("welcome"))
-	})
+
 	r.Get("/api/files", func(w http.ResponseWriter, r *http.Request) {
-		filenames := cli.Filenames
 		files := make([]File, 0)
-		for _, filename := range filenames {
+		for _, filename := range cli.Filenames {
+			isdir, err := repos.Fs.IsDir(filename)
+			if err != nil || isdir {
+				continue
+			}
 			content, err := repos.Fs.Read(filename)
 			if err != nil {
 				files = append(files, File{
@@ -48,7 +55,6 @@ func Serve(repos repository.Repos, cli CLI) error {
 				Content: string(content),
 			})
 		}
-		
 		response := FileResponse{
 			Files: files,
 		}
@@ -59,7 +65,24 @@ func Serve(repos repository.Repos, cli CLI) error {
 		}
 		w.Write(responseBytes)
 	})
+	r.Get("/*", func(w http.ResponseWriter, r *http.Request) {
+		path := fmt.Sprintf("dist%s", r.URL.Path)
+		if strings.HasSuffix(path, "/") {
+			path += "index.html"
+		}
 
-	addr := fmt.Sprintf(":%d", cli.Port)
+		f, err := dist.ReadFile(path)
+		if err != nil {
+			http.Error(w, http.StatusText(404), 404)
+			return
+		}
+		fileExt := filepath.Ext(path)
+		mimeType := mime.TypeByExtension(fileExt)
+		w.Header().Add("Content-Type", mimeType)
+		w.Write(f)
+	})
+
+	addr := fmt.Sprintf("localhost:%d", cli.Port)
+	fmt.Printf("Serving on %s\n", addr)
 	return http.ListenAndServe(addr, r)
 }

@@ -28,8 +28,9 @@
 
 <style lang="postcss">
 	div {
-		@apply text-lg font-medium px-5 py-3 bg-blackgray text-graywhite rounded-xl;
+		@apply px-5 py-3 bg-blackgray text-graywhite rounded-xl;
 		@apply w-full h-full;
+		font-size: 17px;
 		line-height: 1.6;
 	}
 </style>
