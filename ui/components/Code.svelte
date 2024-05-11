@@ -1,13 +1,25 @@
 <script lang="ts">
 	import { HighlightAuto } from 'svelte-highlight'
-	import githubDark from "svelte-highlight/styles/github-dark";
-    import ashes from "svelte-highlight/styles/ashes";
+    import ashes from "svelte-highlight/styles/ashes"
+	import { filesStore } from '../lib/files'
 
-	export let code: string
+	let code = ''
+	filesStore.subscribe(val => {
+		if (val.open === undefined) {
+			code = ''
+			return
+		}
+		const file = val.files.find(f => f.filename === val.open)
+		if (file === undefined) {
+			code = ''
+			return
+		}
+		code = file.content
+	})
 </script>
 
 <svelte:head>
-  {@html ashes}
+	{@html ashes}
 </svelte:head>
 
 <div>
@@ -16,7 +28,8 @@
 
 <style lang="postcss">
 	div {
-		@apply text-xl font-medium px-5 py-3 bg-blackgray text-graywhite rounded-xl;
+		@apply text-lg font-medium px-5 py-3 bg-blackgray text-graywhite rounded-xl;
 		@apply w-full h-full;
+		line-height: 1.6;
 	}
 </style>
