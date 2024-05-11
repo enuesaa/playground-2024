@@ -1,2 +1,2 @@
 # lkaw
-look files anyway
+A CLI tool to look at files anyway.
