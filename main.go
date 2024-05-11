@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/alecthomas/kong"
-	"github.com/enuesaa/txtsout/presenter"
+	"github.com/enuesaa/lkaw/presenter"
 )
 
 var cli struct {

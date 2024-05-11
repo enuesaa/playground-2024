@@ -1,4 +1,4 @@
-module github.com/enuesaa/txtsout
+module github.com/enuesaa/lkaw
 
 go 1.22.0
 

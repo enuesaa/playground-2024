@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/enuesaa/txtsout/repository"
+	"github.com/enuesaa/lkaw/repository"
 )
 
 func HandleSqlite(filename string) error {
