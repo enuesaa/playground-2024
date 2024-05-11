@@ -12,6 +12,7 @@ export default defineConfig({
   resolve: {
 		alias: {
 			$lib: path.join(__dirname, './ui/lib'),
+			$components: path.join(__dirname, './ui/components'),
 		},
 	},
   css: {

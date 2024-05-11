@@ -17,6 +17,9 @@ importers:
       '@types/node':
         specifier: ^20.12.11
         version: 20.12.11
+      highlight.js:
+        specifier: ^11.9.0
+        version: 11.9.0
       postcss:
         specifier: ^8.4.38
         version: 8.4.38
@@ -29,6 +32,9 @@ importers:
       svelte:
         specifier: ^4.2.15
         version: 4.2.15
+      svelte-highlight:
+        specifier: ^7.6.0
+        version: 7.6.0
       svelte-routing:
         specifier: ^2.12.0
         version: 2.12.0
@@ -647,6 +653,10 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
+  highlight.js@11.9.0:
+    resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
+    engines: {node: '>=12.0.0'}
+
   is-binary-path@2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
     engines: {node: '>=8'}
@@ -901,6 +911,9 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  svelte-highlight@7.6.0:
+    resolution: {integrity: sha512-J9X1d07iMIKZMAqNAhlkjLX/FS+7R2lPrqVul7i+EleVZIOYvBhtx7ES62bc661a70nKNOS05yr9JAvyQPPOIA==}
 
   svelte-hmr@0.16.0:
     resolution: {integrity: sha512-Gyc7cOS3VJzLlfj7wKS0ZnzDVdv3Pn2IuVeJPk9m2skfhcu5bq3wtIZyQGggr7/Iim5rH5cncyQft/kRLupcnA==}
@@ -1479,6 +1492,8 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
+  highlight.js@11.9.0: {}
+
   is-binary-path@2.1.0:
     dependencies:
       binary-extensions: 2.3.0
@@ -1712,6 +1727,10 @@ snapshots:
       ts-interface-checker: 0.1.13
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  svelte-highlight@7.6.0:
+    dependencies:
+      highlight.js: 11.9.0
 
   svelte-hmr@0.16.0(svelte@4.2.15):
     dependencies:
