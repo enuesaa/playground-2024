@@ -6,14 +6,18 @@
 
 <main>
 	{#await fetchFiles()}
-		a
+		<div class="left" />
+		<div class="right" />
+	{:then files}
+		<div class="left">
+			{#each files as file}
+				<SidebarFile filename={file.filename} />
+			{/each}
+		</div>
+		<div class="right">
+			<Code code="const a ='b'" />
+		</div>
 	{/await}
-	<div class="left">
-		<SidebarFile filename="a.md" />
-	</div>
-	<div class="right">
-		<Code code="const a ='b'" />
-	</div>
 </main>
 
 <style lang="postcss">

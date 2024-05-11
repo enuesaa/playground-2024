@@ -9,9 +9,3 @@ func New() Repos {
 		Fs:     &FsRepository{},
 	}
 }
-
-func NewTestRepos() Repos {
-	return Repos{
-		Fs:     &FsMockRepository{},
-	}
-}

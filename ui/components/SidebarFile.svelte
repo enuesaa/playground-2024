@@ -9,6 +9,6 @@
 <style lang="postcss">
 	div {
 		user-select: none;
-		@apply font-zenkaku text-xl font-medium px-5 py-3 bg-blackgray text-graywhite rounded-xl;
+		@apply font-zenkaku text-lg font-medium m-3 px-5 py-3 bg-blackgray text-graywhite rounded-xl;
 	}
 </style>

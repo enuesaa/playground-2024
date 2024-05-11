@@ -1,11 +1,20 @@
-export const fetchFiles = async () => {
+
+type FileResponse = {
+  files: FileResponseItem[]
+}
+type FileResponseItem = {
+  filename: string
+  exists: boolean
+  content: string
+}
+
+export const fetchFiles = async (): Promise<FileResponseItem[]> => {
   const res = await fetch('http://localhost:3000/api/files', {
     method: 'GET',
     headers: {
       Accept: 'application/json',
     },
   })
-  console.log(res)
   const body = await res.json()
-  console.log(body)
+  return body?.files ?? []
 }
