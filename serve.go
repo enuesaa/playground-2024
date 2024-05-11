@@ -19,8 +19,8 @@ type FileResponse struct {
 }
 type File struct {
 	Filename string `json:"filename"`
-	Exists bool `json:"exists"`
-	Content string `json:"content"`
+	Exists   bool   `json:"exists"`
+	Content  string `json:"content"`
 }
 
 //go:embed dist/*
@@ -44,15 +44,15 @@ func Serve(repos repository.Repos, cli Cli) error {
 			if err != nil {
 				files = append(files, File{
 					Filename: filename,
-					Exists: false,
-					Content: "",
+					Exists:   false,
+					Content:  "",
 				})
 				continue
 			}
 			files = append(files, File{
 				Filename: filename,
-				Exists: true,
-				Content: string(content),
+				Exists:   true,
+				Content:  string(content),
 			})
 		}
 		response := FileResponse{

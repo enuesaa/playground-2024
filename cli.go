@@ -7,12 +7,13 @@ import (
 )
 
 type Cli struct {
-	Port int `help:"port to serve." default:"3000"`
-	Filenames []string `arg:"" required:"" name:"filename" help:"Files to open"`
+	Port      int         `help:"port to serve." default:"3000"`
+	Filenames []string    `arg:"" required:"" name:"filename" help:"Files to open"`
 	Version   VersionFlag `name:"version" short:"v" help:"Print version"`
 }
 
 type VersionFlag struct{}
+
 func (v *VersionFlag) Decode(ctx *kong.DecodeContext) error {
 	return nil
 }
