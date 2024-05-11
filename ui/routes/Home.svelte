@@ -1,9 +1,13 @@
 <script lang="ts">
 	import SidebarFile from '../components/SidebarFile.svelte'
 	import Code from '../components/Code.svelte'
+	import { fetchFiles } from '../lib/api'
 </script>
 
 <main>
+	{#await fetchFiles()}
+		a
+	{/await}
 	<div class="left">
 		<SidebarFile filename="a.md" />
 	</div>
