@@ -12,6 +12,7 @@ import (
 	"github.com/enuesaa/lkaw/repository"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
+	"github.com/pkg/browser"
 )
 
 type FileResponse struct {
@@ -83,6 +84,10 @@ func Serve(repos repository.Repos, cli Cli) error {
 	})
 
 	addr := fmt.Sprintf("localhost:%d", cli.Port)
+	if err := browser.OpenURL(fmt.Sprintf("http://%s", addr)); err != nil {
+		return err
+	}
+
 	fmt.Printf("Serving on %s\n", addr)
 	return http.ListenAndServe(addr, r)
 }
