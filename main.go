@@ -5,6 +5,7 @@ import (
 
 	"github.com/alecthomas/kong"
 	"github.com/enuesaa/lkaw/repository"
+	"github.com/pkg/browser"
 )
 
 func main() {
@@ -22,6 +23,10 @@ func main() {
 			log.Fatalf("Error: %s", err.Error())
 		}
 		cli.Filenames = filenames
+	}
+
+	if err := browser.OpenURL("http://localhost:3000"); err != nil {
+		log.Fatalf("Error: %s", err.Error())
 	}
 
 	if err := Serve(repos, cli); err != nil {

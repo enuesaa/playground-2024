@@ -19,7 +19,7 @@ export default defineConfig({
     postcss: {
       plugins: [
         tailwindcss('./tailwind.config.ts'),
-      ]
+      ],
     },
   },
 })
