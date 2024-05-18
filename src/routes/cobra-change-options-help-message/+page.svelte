@@ -5,7 +5,10 @@
 
 <PageTitle title='Cobra Change Opitons Help Message' />
 
-<Code />
+<Code
+	language='ts'
+	code='const a = "b"'
+/>
 
 パターン1
 パターン2
