@@ -1,7 +1,14 @@
 <script lang="ts">
-	import { treeData, treeViewCtl, viewing } from '$lib/tree'
+	import { treeViewCtl, viewing, type TreeData } from '$lib/tree'
+	import { onMount } from 'svelte'
 	import Code from './Code.svelte'
 	import CodeTree from './CodeTree.svelte'
+
+	export let treeData: TreeData[]
+
+	onMount(() => {
+		viewing.set(treeData[0])
+	})
 
 	const { tree } = $treeViewCtl
 </script>
@@ -12,7 +19,9 @@
 	</ul>
 	<div class="flex-auto">
 		{#key $viewing}
-			<Code language={$viewing.language} code={$viewing.code} />
+			{#if $viewing !== undefined}
+				<Code language={$viewing.language} code={$viewing.code} />
+			{/if}
 		{/key}
 	</div>
 </section>
