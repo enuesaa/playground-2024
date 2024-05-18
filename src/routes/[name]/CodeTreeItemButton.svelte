@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { melt } from '@melt-ui/svelte'
-	import { treeViewCtl, type TreeData, viewing } from '$lib/tree'
+	import { getTreeViewCtl, type TreeData, getViewing } from '$lib/tree'
 
 	export let data: TreeData
 	const hasChildren = data.children.length > 0
 
-	const { item } = $treeViewCtl
+	const { item } = getTreeViewCtl()
+	const viewing = getViewing()
 
 	function hanldeClick() {
 		if (hasChildren) {

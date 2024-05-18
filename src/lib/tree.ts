@@ -1,5 +1,6 @@
 import { createTreeView } from '@melt-ui/svelte'
-import { readable, writable } from 'svelte/store'
+import { readable, writable, type Writable } from 'svelte/store'
+import { setContext, getContext } from 'svelte'
 
 export type TreeData = {
 	id: string
@@ -9,6 +10,16 @@ export type TreeData = {
 	language: string
 }
 
-const treeView = createTreeView()
-export const treeViewCtl = readable(treeView.elements)
-export const viewing = writable<TreeData | undefined>(undefined)
+export const createTreeViewCtl = () => {
+	setContext('treeView', createTreeView())
+}
+export const getTreeViewCtl = () => {
+	const treeView = getContext<ReturnType<typeof createTreeView>>('treeView')
+	return treeView.elements
+}
+export const createViewing = () => {
+	setContext('viewing', writable<TreeData | undefined>(undefined))
+}
+export const getViewing = () => {
+	return getContext<Writable<TreeData | undefined>>('viewing')
+}

@@ -3,16 +3,19 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import type { PageServerLoad } from './$types'
 
-type Data = {
-	treeData: TreeData[]
-}
-
-export const load: PageServerLoad<Data> = async ({ params }) => {
+type Variants = Record<string, TreeData[]>
+export const load: PageServerLoad<Variants> = async ({ params }) => {
 	const { name } = params
-	const treeData = await extract(`./data/${name}/main`)
-	return {
-		treeData,
+	const variants: Variants = {}
+	const files = await fs.readdir(`./data/${name}`, { withFileTypes: true })
+
+	for (const file of files) {
+		if (file.isDirectory()) {
+			variants[file.name] = await extract(`./data/${name}/${file.name}`)
+		}
 	}
+
+	return variants
 }
 
 async function extract(dir: string, baseDir: string = ''): Promise<TreeData[]> {

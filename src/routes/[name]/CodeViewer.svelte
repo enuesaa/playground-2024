@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { treeViewCtl, viewing, type TreeData } from '$lib/tree'
+	import { getTreeViewCtl, getViewing, type TreeData } from '$lib/tree'
 	import { onMount } from 'svelte'
 	import Code from './Code.svelte'
 	import CodeTree from './CodeTree.svelte'
 
 	export let treeData: TreeData[]
 
+	const { tree } = getTreeViewCtl()
+	const viewing = getViewing()
 	onMount(() => {
 		viewing.set(treeData[0])
 	})
-
-	const { tree } = $treeViewCtl
 </script>
 
 <section>

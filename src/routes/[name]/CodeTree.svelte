@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { treeViewCtl, type TreeData } from '$lib/tree'
+	import { type TreeData, getTreeViewCtl } from '$lib/tree'
 	import { melt } from '@melt-ui/svelte'
 	import CodeTreeItemButton from './CodeTreeItemButton.svelte'
 
 	export let treeData: TreeData[]
-	const { group } = $treeViewCtl
+	const { group } = getTreeViewCtl()
 </script>
 
 {#each treeData as data}
