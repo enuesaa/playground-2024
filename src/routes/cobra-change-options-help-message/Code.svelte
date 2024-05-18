@@ -6,7 +6,7 @@
 	export let language: string
 	export let code: string
 
-	const hl = highlightjs.highlight(code, {language})
+	const hl = highlightjs.highlight(code, { language })
 </script>
 
 <pre><code class="hljs">{@html hl.value}</code></pre>

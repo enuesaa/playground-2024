@@ -1,6 +1,4 @@
-<section class="container mx-auto">
-	This site is currentlty under development.
-</section>
+<section class="container mx-auto">This site is currentlty under development.</section>
 
 <style lang="postcss">
 	section {
