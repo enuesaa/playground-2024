@@ -1,1 +1,8 @@
-<div class="m-3 p-3 font-bold font-zenkaku text-3xl">home</div>
+<script lang="ts">
+	import TrailerLink from './TrailerLink.svelte'
+</script>
+
+<TrailerLink
+	href='/cobra-change-options-help-message'
+	title='Cobra Change Opitons Help Message'
+/>
