@@ -1,5 +1,10 @@
 <script lang="ts">
 	import TrailerLink from './TrailerLink.svelte'
+	import type { PageData } from './$types'
+
+	export let data: PageData
 </script>
 
-<TrailerLink href="/change-options-help-message" title="Change Options Help Message" />
+{#each data.projects as project}
+	<TrailerLink href={`/${project.name}`} title="Change Options Help Message" />	
+{/each}

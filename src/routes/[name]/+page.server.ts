@@ -1,12 +1,13 @@
 import type { TreeData } from '$lib/tree'
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import type { PageServerLoad } from './$types'
 
 type Data = {
 	treeData: TreeData[]
 }
 
-export async function load({ params }): Promise<Data> {
+export const load: PageServerLoad<Data> = async ({ params }) => {
 	const { name } = params
 	const treeData = await extract(`./data/${name}/main`)
 	return {
