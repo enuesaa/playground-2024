@@ -10,3 +10,12 @@
 </script>
 
 <pre><code class="hljs">{@html hl.value}</code></pre>
+
+<style lang="postcss">
+	pre {
+		@apply h-full;
+	}
+	code {
+		@apply h-full;
+	}
+</style>
