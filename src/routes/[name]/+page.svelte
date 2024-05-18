@@ -6,6 +6,6 @@
 	export let data
 </script>
 
-<PageTitle title="Cobra Change Opitons Help Message" />
+<PageTitle title="Change Options Help Message" />
 
 <CodeViewer treeData={data.treeData} />

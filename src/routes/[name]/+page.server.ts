@@ -6,8 +6,9 @@ type Data = {
 	treeData: TreeData[]
 }
 
-export async function load(): Promise<Data> {
-	const treeData = await extract('./data/change-opions-help-message/variant1')
+export async function load({ params }): Promise<Data> {
+	const { name } = params
+	const treeData = await extract(`./data/${name}/main`)
 	return {
 		treeData,
 	}
@@ -44,4 +45,18 @@ async function extract(dir: string, baseDir: string = ''): Promise<TreeData[]> {
 	}
 
 	return data
+}
+
+type Entry = {
+	name: string
+}
+export async function entries(): Promise<Entry[]> {
+	const list: Entry[] = []
+	const files = await fs.readdir('./data', { withFileTypes: true })
+
+	for (const file of files) {
+		list.push({name: file.name})
+	}
+
+	return list
 }
