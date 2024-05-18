@@ -9,7 +9,7 @@
 
 	function hanldeClick() {
 		if (hasChildren) {
-			return;
+			return
 		}
 		viewing.set(data)
 	}
