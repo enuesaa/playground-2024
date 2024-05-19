@@ -2,32 +2,35 @@ import type { TreeData } from '$lib/tree'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import type { PageServerLoad } from './$types'
+import toml from 'toml'
 
-type Variant = {
-	out: string
-	files: TreeData[]
+type Config = {
+	project: {
+		description: string,
+	},
+	variants: Record<string, {console: string}>
 }
-type Variants = Record<string, Variant>
+type Variants = Record<string, {output: string; files: TreeData[]}>
 type Data = {
+	description: string
 	variants: Variants;
-	readme: string
 }
 export const load: PageServerLoad<Data> = async ({ params }) => {
 	const { name } = params
-	const variants: Variants = {}
-	const files = await fs.readdir(`./data/${name}`, { withFileTypes: true })
 
-	for (const file of files) {
-		if (file.isDirectory()) {
-			variants[file.name] = {
-				files: await extract(`./data/${name}/${file.name}`),
-				out: await fs.readFile(`./data/${name}/${file.name}/out.txt`, 'utf8'),
-			}
+	const configstr = await fs.readFile(`./data/${name}/trailer.toml`, 'utf8')
+	const config: Config = toml.parse(configstr)
+	const data = {
+		description: config.project.description,
+		variants: {} as Variants,
+	}
+	for (const variant of Object.keys(config.variants)) {
+		data.variants[variant] = {
+			output: config.variants[variant].console,
+			files: await extract(`./data/${name}/${variant}`),
 		}
 	}
-	const readme = await fs.readFile(`./data/${name}/README.md`, 'utf8')
-
-	return {variants, readme}
+	return data
 }
 
 async function extract(dir: string, baseDir: string = ''): Promise<TreeData[]> {

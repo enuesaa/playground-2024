@@ -1,7 +1,0 @@
-$ go run . --help
-Usage:
-  sample [flags]
-
-Flags:
-  -h, --help      help for sample
-  -v, --version   version for sample

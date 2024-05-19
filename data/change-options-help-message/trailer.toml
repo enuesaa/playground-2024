@@ -1,0 +1,26 @@
+[project]
+description = """
+いつも使っている設定値の意味を再確認したい
+"""
+
+[variants.normal]
+console = """
+$ go run . --help
+Usage:
+  sample [flags]
+
+Flags:
+  -h, --help      help for sample
+  -v, --version   version for sample
+"""
+
+[variants.configured]
+console = """
+$ go run . --help
+Usage:
+  sample [flags]
+
+Flags:
+      --help      Show help information
+      --version   Show version
+"""
