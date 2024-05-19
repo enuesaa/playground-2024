@@ -1,10 +1,9 @@
 <script lang="ts">
-	import SvelteMarkdown from 'svelte-markdown'
 	export let content: string
 </script>
 
 <section>
-	<SvelteMarkdown source={content} />
+	{content}
 </section>
 
 <style lang="postcss">
