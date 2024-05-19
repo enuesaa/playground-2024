@@ -1,33 +1,29 @@
 import type { TreeData } from '$lib/tree'
+import type { PageServerLoad } from './$types'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import type { PageServerLoad } from './$types'
 import toml from 'toml'
+import type { Config } from '$lib/config'
 
-type Config = {
-	project: {
-		description: string,
-	},
-	variants: Record<string, {console: string}>
+type Variant =  {
+	output: string
+	files: TreeData[]
 }
-type Variants = Record<string, {output: string; files: TreeData[]}>
 type Data = {
 	description: string
-	variants: Variants;
+	variants: Record<string, Variant>
 }
-export const load: PageServerLoad<Data> = async ({ params }) => {
-	const { name } = params
-
+export const load: PageServerLoad<Data> = async ({ params: { name } }) => {
 	const configstr = await fs.readFile(`./data/${name}/trailer.toml`, 'utf8')
 	const config: Config = toml.parse(configstr)
-	const data = {
+	const data: Data = {
 		description: config.project.description,
-		variants: {} as Variants,
+		variants: {},
 	}
-	for (const variant of Object.keys(config.variants)) {
-		data.variants[variant] = {
-			output: config.variants[variant].console,
-			files: await extract(`./data/${name}/${variant}`),
+	for (const [variantName, variant] of Object.entries(config.variants)) {
+		data.variants[variantName] = {
+			output: variant.output,
+			files: await extract(`./data/${name}/${variantName}`),
 		}
 	}
 	return data
@@ -40,10 +36,6 @@ async function extract(dir: string, baseDir: string = ''): Promise<TreeData[]> {
 	for (const file of files) {
 		const filepath = path.join(dir, file.name)
 		const relpath = path.join(baseDir, file.name)
-
-		if (file.name === 'out.txt') {
-			continue
-		}
 
 		if (file.isDirectory()) {
 			const children = await extract(filepath, relpath)
@@ -66,7 +58,6 @@ async function extract(dir: string, baseDir: string = ''): Promise<TreeData[]> {
 			})
 		}
 	}
-
 	return data
 }
 
@@ -74,12 +65,6 @@ type Entry = {
 	name: string
 }
 export async function entries(): Promise<Entry[]> {
-	const list: Entry[] = []
 	const files = await fs.readdir('./data', { withFileTypes: true })
-
-	for (const file of files) {
-		list.push({ name: file.name })
-	}
-
-	return list
+	return files.map(f => ({name: f.name}))
 }

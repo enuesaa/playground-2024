@@ -4,7 +4,7 @@ description = """
 """
 
 [variants.normal]
-console = """
+output = """
 $ go run . --help
 Usage:
   sample [flags]
@@ -15,7 +15,7 @@ Flags:
 """
 
 [variants.configured]
-console = """
+output = """
 $ go run . --help
 Usage:
   sample [flags]
