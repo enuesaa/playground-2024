@@ -11,9 +11,9 @@
 </script>
 
 <PageTitle title="Change Options Help Message" />
-<Readme content="" />
+<Readme content={data.readme} />
 
-{#each Object.entries(data) as [name, treeData]}
+{#each Object.entries(data.variants) as [name, treeData]}
 	<Provider>
 		<VariantTitle title={name} />
 		<CodeViewer {treeData} />

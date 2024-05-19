@@ -2,7 +2,7 @@
 	export let title: string
 </script>
 
-<div class="mx-2 py-1 mb-2">
+<div class="mx-2 py-1 mb-3">
 	<h2>{title}</h2>
 </div>
 
