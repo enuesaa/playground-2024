@@ -36,7 +36,7 @@ async function extract(dir: string, baseDir: string = ''): Promise<TreeData[]> {
 				language: '',
 			})
 		} else {
-      const language = file.name.split('.').at(-1) ?? ''
+			const language = file.name.split('.').at(-1) ?? ''
 			const code = await fs.readFile(filepath, 'utf8')
 			data.push({
 				id: relpath,
@@ -59,7 +59,7 @@ export async function entries(): Promise<Entry[]> {
 	const files = await fs.readdir('./data', { withFileTypes: true })
 
 	for (const file of files) {
-		list.push({name: file.name})
+		list.push({ name: file.name })
 	}
 
 	return list

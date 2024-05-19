@@ -1,0 +1,6 @@
+Usage:
+  sample [flags]
+
+Flags:
+      --help      Show help information
+      --version   Show version
