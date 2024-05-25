@@ -6,5 +6,5 @@
 </script>
 
 {#each data.projects as project}
-	<TrailerLink href={`/${project.name}`} title="Change Options Help Message" />
+	<TrailerLink href={`/${project.name}`} title={project.name} />
 {/each}

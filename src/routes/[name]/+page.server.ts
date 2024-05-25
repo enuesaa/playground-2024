@@ -10,6 +10,7 @@ type Variant =  {
 	files: TreeData[]
 }
 type Data = {
+	name: string
 	description: string
 	variants: Record<string, Variant>
 }
@@ -17,6 +18,7 @@ export const load: PageServerLoad<Data> = async ({ params: { name } }) => {
 	const configstr = await fs.readFile(`./data/${name}/trailer.toml`, 'utf8')
 	const config: Config = toml.parse(configstr)
 	const data: Data = {
+		name,
 		description: config.project.description,
 		variants: {},
 	}
@@ -26,6 +28,7 @@ export const load: PageServerLoad<Data> = async ({ params: { name } }) => {
 			files: await extract(`./data/${name}/${variantName}`),
 		}
 	}
+
 	return data
 }
 

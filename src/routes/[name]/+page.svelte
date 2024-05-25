@@ -10,7 +10,7 @@
 	export let data: PageData
 </script>
 
-<PageTitle title="Change Options Help Message" />
+<PageTitle title={data.name} />
 <Description content={data.description} />
 
 {#each Object.entries(data.variants) as [name, variant]}
