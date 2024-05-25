@@ -1,10 +1,20 @@
 import fs from 'node:fs/promises'
 import YAML from 'yaml'
-import type { Config } from '$lib/config'
 
 export const getConfigPath = (name: string): string => {
   return `./data/${name}/trailer.yaml`
-} 
+}
+
+export type Variant = {
+  name: string
+  title: string
+  output: string
+}
+
+export type Config = {
+	description: string,
+	variants: Variant[]
+}
 
 export const readConfig = async (name: string): Promise<Config> => {
   const path = getConfigPath(name)

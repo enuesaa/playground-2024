@@ -13,9 +13,9 @@
 <PageTitle title={data.name} />
 <Description content={data.description} />
 
-{#each Object.entries(data.variants) as [name, variant]}
+{#each data.variants as variant}
 	<Provider>
-		<VariantTitle title={name} />
+		<VariantTitle title={variant.title} />
 		<CodeViewer treeData={variant.files} />
 		<Output output={variant.output} />
 	</Provider>

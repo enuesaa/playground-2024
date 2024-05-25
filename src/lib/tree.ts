@@ -1,5 +1,5 @@
 import { createTreeView } from '@melt-ui/svelte'
-import { readable, writable, type Writable } from 'svelte/store'
+import { writable, type Writable } from 'svelte/store'
 import { setContext, getContext } from 'svelte'
 
 export type TreeData = {

@@ -1,22 +1,13 @@
-import fs from 'node:fs/promises'
 import type { PageServerLoad } from './$types'
+import { listTrailers } from '$lib/server/trailer/list'
 
-type Project = {
-	name: string
-}
 type Data = {
-	projects: Project[]
+	projects: {name: string}[]
 }
-
 export const load: PageServerLoad<Data> = async () => {
-	const list: Project[] = []
-	const files = await fs.readdir('./data', { withFileTypes: true })
-
-	for (const file of files) {
-		list.push({ name: file.name })
-	}
+	const list = await listTrailers()
 
 	return {
-		projects: list,
+		projects: list.map(v => ({name: v})),
 	}
 }

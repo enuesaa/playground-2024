@@ -5,12 +5,14 @@ description: |
   fs.Dirent には isDirectory() や isSymbolicLink() などメソッドが生えており withFileTypes を付けない場合に比べ情報量が多い
 
 variants:
-  normal:
+  - name: normal
+    title: normal
     output: |
       $ pnpm tsx main.ts
       [ 'a.txt', 'b.txt' ]
 
-  with-file-types:
+  - name: with-file-types
+    title: with file types
     output: |
       $ pnpm tsx main.ts
       [

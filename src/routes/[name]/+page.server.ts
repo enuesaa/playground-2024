@@ -1,32 +1,27 @@
 import type { TreeData } from '$lib/tree'
 import type { PageServerLoad } from './$types'
-import fs from 'node:fs/promises'
-import { readConfig } from '$lib/server/trailer/config'
+import { readConfig, type Variant } from '$lib/server/trailer/config'
 import { extractVariantFiles } from '$lib/server/trailer/variant'
+import { listTrailers } from '$lib/server/trailer/list'
 
-type Variant =  {
-	output: string
-	files: TreeData[]
-}
 type Data = {
 	name: string
 	description: string
-	variants: Record<string, Variant>
+	variants: (Variant & {files: TreeData[]})[]
 }
 export const load: PageServerLoad<Data> = async ({ params: { name } }) => {
 	const config = await readConfig(name)
 	const data: Data = {
 		name,
 		description: config.description,
-		variants: {},
+		variants: [],
 	}
-	for (const [variantName, variant] of Object.entries(config.variants)) {
-		data.variants[variantName] = {
-			output: variant.output,
-			files: await extractVariantFiles(name, variantName),
-		}
+	for (const variant of config.variants) {
+		data.variants.push({
+			...variant,
+			files: await extractVariantFiles(name, variant.name),
+		})
 	}
-
 	return data
 }
 
@@ -34,6 +29,6 @@ type Entry = {
 	name: string
 }
 export async function entries(): Promise<Entry[]> {
-	const files = await fs.readdir('./data', { withFileTypes: true })
-	return files.map(f => ({name: f.name}))
+	const list = await listTrailers()
+	return list.map(v => ({name: v}))
 }

@@ -1,7 +1,8 @@
 description: いつも使っている設定値の意味を再確認したい
 
 variants:
-  normal:
+  - name: normal
+    title: normal
     output: |
       $ go run . --help
       Usage:
@@ -11,7 +12,8 @@ variants:
         -h, --help      help for sample
         -v, --version   version for sample
 
-  configured:
+  - name: configured
+    title: configured
     output: |
       $ go run . --help
       Usage:
