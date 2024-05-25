@@ -1,0 +1,32 @@
+[project]
+description = """
+fs.readdir のオプションについて。withFileTypes を指定したときの挙動の違い
+
+withFileTypes を付けないとファイル名が文字列で返ってくるが、withFileTypes を付けると fs.Dirent が返ってくる.
+fs.Dirent には isDirectory() や isSymbolicLink() などメソッドが生えており withFileTypes を付けない場合に比べ情報量が多い
+"""
+
+[variants.normal]
+output = """
+$ pnpm tsx main.ts
+[ 'a.txt', 'b.txt' ]
+"""
+
+[variants.with-file-types]
+output = """
+$ pnpm tsx main.ts
+[
+  Dirent {
+    name: 'a.txt',
+    parentPath: '../data',
+    path: '../data',
+    [Symbol(type)]: 1
+  },
+  Dirent {
+    name: 'b.txt',
+    parentPath: '../data',
+    path: '../data',
+    [Symbol(type)]: 1
+  }
+]
+"""
