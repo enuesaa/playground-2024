@@ -28,7 +28,7 @@
 	},
 	"dependencies": {
 		"@types/node": "^20.12.12",
-		"toml": "^3.0.0"
+		"yaml": "^2.4.2"
 	},
 	"prettier": {
 		"printWidth": 120,

@@ -2,7 +2,7 @@ import type { TreeData } from '$lib/tree'
 import type { PageServerLoad } from './$types'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import toml from 'toml'
+import YAML from 'yaml'
 import type { Config } from '$lib/config'
 
 type Variant =  {
@@ -15,11 +15,11 @@ type Data = {
 	variants: Record<string, Variant>
 }
 export const load: PageServerLoad<Data> = async ({ params: { name } }) => {
-	const configstr = await fs.readFile(`./data/${name}/trailer.toml`, 'utf8')
-	const config: Config = toml.parse(configstr)
+	const configstr = await fs.readFile(`./data/${name}/trailer.yaml`, 'utf8')
+	const config: Config = YAML.parse(configstr)
 	const data: Data = {
 		name,
-		description: config.project.description,
+		description: config.description,
 		variants: {},
 	}
 	for (const [variantName, variant] of Object.entries(config.variants)) {

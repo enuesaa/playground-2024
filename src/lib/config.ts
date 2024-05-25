@@ -1,6 +1,4 @@
 export type Config = {
-	project: {
-		description: string,
-	},
+	description: string,
 	variants: Record<string, {output: string}>
 }
