@@ -5,6 +5,10 @@ description: |
   withFileTypes を付けないとファイル名が文字列で返ってくるが、withFileTypes を付けると fs.Dirent が返ってくる.
   fs.Dirent には isDirectory() や isSymbolicLink() などメソッドが生えており withFileTypes を付けない場合に比べ情報量が多い
 
+ignore:
+  - pnpm-lock.yaml
+  - tsconfig.json
+
 variants:
   - name: normal
     title: normal

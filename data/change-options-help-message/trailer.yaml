@@ -1,6 +1,9 @@
 title: Change Options Help Message
 description: いつも使っている設定値の意味を再確認したい
 
+ignore:
+  - go.sum
+
 variants:
   - name: normal
     title: normal
