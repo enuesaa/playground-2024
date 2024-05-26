@@ -21,7 +21,7 @@
 	{/each}
 </nav>
 
-<section class="px-5 py-2 rounded-lg bg-grayblack" style="box-shadow: 0 1px 1px 0 rgba(0,0,0,0.9);">
+<section class="px-7 py-3 rounded-lg bg-graywhite" style="box-shadow: 0 -0.5px 1px 1px rgba(0,0,0,0.2);">
 	{#each data.variants as variant}
 		{#if variant.name === showingVariantName}
 			<Provider>

@@ -9,7 +9,7 @@
 
 <button
 	on:click|preventDefault={handleClick}
-	class={showing === name ? 'bg-grayblack' : 'bg-gray'}
+	class={showing === name ? 'bg-graywhite' : 'bg-grayblack'}
 >
 	{name}
 </button>

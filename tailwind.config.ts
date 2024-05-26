@@ -5,12 +5,9 @@ export default {
 	theme: {
 		colors: {
 			black: '#1a1a1a',
-			blackgrayer: '#212121',
-			blackgray: '#2a2a2a',
-			gray: '#cccccc',
-			// grayer: '#dddddd',
-			graywhite: '#dddddd',
-			grayblack: '#aaaaaa',
+			gray: '#dddddd',
+			graywhite: '#e6e6e6',
+			grayblack: '#b9b9b9',
 			white: '#fafafa',
 		},
 		fontFamily: {

@@ -28,8 +28,8 @@
 
 <style lang="postcss">
 	section {
-		border: solid 1px rgba(0, 0, 0, 0.2);
-		box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
-		@apply flex gap-4 my-5 bg-graywhite overflow-y-scroll h-96;
+		border: solid 2px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+		@apply flex gap-4 my-5 bg-gray overflow-y-scroll h-96;
 	}	
 </style>
