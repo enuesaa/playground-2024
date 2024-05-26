@@ -8,6 +8,6 @@
 
 <nav class="m-0 pl-3">
 	{#each variants as variant}
-		<VariantNavButton bind:showing name={variant.name} />
+		<VariantNavButton bind:showing name={variant.name} title={variant.title} />
 	{/each}
 </nav>

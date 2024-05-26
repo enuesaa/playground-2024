@@ -15,11 +15,6 @@ func main() {
 		},
 	}
 
-	// disable default
-	app.SetHelpCommand(&cobra.Command{Hidden: true})
-	app.CompletionOptions.DisableDefaultCmd = true
-	app.SilenceUsage = true
-	app.PersistentFlags().SortFlags = false
 	app.PersistentFlags().BoolP("help", "", false, "Show help information")
 	app.PersistentFlags().BoolP("version", "", false, "Show version")
 

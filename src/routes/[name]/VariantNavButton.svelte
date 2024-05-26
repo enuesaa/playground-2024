@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let name: string
+	export let title: string
 	export let showing: string
 
 	function handleClick() {
@@ -8,7 +9,7 @@
 </script>
 
 <button on:click|preventDefault={handleClick} class={showing === name ? 'bg-graywhite' : 'bg-grayblack'}>
-	{name}
+	{title}
 </button>
 
 <style lang="postcss">
