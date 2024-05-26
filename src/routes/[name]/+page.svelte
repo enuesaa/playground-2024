@@ -8,15 +8,27 @@
 	import Output from './Output.svelte'
 
 	export let data: PageData
+	let showingVariantName = data.variants[0].name
 </script>
 
 <PageTitle title={data.title} />
 <Description content={data.description} />
 
+<nav>
+	{#each data.variants as variant}
+		<button class="m-3"
+			style="border: solid 1px #111;"
+			on:click|preventDefault={() => showingVariantName = variant.name}
+		>{variant.name}</button>
+	{/each}
+</nav>
+
 {#each data.variants as variant}
-	<Provider>
-		<VariantTitle title={variant.title} />
-		<CodeViewer treeData={variant.files} />
-		<Output output={variant.output} />
-	</Provider>
+	{#if variant.name === showingVariantName}
+		<Provider>
+			<VariantTitle title={variant.title} />
+			<CodeViewer treeData={variant.files} />
+			<Output output={variant.output} />
+		</Provider>
+	{/if}
 {/each}
