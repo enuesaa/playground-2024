@@ -7,6 +7,6 @@
 <Header />
 <WipBanner />
 
-<div class="container mx-auto p-3 mt-5">
+<div class="container mx-auto p-1 mt-5">
 	<slot />
 </div>

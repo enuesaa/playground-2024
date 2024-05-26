@@ -3,14 +3,21 @@
 	export let title: string
 </script>
 
-<a {href}>{title}</a>
+<div>
+	<a {href}>{title}</a>
+</div>
 
 <style lang="postcss">
+	div {
+		vertical-align: middle;
+		@apply inline-block w-5/12 h-40 m-2;
+	}
+
 	a {
 		border: solid 1px rgba(0, 0, 0, 0.2);
 		box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
 		@apply flex justify-center items-center;
-		@apply w-2/5 h-40 p-5 m-5 text-xl font-zenkaku font-semibold rounded-lg;
+		@apply w-full h-full p-5 text-xl font-zenkaku font-semibold rounded-lg;
 		@apply hover:bg-graywhite;
 	}
 </style>
