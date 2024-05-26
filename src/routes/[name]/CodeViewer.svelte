@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { getTreeViewCtl, getViewing, type TreeData } from '$lib/tree'
+	import { getTreeViewCtl, getViewing } from '$lib/tree'
+	import type { TreeData } from '$lib/types/tree'
 	import { onMount } from 'svelte'
 	import Code from './Code.svelte'
 	import CodeTree from './CodeTree.svelte'
@@ -31,5 +32,5 @@
 		border: solid 2px rgba(0, 0, 0, 0.2);
 		box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
 		@apply flex gap-4 my-5 bg-gray overflow-y-scroll h-96;
-	}	
+	}
 </style>

@@ -5,8 +5,8 @@ export default {
 	theme: {
 		colors: {
 			black: '#1a1a1a',
-			gray: '#dddddd',
-			graywhite: '#e6e6e6',
+			gray: '#cccccc',
+			graywhite: '#dadada',
 			grayblack: '#b9b9b9',
 			white: '#fafafa',
 		},

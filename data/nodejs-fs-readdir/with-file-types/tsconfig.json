@@ -1,15 +1,15 @@
 {
-  "compilerOptions": {
-    "module": "es2022",
-    "target": "es2022",
-    "esModuleInterop": true,
-    "strict": true,
-    "moduleResolution": "bundler",
-    "isolatedModules": true,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true
-  },
-  "include": ["**/*.ts"],
-  "exclude": ["dist", "node_modules"]
+	"compilerOptions": {
+		"module": "es2022",
+		"target": "es2022",
+		"esModuleInterop": true,
+		"strict": true,
+		"moduleResolution": "bundler",
+		"isolatedModules": true,
+		"declaration": true,
+		"declarationMap": true,
+		"emitDeclarationOnly": true
+	},
+	"include": ["**/*.ts"],
+	"exclude": ["dist", "node_modules"]
 }

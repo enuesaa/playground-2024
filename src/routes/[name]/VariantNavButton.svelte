@@ -7,10 +7,7 @@
 	}
 </script>
 
-<button
-	on:click|preventDefault={handleClick}
-	class={showing === name ? 'bg-graywhite' : 'bg-grayblack'}
->
+<button on:click|preventDefault={handleClick} class={showing === name ? 'bg-graywhite' : 'bg-grayblack'}>
 	{name}
 </button>
 
