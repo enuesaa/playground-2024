@@ -15,7 +15,7 @@
 	button {
 		border: solid 2px;
 		border-bottom: 0px;
-		@apply mt-3 mx-1 p-3 border-grayblack;
-		@apply rounded-t-lg;
+		@apply mt-3 mx-1 px-4 py-3 rounded-t-lg border-grayblack;
+		@apply text-base font-semibold;
 	}
 </style>

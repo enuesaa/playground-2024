@@ -5,13 +5,15 @@ export default {
 	theme: {
 		colors: {
 			black: '#1a1a1a',
+			blackgray: '#2a2a2a',
 			gray: '#cccccc',
 			graywhite: '#dadada',
-			grayblack: '#b9b9b9',
+			grayblack: '#b3b3b3',
 			white: '#fafafa',
 		},
 		fontFamily: {
 			zenkaku: ['Zen Kaku Gothic New', 'sans-serif'],
+			zenmaru: ['Zen Maru Gothic', 'serif'],
 		},
 	},
 	darkMode: 'class',

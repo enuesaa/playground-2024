@@ -8,7 +8,14 @@
 
 <style lang="postcss">
 	section {
-		border: solid 1px rgba(0, 0, 0, 0.2);
-		@apply p-3 my-4 bg-graywhite;
+		@apply p-3 my-4 font-zenmaru text-base w-full;
+	}
+	section pre {
+		letter-spacing: 0.1px;
+		line-height: 1.65;
+		overflow-wrap: anywhere;
+		word-break: normal;
+		line-break: strict;
+		white-space: pre-wrap;
 	}
 </style>
