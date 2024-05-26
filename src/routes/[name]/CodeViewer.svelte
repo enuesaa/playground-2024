@@ -38,6 +38,6 @@
 		border: solid 2px rgba(0, 0, 0, 0.2);
 		box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
 		background: #22272e;
-		@apply flex my-5 text-grayblack overflow-y-scroll h-96;
+		@apply flex my-5 text-grayblack overflow-y-scroll min-h-12;
 	}
 </style>

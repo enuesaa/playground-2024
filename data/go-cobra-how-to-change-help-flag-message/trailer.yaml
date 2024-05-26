@@ -2,7 +2,8 @@ title: Cobra で help フラグの説明文を変える方法
 description: |
   help フラグの説明文はデフォルトで「help for コマンド名」だが、この文章を変えるには。
 
-  PersistentFlag() でhelpフラグを書けば良さそう。他にも方法はあると思う
+  ・単に help フラグを定義してあげればいい
+  ・他にも方法はあると思う
 published: '2024-05-26'
 
 ignore:

@@ -23,6 +23,7 @@
 		hasChildren,
 	})}
 	on:click|preventDefault={hanldeClick}
+	class={$viewing?.id === data.id ? 'underline' : ''}
 >
 	{data.title}
 </button>
