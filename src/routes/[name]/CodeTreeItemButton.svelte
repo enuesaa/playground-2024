@@ -29,7 +29,7 @@
 
 <style lang="postcss">
 	button {
-		@apply flex items-center gap-1 rounded-md pt-1 select-none;
-		@apply text-base;
+		@apply inline-block my-1;
+		@apply rounded-sm pt-1 select-none;
 	}
 </style>

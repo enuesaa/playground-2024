@@ -1,7 +1,7 @@
 <script lang="ts">
 	// see https://github.com/metonym/svelte-highlight/issues/246
 	import highlightjs from 'highlight.js/lib/common'
-	import 'highlight.js/styles/night-owl.css'
+	import 'highlight.js/styles/github-dark-dimmed.min.css'
 
 	export let language: string
 	export let code: string
