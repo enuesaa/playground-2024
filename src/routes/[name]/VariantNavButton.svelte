@@ -9,7 +9,7 @@
 
 <button
 	on:click|preventDefault={handleClick}
-	class={showing === name ? 'bg-grayer' : 'bg-gray'}
+	class={showing === name ? 'bg-grayblack' : 'bg-gray'}
 >
 	{name}
 </button>
@@ -18,7 +18,7 @@
 	button {
 		border: solid 2px;
 		border-bottom: 0px;
-		@apply mt-3 mx-1 p-3 border-black;
+		@apply mt-3 mx-1 p-3 border-grayblack;
 		@apply rounded-t-lg;
 	}
 </style>

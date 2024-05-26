@@ -15,13 +15,13 @@
 <PageTitle title={data.title} />
 <Description content={data.description} />
 
-<nav class="m-0">
+<nav class="m-0 pl-3">
 	{#each data.variants as variant}
 		<VariantNavButton bind:showing={showingVariantName} name={variant.name} />
 	{/each}
 </nav>
 
-<section class="border-2 px-3 py-2 rounded-lg">
+<section class="px-5 py-2 rounded-lg bg-grayblack" style="box-shadow: 0 1px 1px 0 rgba(0,0,0,0.9);">
 	{#each data.variants as variant}
 		{#if variant.name === showingVariantName}
 			<Provider>
