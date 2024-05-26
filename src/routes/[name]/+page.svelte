@@ -4,12 +4,14 @@
 	import Description from './Description.svelte'
 	import VariantNav from './VariantNav.svelte'
 	import VariantBody from './VariantBody.svelte'
+	import PagePublishedBar from './PagePublishedBar.svelte'
 
 	export let data: PageData
 	let showingVariantName = data.variants[0].name
 </script>
 
 <PageTitle title={data.title} />
+<PagePublishedBar published={data.published} />
 <Description content={data.description} />
 
 <VariantNav variants={data.variants} bind:showing={showingVariantName} />

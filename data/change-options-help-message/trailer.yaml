@@ -1,5 +1,6 @@
 title: Change Options Help Message
 description: いつも使っている設定値の意味を再確認したい
+published: '2024-05-26'
 
 ignore:
   - go.sum

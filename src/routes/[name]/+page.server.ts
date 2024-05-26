@@ -8,6 +8,7 @@ type Data = {
 	name: string
 	title: string
 	description: string
+	published: string
 	variants: VariantWithTreeData[]
 }
 export const load: PageServerLoad<Data> = async ({ params: { name } }) => {
@@ -16,6 +17,7 @@ export const load: PageServerLoad<Data> = async ({ params: { name } }) => {
 		name,
 		title: config.title,
 		description: config.description,
+		published: config.published,
 		variants: [],
 	}
 	for (const variant of config.variants) {

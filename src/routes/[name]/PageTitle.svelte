@@ -8,7 +8,7 @@
 
 <style lang="postcss">
 	div {
-		@apply mx-2 py-1 mb-6 mt-3;
+		@apply mx-2 py-1 mt-3 mb-1;
 	}
 	h2 {
 		@apply font-bold font-zenkaku text-4xl;

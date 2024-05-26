@@ -1,6 +1,7 @@
 export type Config = {
 	title: string
 	description: string
+	published: string
 	ignore: string[]
 	variants: Variant[]
 }
