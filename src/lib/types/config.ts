@@ -8,5 +8,6 @@ export type Config = {
 export type Variant = {
 	name: string
 	title: string
+	open: string
 	output: string
 }

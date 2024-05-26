@@ -9,7 +9,7 @@
 </script>
 
 {#each treeData as data}
-	<li class="pl-4">
+	<li class="pl-2">
 		<CodeTreeItemButton {data} />
 
 		{#if data.children.length > 0}

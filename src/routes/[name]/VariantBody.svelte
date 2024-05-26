@@ -11,7 +11,7 @@
 <VariantProvider>
 	<section>
 		<VariantTitle title={variant.title} />
-		<CodeViewer treeData={variant.files} />
+		<CodeViewer treeData={variant.files} firstOpen={variant.open} />
 		<VariantOutput output={variant.output} />
 	</section>
 </VariantProvider>

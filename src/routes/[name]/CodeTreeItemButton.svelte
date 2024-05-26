@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { melt } from '@melt-ui/svelte'
-	import { getTreeViewCtl, type TreeData, getViewing } from '$lib/tree'
+	import { getTreeViewCtl, getViewing } from '$lib/tree'
+	import type { TreeData } from '$lib/types/tree'
 
 	export let data: TreeData
 	const hasChildren = data.children.length > 0
@@ -28,6 +29,7 @@
 
 <style lang="postcss">
 	button {
-		@apply flex items-center gap-1 rounded-md p-1 select-none;
+		@apply flex items-center gap-1 rounded-md pt-1 select-none;
+		@apply text-base;
 	}
 </style>

@@ -6,16 +6,22 @@
 	import CodeTree from './CodeTree.svelte'
 
 	export let treeData: TreeData[]
+	export let firstOpen: string
 
 	const { tree } = getTreeViewCtl()
 	const viewing = getViewing()
 	onMount(() => {
-		viewing.set(treeData[0])
+		for (const data of treeData) {
+			if (data.id === firstOpen) {
+				viewing.set(data)
+				break
+			}
+		}
 	})
 </script>
 
 <section>
-	<ul class="w-56 flex-none" {...$tree}>
+	<ul class="w-24 flex-none" {...$tree}>
 		<CodeTree {treeData} />
 	</ul>
 	<div class="flex-auto">

@@ -12,12 +12,14 @@ ignore:
 variants:
   - name: normal
     title: normal
+    open: main.ts
     output: |
       $ pnpm tsx main.ts
       [ 'a.txt', 'b.txt' ]
 
   - name: with-file-types
     title: with file types
+    open: main.ts
     output: |
       $ pnpm tsx main.ts
       [
