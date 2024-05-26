@@ -12,7 +12,8 @@ export type Variant = {
 }
 
 export type Config = {
-	description: string,
+  title: string
+	description: string
 	variants: Variant[]
 }
 

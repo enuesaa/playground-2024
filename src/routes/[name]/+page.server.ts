@@ -6,6 +6,7 @@ import { listTrailers } from '$lib/server/trailer/list'
 
 type Data = {
 	name: string
+	title: string
 	description: string
 	variants: (Variant & {files: TreeData[]})[]
 }
@@ -13,6 +14,7 @@ export const load: PageServerLoad<Data> = async ({ params: { name } }) => {
 	const config = await readConfig(name)
 	const data: Data = {
 		name,
+		title: config.title,
 		description: config.description,
 		variants: [],
 	}

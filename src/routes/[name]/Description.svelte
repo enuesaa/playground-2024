@@ -3,7 +3,7 @@
 </script>
 
 <section>
-	{content}
+	<pre>{content}</pre>
 </section>
 
 <style lang="postcss">
