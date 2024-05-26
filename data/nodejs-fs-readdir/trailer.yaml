@@ -1,9 +1,9 @@
-title: '[Node.js] fs.readdir() のオプションで withFileTypes: true を指定した時の挙動の違い'
+title: '[Node.js] fs.readdir() で withFileTypes: true を指定した時の返り値'
 description: |
-  fs.readdir() のオプションで withFileTypes: true を指定した時に、返り値の型が違う（のでびっくりした）
+  fs.readdir() のオプションで withFileTypes: true を指定すると返り値の型が変わる。びっくりした
 
-  ・デフォルト (withFileTypes: false) ではファイル名が文字列で返ってくる
-  ・withFileTypes: true を指定すると fs.Dirent が返ってくる
+  ・デフォルト (withFileTypes: false) では、ファイル名が文字列で返ってくる
+  ・withFileTypes: true を指定すると、`fs.Dirent` が返ってくる
   ・fs.Dirent には isDirectory() や isSymbolicLink() などメソッドが生えており withFileTypes を付けない場合に比べ情報量が多い
 published: '2024-05-26'
 

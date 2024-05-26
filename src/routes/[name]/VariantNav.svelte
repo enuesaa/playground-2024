@@ -11,3 +11,10 @@
 		<VariantNavButton bind:showing name={variant.name} title={variant.title} />
 	{/each}
 </nav>
+
+<style lang="postcss">
+	nav {
+		@apply flex;
+		overflow: scroll;
+	}
+</style>
