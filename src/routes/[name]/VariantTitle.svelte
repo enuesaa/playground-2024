@@ -8,6 +8,6 @@
 
 <style lang="postcss">
 	h3 {
-		@apply font-bold font-zenkaku text-3xl;
+		@apply font-bold font-zenmaru text-3xl;
 	}
 </style>

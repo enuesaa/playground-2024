@@ -12,8 +12,8 @@ export default {
 			white: '#fafafa',
 		},
 		fontFamily: {
-			zenkaku: ['Zen Kaku Gothic New', 'sans-serif'],
 			zenmaru: ['Zen Maru Gothic', 'serif'],
+			ibmplex: ['"IBM Plex Sans JP"', 'sans-serif'],
 		},
 	},
 	darkMode: 'class',

@@ -12,13 +12,12 @@
 	}
 	section pre {
 		letter-spacing: 0.1px;
-		line-height: 1.7;
+		line-height: 1.8;
 		overflow-wrap: anywhere;
 		word-break: normal;
 		line-break: strict;
 		white-space: pre-wrap;
-  		font-feature-settings: palt;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
+  		font-feature-settings: "palt";
+		@apply font-ibmplex;
 	}
 </style>

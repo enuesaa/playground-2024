@@ -18,7 +18,7 @@
 		box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
 		overflow: hidden;
 		@apply flex justify-center items-center;
-		@apply w-full h-full font-zenkaku font-semibold rounded-lg;
+		@apply w-full h-full font-zenmaru font-semibold rounded-lg;
 		@apply p-3 sm:p-5 text-lg sm:text-xl;
 		@apply hover:bg-graywhite;
 	}
