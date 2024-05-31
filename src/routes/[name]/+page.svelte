@@ -10,6 +10,10 @@
 	let showingVariantName = data.variants[0].name
 </script>
 
+<svelte:head>
+	<title>{data.title}</title>
+</svelte:head>
+
 <PageTitle title={data.title} />
 <PagePublishedBar published={data.published} />
 <Description content={data.description} />

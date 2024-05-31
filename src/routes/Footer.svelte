@@ -1,1 +1,5 @@
-<footer class="w-full h-5" />
+<footer class="w-full py-5">
+	<div class="container mx-auto">
+		<a href="/about">About</a>
+	</div>
+</footer>
