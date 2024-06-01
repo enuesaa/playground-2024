@@ -1,0 +1,27 @@
+name: release
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - uses: pnpm/action-setup@v2
+        with:
+          version: '9'
+
+      - run: pnpm install
+      - run: pnpm build
+
+      - uses: softprops/action-gh-release@v2
