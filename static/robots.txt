@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+# Sitemaps
+Sitemap: https://trailer.enuesaa.dev/sitemap.xml
