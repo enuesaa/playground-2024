@@ -13,7 +13,7 @@ func main() {
 	app.Use(logger.New())
 
 	app.Post("/hook", func(c fiber.Ctx) error {
-		log.Printf("%+v", c.Body())
+		log.Printf("%+v", string(c.Body()))
 		return nil
 	})
 
