@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log"
-
     "github.com/gofiber/fiber/v3/middleware/logger"
 	"github.com/gofiber/fiber/v3"
 )
@@ -10,15 +8,13 @@ import (
 func main() {
 	app := fiber.New()
 
-	app.Use(logger.New())
+	app.Use(logger.New(logger.Config{
+		Format: "[${time}] ${status} ${reqHeader:X-GitHub-Event} ${body}\n",
+	}))
 
-	app.Post("/hook", func(c fiber.Ctx) error {
-		log.Printf("%+v", string(c.Body()))
+	// webhook の送信先
+	app.Post("/", func(c fiber.Ctx) error {
 		return nil
-	})
-
-	app.Get("/", func(c fiber.Ctx) error {
-		return c.SendString("Hello, World!")
 	})
 
 	app.Listen(":3000")
