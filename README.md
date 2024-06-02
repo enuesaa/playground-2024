@@ -24,18 +24,19 @@ cloudflared tunnel --url localhost:3000
 ### GitHub Repository に webhook を登録したとき
 ```json
 {
-  "zen": "Favor focus over features.", ...
-}
+  "zen": "Favor focus over features.", 
+  ...
 ```
 
 ### コミットしたとき
 ```json
 {
   "ref":"refs/heads/main",
-  "before":"25416b2b23f23b7cb6a576e262e7e9b676d2a2c4","after":"460cb7e69e4e7cd62da942c64a9a5fd87e24d9ed",
+  "before":"25416b2b23f23b7cb6a576e262e7e9b676d2a2c4",
+  "after":"460cb7e69e4e7cd62da942c64a9a5fd87e24d9ed",
   "repository":{
-    "name":"webhook-receive-prototype-app", ...
-}
+    "name":"webhook-receive-prototype-app",
+    ...
 ```
 
 ## Links
