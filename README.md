@@ -18,3 +18,18 @@ brew install cloudflared
 go run .
 cloudflared tunnel --url localhost:3000
 ```
+
+## 受信メッセージ
+### GitHub Repository に webhook を登録したとき
+```json
+{
+  "zen": "Favor focus over features.", ...
+}
+```
+
+### コミットしたとき
+```json
+{
+  "ref":"refs/heads/main",
+}
+```
