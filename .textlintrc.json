@@ -1,5 +1,7 @@
 {
   "rules": {
-    "no-todo": true
+    "no-todo": true,
+    "ja-no-redundant-expression": true,
+    "no-dropping-the-ra": true
   }
 }

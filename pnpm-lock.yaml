@@ -14,6 +14,9 @@ importers:
       textlint-rule-ja-no-redundant-expression:
         specifier: ^4.0.1
         version: 4.0.1
+      textlint-rule-no-dropping-the-ra:
+        specifier: ^3.0.0
+        version: 3.0.0
       textlint-rule-no-todo:
         specifier: ^2.0.1
         version: 2.0.1
@@ -928,6 +931,9 @@ packages:
 
   textlint-rule-ja-no-redundant-expression@4.0.1:
     resolution: {integrity: sha512-r8Qe6S7u9N97wD0gcrASqBUdZs5CMEVlgc8Ul+D2NQFiOi1BoseOMo5I9yUsEZMAL46yh/eaw9+EWz6IDlPWeA==}
+
+  textlint-rule-no-dropping-the-ra@3.0.0:
+    resolution: {integrity: sha512-KbSIlcxj1kLs4sGSMSLGA8OmgRoaPAWtodJaGEyEUiy7uiZM/VPqYALpuD8vf16N1OR5SM/bXXeZFME65r8ZgQ==}
 
   textlint-rule-no-todo@2.0.1:
     resolution: {integrity: sha512-+adoWaBgoTN2g0WNcrERhVq7gdPKQIf1z7Ol+6XwMGv8XmuoFp5vJljHKtCmJBmGhBihjty2b8oaza2MY6UNlw==}
@@ -2204,6 +2210,11 @@ snapshots:
       morpheme-match-all: 2.0.5
       textlint-rule-helper: 2.3.1
       textlint-util-to-string: 3.3.4
+
+  textlint-rule-no-dropping-the-ra@3.0.0:
+    dependencies:
+      kuromojin: 3.0.0
+      textlint-rule-helper: 2.3.1
 
   textlint-rule-no-todo@2.0.1:
     dependencies:
