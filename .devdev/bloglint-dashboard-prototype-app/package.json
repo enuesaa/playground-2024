@@ -1,0 +1,14 @@
+{
+  "name": "bloglint-dashboard-prototype-app",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "check": "textlint README.md"
+  },
+  "devDependencies": {
+    "textlint": "^14.0.4",
+    "textlint-rule-ja-no-redundant-expression": "^4.0.1",
+    "textlint-rule-no-dropping-the-ra": "^3.0.0",
+    "textlint-rule-no-todo": "^2.0.1"
+  }
+}
