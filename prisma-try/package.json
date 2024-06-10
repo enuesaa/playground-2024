@@ -1,0 +1,19 @@
+{
+  "name": "prisma-try",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "list": "tsx src/list.ts",
+    "create": "tsx src/create.ts",
+    "studio": "prisma studio"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "prisma": "^5.15.0",
+    "tsx": "^4.15.1",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@prisma/client": "5.15.0"
+  }
+}
