@@ -13,18 +13,81 @@ export const Container = () => {
   }
 
   (async () => {
-    const container = await WebContainer.boot()
-    console.log(await run(container, 'node', ['--version']))
-    console.log(await run(container, 'npm', ['install', '-g', 'reg-cli']))
-    console.log(await run(container, 'reg-cli', ['--help']))
+    const res = await fetch('nodeapp.js')
+    if (res === null) {
+      return
+    }
+    const resbody = await res.text()
+    console.log(resbody)
 
+    const ares = await fetch('a.png')
+    if (res === null) {
+      return
+    }
+    const abody = await ares.blob()
+    const aarrayBuffer = await abody.arrayBuffer();
+    const aunit8array = new Uint8Array(aarrayBuffer);
+    const bres = await fetch('b.png')
+    if (res === null) {
+      return
+    }
+    const bbody = await bres.blob()
+    const barrayBuffer = await bbody.arrayBuffer();
+    const bunit8array = new Uint8Array(barrayBuffer);
+
+    const container = await WebContainer.boot()
+    container.mount({
+      'nodeapp.js': {
+        file: {
+          contents: resbody,
+        },
+      },
+      'aaa': {
+        directory: {
+          'a.png': {
+            file: {
+              contents: aunit8array,
+            }
+          },
+        },
+      },
+      'bbb': {
+        directory: {
+          // 'a.png': {
+          //   file: {
+          //     contents: bunit8array,
+          //   }
+          // },
+        }
+      },
+      'diff': {
+        directory: {},
+      }
+    })
+    console.log(await run(container, 'pwd', []))
+    console.log(await run(container, 'node', ['--version']))
+    console.log(await run(container, 'ls', ['-a']))
+    console.log(await run(container, 'node', ['nodeapp.js', 'aaa', 'bbb', 'diff']))
+    console.log(await run(container, 'ls', ['-a', 'diff']))
 
     await new Promise(resolve => setTimeout(resolve, 3000))
+    console.log(await run(container, 'ls', ['-a']))
 
-    const files = await container.fs.readdir('./')
-    console.log(files)
-    const files2 = await container.fs.readdir('./node_modules')
-    console.log(files2)
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    console.log(await run(container, 'ls', ['-a']))
+
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    console.log(await run(container, 'ls', ['-a', 'diff']))
+
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    console.log(await run(container, 'ls', ['-a']))
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    console.log(await run(container, 'ls', ['-a']))
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    console.log(await run(container, 'ls', ['-a']))
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    console.log(await run(container, 'ls', ['-a']))
+
   })()
 
   return (<></>)
