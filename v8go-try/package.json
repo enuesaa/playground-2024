@@ -1,0 +1,8 @@
+{
+  "name": "v8go-try",
+  "version": "0.0.1",
+  "main": "index.cjs",
+  "dependencies": {
+    "reg-cli": "^0.18.5"
+  }
+}
