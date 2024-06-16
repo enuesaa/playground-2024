@@ -10,7 +10,7 @@ jobs:
       - shell: powershell
         run: |
           pwd
-          ls -la
+          Get-ChildItem -Force | Format-List
           git --version
           echo a
 
