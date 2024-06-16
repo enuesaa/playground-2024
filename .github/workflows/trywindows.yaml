@@ -1,0 +1,24 @@
+name: trywindows
+
+on:
+  workflow_dispatch:
+
+jobs:
+  trywindows:
+    runs-on: windows-latest
+    steps:
+      - shell: powershell
+        run: |
+          pwd
+          ls -la
+          git --version
+          echo a
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - shell: powershell
+        run: |
+          node --version
+          Get-ComputerInfo | Select-Object CsName, OsName, OsArchitecture, WindowsVersion, WindowsBuildLabEx, TotalPhysicalMemory
