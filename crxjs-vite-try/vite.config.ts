@@ -6,9 +6,12 @@ const manifest = defineManifest({
   manifest_version: 3,
   name: "CRXJS React Vite Example",
   version: "0.0.1",
-  permissions: ['activeTab', 'debugger'],
+  permissions: ['activeTab', 'debugger', 'storage', 'downloads'],
   action: {
     default_popup: "index.html",
+  },
+  background: {
+    service_worker: 'src/background.js'
   },
 })
 
