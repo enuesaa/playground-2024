@@ -20,3 +20,6 @@
 ## Local Development
 - DynamoDB Local
 - invoke go binary from local. App normally serves http.
+
+## Links
+- https://github.com/awslabs/aws-lambda-go-api-proxy
