@@ -6,9 +6,9 @@
 - 図を描くツールをいろいろ見てみたが、自分のイメージしているものではなかった
 
 ## Architecture
-- Go + Sveltekit で開発し Go のビルド成果物(バイナリ)にアプリケーションを全部含めてしまいたい
-- バイナリを実行するとUI(HTMLなど)やREST APIのレスポンス(JSON形式)が返ってくるイメージ
-- ただLambdaがPOSTしか受け付けないはずなので、間にAPI Gatewayを入れるか検討中
+- Go + Sveltekit で開発し Go のビルド成果物(バイナリ)にアプリケーションを全部含めてしまう
+- バイナリを実行するとUI(HTMLなど)やREST APIのレスポンス(JSON形式)が返ってくる
+- これをLambdaにデプロイし関数URLを叩く。CloudFront の Origin に設定する
 
 ## Stack
 - Go
@@ -19,5 +19,4 @@
 
 ## Local Development
 - DynamoDB Local
-- Invoke local lambda function using docker image 
-  https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/images-test.html#images-test-AWSbase
+- invoke go binary from local. App normally serves http.
