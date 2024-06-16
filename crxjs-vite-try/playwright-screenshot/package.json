@@ -1,0 +1,13 @@
+{
+  "name": "playwright-screenshot",
+  "type": "module",
+  "scripts": {
+    "capture": "tsx capture.ts"
+  },
+  "dependencies": {
+    "playwright-chromium": "^1.44.1"
+  },
+  "devDependencies": {
+    "tsx": "^4.15.5"
+  }
+}

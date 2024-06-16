@@ -14,3 +14,6 @@
 ## Links
 - https://crxjs.dev/vite-plugin/
 - https://dev.classmethod.jp/articles/eetann-chrome-extension-by-crxjs/
+- https://zenn.dev/kakkoyakakko/articles/54fe29dc3751b9
+- https://github.com/microsoft/playwright/blob/2ae2fb421c6b6ec115721a8b0a5215442e5411c3/packages/playwright-core/src/server/chromium/crPage.ts#L279
+- https://github.com/microsoft/playwright/blob/2ae2fb421c6b6ec115721a8b0a5215442e5411c3/packages/playwright-core/src/server/screenshotter.ts#L187
