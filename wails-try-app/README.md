@@ -17,7 +17,7 @@ wails dev
 ## build
 ```bash
 wails build # おそらくホストマシンのアーキテクチャ向けにビルド
-wails build --platform windows # windows 向けにビルド
+wails build --platform windows/amd64 -tags native_webview2loader # windows 向けにビルド
 ```
 ./build/bin 配下に置かれる
 
