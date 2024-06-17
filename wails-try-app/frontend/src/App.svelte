@@ -1,11 +1,15 @@
 <script lang="ts">
-  import {Greet2} from '../wailsjs/go/main/App.js'
+  import {Greet2, GetHomeDir, MakeSomeDir} from '../wailsjs/go/main/App.js'
 
   let resultText: string = "Please enter your name below 👇"
   let name: string
 
+  let homedir: string = ''
   function greet(): void {
     Greet2(name).then(result => resultText = result)
+  }
+  async function getHomeDir() {
+    homedir = await GetHomeDir()
   }
 </script>
 
@@ -15,6 +19,9 @@
     <input autocomplete="off" bind:value={name} class="input" id="name" type="text"/>
     <button class="btn" on:click={greet}>Greet</button>
   </div>
+  <div>{homedir}</div>
+  <button class="btn" on:click|preventDefault={getHomeDir}>getHomeDir</button>
+  <button class="btn" on:click|preventDefault={async () => await MakeSomeDir()}>makeSomeDir</button>
 </main>
 
 <style>

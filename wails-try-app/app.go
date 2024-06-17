@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
+	"path/filepath"
 
 	"github.com/playwright-community/playwright-go"
 )
@@ -21,6 +23,32 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+}
+
+func (a *App) GetHomeDir() (string, error) {
+	return os.UserHomeDir()
+}
+
+func (a *App) MakeSomeDir() error {
+	homedir, err := os.UserHomeDir()
+	if err != nil {
+		return err
+	}
+	path := filepath.Join(homedir, ".wailsappdir")
+	if err := os.MkdirAll(path, os.ModePerm); err != nil {
+		return nil
+	}
+	fpath := filepath.Join(path, "config.json")
+	f, err := os.Create(fpath)
+    if err != nil {
+        return err
+    }
+    defer f.Close()
+
+    if _, err = f.WriteString(`{"a":"b"}`); err != nil {
+        return err
+    }
+	return nil
 }
 
 // Greet returns a greeting for the given name
