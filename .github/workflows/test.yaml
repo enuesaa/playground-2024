@@ -1,0 +1,23 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # test log group
+      - run: |
+          echo "::group::aaa"
+          echo a
+          echo b
+          echo "::endgroup::"
+          echo "::group::bbb"
+          echo a
+          echo b
+          echo "::endgroup::"
+          echo "::group::ccc"
+          echo a
+          echo b
+          echo "::endgroup::"
