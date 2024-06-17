@@ -26,15 +26,15 @@ func (a *App) startup(ctx context.Context) {
 }
 
 func (a *App) GetHomeDir() (string, error) {
-	return os.UserHomeDir()
+	return os.UserConfigDir()
 }
 
 func (a *App) MakeSomeDir() error {
-	homedir, err := os.UserHomeDir()
+	homedir, err := os.UserConfigDir()
 	if err != nil {
 		return err
 	}
-	path := filepath.Join(homedir, ".wailsappdir")
+	path := filepath.Join(homedir, ".wailsapp")
 	if err := os.MkdirAll(path, os.ModePerm); err != nil {
 		return nil
 	}
