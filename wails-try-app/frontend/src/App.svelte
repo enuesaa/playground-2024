@@ -20,7 +20,7 @@
     <button class="btn" on:click={greet}>Greet</button>
   </div>
   <div>{homedir}</div>
-  <button class="btn" on:click|preventDefault={getHomeDir}>getHomeDir</button>
+  <button class="btn" on:click|preventDefault={getHomeDir}>getConfigDir</button>
   <button class="btn" on:click|preventDefault={async () => await MakeSomeDir()}>makeSomeDir</button>
 </main>
 
