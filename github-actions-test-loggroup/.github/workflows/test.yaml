@@ -1,4 +1,4 @@
-name: test
+name: test log group
 
 on:
   workflow_dispatch:
