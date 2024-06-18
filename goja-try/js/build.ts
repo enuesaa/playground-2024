@@ -6,6 +6,6 @@ await esbuild.build({
   entryPoints: [
     './index.ts',
   ],
-  outdir: './dist',
+  outfile: './dist/index.cjs',
   platform: 'node',
 })
