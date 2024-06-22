@@ -18,6 +18,19 @@ func main() {
 
 	client := pb.NewCollectionsClient(conn)
 
+	_, err = client.Create(context.Background(), &pb.CreateCollection{
+		CollectionName: "testetst",
+		VectorsConfig: &pb.VectorsConfig{Config: &pb.VectorsConfig_Params{
+			Params: &pb.VectorParams{
+				Size: 3,
+				Distance: pb.Distance_Dot,
+			},
+		}},
+	})
+	if err != nil {
+		log.Printf("Error: %s", err.Error())
+	}
+
 	r, err := client.List(context.Background(), &pb.ListCollectionsRequest{})
 	if err != nil {
 		log.Fatalf("Error: %s", err.Error())

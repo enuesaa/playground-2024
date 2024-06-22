@@ -1,5 +1,5 @@
 # qdrant go
-## create collections
+## create collections with curl
 see https://github.com/qdrant/qdrant/blob/master/QUICK_START.md
 
 ```bash
