@@ -28,6 +28,9 @@
 	}
 
 	let selectedShape: 'path' | 'circle' | 'rect' | undefined = undefined
+	let rectStyle = {
+		fill: '#000000',
+	}
 
 	function handleClick(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
 		if (selectedShape === undefined) {
@@ -61,7 +64,7 @@
 					y: e.clientY - top,
 					width: 20,
 					height: 20,
-					fill: '#000000',
+					fill: rectStyle.fill,
 				},
 			]
 			selectedShape = undefined
@@ -94,11 +97,20 @@
 		current.d = ''
 		selectedShape = undefined
 	}
+
+	function handleToggleRectStyle() {
+		if (rectStyle.fill === '#000000') {
+			rectStyle.fill = '#ff9933'
+		} else {
+			rectStyle.fill = '#000000'
+		}
+	}
 </script>
 
 <button on:click={() => (selectedShape = 'path')}>path</button>
 <button on:click={() => (selectedShape = 'circle')}>circle</button>
 <button on:click={() => (selectedShape = 'rect')}>rect</button>
+<button on:click|preventDefault={handleToggleRectStyle}>toggle rect style</button>
 
 <svg on:click={handleClick} on:mousemove={draw} on:mouseup={stop} on:mouseleave={stop}>
 	{#each shapes as shape}
