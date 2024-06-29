@@ -21,6 +21,10 @@
         paths = [...paths, {d: current.d}]
         current.d = ''
     }
+
+    function del(i: number) {
+        paths = paths.filter((_, k) => k !== i)
+    }
 </script>
 
 <svg 
@@ -29,8 +33,8 @@
     on:mouseup={stop}
     on:mouseleave={stop}
 >
-    {#each paths as path}
-        <path d={path.d} fill="none" stroke="#000000" stroke-width="2" />
+    {#each paths as path, i}
+        <path d={path.d} fill="none" stroke="#000000" stroke-width="2" on:click|preventDefault={() => del(i)} />
     {/each}
     {#if current.d !== ''}
         <path d={current.d} fill="none" stroke="#000000" stroke-width="2" />
