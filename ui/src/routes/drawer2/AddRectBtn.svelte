@@ -4,8 +4,18 @@
 	export let registry: Registry;
 
 	function handleClick() {
-		registry.svgOnClick = () => {
-			console.log('')
+		registry.svgOnClick = ({ x, y }) => {
+			registry.shapes = [
+				...registry.shapes,
+				{
+					tag: 'rect',
+					x,
+					y,
+					width: 20,
+					height: 20,
+					fill: '#000000',
+				},
+			]
 		}
 		registry.svgOnMouseMove = () => {}
 		registry.svgOnMouseLeave = () => {}

@@ -3,13 +3,46 @@
 
 	export let registry: Registry;
 
+	let current = ''
+
 	function handleClick() {
-		registry.svgOnClick = () => {
-			console.log('')
+		registry.svgOnClick = ({ x, y }) => {
+			current = `M${x},${y}`
 		}
-		registry.svgOnMouseMove = () => {}
-		registry.svgOnMouseLeave = () => {}
-		registry.svgOnMouseUp = () => {}
+		registry.svgOnMouseMove = ({ x, y }) => {
+			if (current === '') {
+				return
+			}
+			current += ` L${x},${y}`
+		}
+		registry.svgOnMouseLeave = () => {
+			if (current === '') {
+				return
+			}
+			registry.shapes = [
+				...registry.shapes,
+				{
+					tag: 'path',
+					d: current,
+					stroke: '#000000',
+				},
+			]
+			current = ''
+		}
+		registry.svgOnMouseUp = () => {
+			if (current === '') {
+				return
+			}
+			registry.shapes = [
+				...registry.shapes,
+				{
+					tag: 'path',
+					d: current,
+					stroke: '#000000',
+				},
+			]
+			current = ''
+		}
 	}
 </script>
 
