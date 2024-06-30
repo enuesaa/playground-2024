@@ -1,9 +1,16 @@
 <script lang="ts">
-	export let svgOnClick;
+	import type { Registry } from '$lib/registry'
+
+	export let registry: Registry;
 
 	function handleClick() {
-		svgOnClick = () => {
-			console.log('path')
+		registry = {
+			svgOnClick: () => {
+				console.log('path')
+			},
+			svgOnMouseMove: () => {},
+			svgOnMouseLeave: () => {},
+			svgOnMouseUp: () => {},
 		}
 	}
 </script>

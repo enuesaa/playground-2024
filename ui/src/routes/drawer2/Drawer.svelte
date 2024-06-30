@@ -1,28 +1,60 @@
 <script lang="ts">
 	import AddCircleBtn from './AddCircleBtn.svelte'
 	import AddPathBtn from './AddPathBtn.svelte'
+	import AddRectBtn from './AddRectBtn.svelte'
+	import type { Registry } from '$lib/registry'
 
-	type SvgOnClick = (x: number, y: number) => void;
-	let svgOnClick: SvgOnClick|undefined;
-
-	function handleClick(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
-		const { left, top } = e.currentTarget.getBoundingClientRect()
-		const x = e.clientX - left
-		const y = e.clientY - top
-
-		if (svgOnClick === undefined) {
-			return
-		}
-		svgOnClick(x, y)
+	let registry: Registry = {
+		svgOnClick: undefined,
+		svgOnMouseMove: undefined,
+		svgOnMouseUp: undefined,
+		svgOnMouseLeave: undefined,
 	}
 
-	function handleMouseMove() {}
-	function handleMouseUp() {}
-	function handleMouseLeave() {}
+	function calcXY(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
+		const { left, top } = e.currentTarget.getBoundingClientRect()
+		return {
+			x: e.clientX - left,
+			y: e.clientY - top,
+		}
+	}
+
+	function handleClick(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
+		if (registry.svgOnClick === undefined) {
+			return
+		}
+		const {x, y} = calcXY(e)
+		registry.svgOnClick(x, y)
+	}
+
+	function handleMouseMove(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
+		if (registry.svgOnMouseMove === undefined) {
+			return
+		}
+		const {x, y} = calcXY(e)
+		registry.svgOnMouseMove(x, y)
+	}
+
+	function handleMouseUp(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
+		if (registry.svgOnMouseUp === undefined) {
+			return
+		}
+		const {x, y} = calcXY(e)
+		registry.svgOnMouseUp(x, y)
+	}
+
+	function handleMouseLeave(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
+		if (registry.svgOnMouseLeave === undefined) {
+			return
+		}
+		const {x, y} = calcXY(e)
+		registry.svgOnMouseLeave(x, y)
+	}
 </script>
 
-<AddPathBtn bind:svgOnClick={svgOnClick} />
-<AddCircleBtn bind:svgOnClick={svgOnClick} />
+<AddPathBtn bind:registry={registry} />
+<AddCircleBtn bind:registry={registry} />
+<AddRectBtn bind:registry={registry} />
 
 <svg
 	on:click={handleClick}
