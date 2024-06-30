@@ -2,9 +2,9 @@ package main
 
 import (
 	"bytes"
+	_ "embed"
 	"fmt"
 	"html/template"
-	_ "embed"
 )
 
 //go:embed svg.tmpl
@@ -21,7 +21,7 @@ func main() {
 	tmpl, err := template.New("svg").Parse(svgTmpl)
 	if err != nil {
 		panic(err)
-    }
+	}
 
 	rects := []Rect{
 		{X: 10, Y: 10, Width: 100, Height: 50},
@@ -29,8 +29,8 @@ func main() {
 	}
 
 	var out bytes.Buffer
-    if err := tmpl.Execute(&out, rects); err != nil {
+	if err := tmpl.Execute(&out, rects); err != nil {
 		panic(err)
-    }
-    fmt.Printf("%s", out.String())
+	}
+	fmt.Printf("%s", out.String())
 }
