@@ -1,25 +1,6 @@
 <script lang="ts">
-	type Path = {
-		tag: 'path'
-		d: string
-		stroke: string
-	}
-	type Circle = {
-		tag: 'circle'
-		cx: number
-		cy: number
-		r: number
-		fill: string
-	}
-	type Rect = {
-		tag: 'rect'
-		x: number
-		y: number
-		width: number
-		height: number
-		fill: string
-	}
-	type Shape = Path | Circle | Rect
+	import type { Path, Circle, Rect, Shape  } from '$lib/shape'
+
 	let shapes: Shape[] = []
 	let current: Path = {
 		tag: 'path',
@@ -37,10 +18,10 @@
 			return
 		}
 		const { left, top } = e.currentTarget.getBoundingClientRect()
+		const x = e.clientX - left
+		const y = e.clientY - top
 
 		if (selectedShape === 'path') {
-			const x = e.clientX - left
-			const y = e.clientY - top
 			current.d = `M${x},${y}`
 			// continue drawing
 		} else if (selectedShape === 'circle') {
@@ -48,8 +29,8 @@
 				...shapes,
 				{
 					tag: 'circle',
-					cx: e.clientX - left,
-					cy: e.clientY - top,
+					cx: x,
+					cy: y,
 					r: 20,
 					fill: '#000000',
 				},
@@ -60,8 +41,8 @@
 				...shapes,
 				{
 					tag: 'rect',
-					x: e.clientX - left,
-					y: e.clientY - top,
+					x,
+					y,
 					width: 20,
 					height: 20,
 					fill: rectStyle.fill,
@@ -97,20 +78,11 @@
 		current.d = ''
 		selectedShape = undefined
 	}
-
-	function handleToggleRectStyle() {
-		if (rectStyle.fill === '#000000') {
-			rectStyle.fill = '#ff9933'
-		} else {
-			rectStyle.fill = '#000000'
-		}
-	}
 </script>
 
 <button on:click={() => (selectedShape = 'path')}>path</button>
 <button on:click={() => (selectedShape = 'circle')}>circle</button>
 <button on:click={() => (selectedShape = 'rect')}>rect</button>
-<button on:click|preventDefault={handleToggleRectStyle}>toggle rect style</button>
 
 <svg on:click={handleClick} on:mousemove={draw} on:mouseup={stop} on:mouseleave={stop}>
 	{#each shapes as shape}
