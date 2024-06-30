@@ -4,14 +4,21 @@
 	export let registry: Registry;
 
 	function handleClick() {
-		registry = {
-			svgOnClick: () => {
-				console.log('circle')
-			},
-			svgOnMouseMove: () => {},
-			svgOnMouseLeave: () => {},
-			svgOnMouseUp: () => {},
+		registry.svgOnClick = ({ x, y }) => {
+			registry.shapes = [
+				...registry.shapes,
+				{
+					tag: 'circle',
+					cx: x,
+					cy: y,
+					r: 20,
+					fill: '#000000',
+				},
+			]
 		}
+		registry.svgOnMouseMove = () => {}
+		registry.svgOnMouseLeave = () => {}
+		registry.svgOnMouseUp = () => {}
 	}
 </script>
 

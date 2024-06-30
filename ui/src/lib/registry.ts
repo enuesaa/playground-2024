@@ -1,9 +1,17 @@
-export type SvgOnClick = (x: number, y: number) => void
-export type SvgOnMouseMove = (x: number, y: number) => void
-export type SvgOnMouseUp = (x: number, y: number) => void
-export type SvgOnMouseLeave = (x: number, y: number) => void
+import type { Shape } from './shape'
+
+export type Position = {
+  x: number;
+  y: number;
+}
+
+export type SvgOnClick = (position: Position) => void
+export type SvgOnMouseMove = (position: Position) => void
+export type SvgOnMouseUp = (position: Position) => void
+export type SvgOnMouseLeave = (position: Position) => void
 
 export type Registry = {
+  shapes: Shape[]
   svgOnClick: SvgOnClick|undefined
   svgOnMouseMove: SvgOnMouseMove|undefined
   svgOnMouseUp: SvgOnMouseUp|undefined

@@ -2,53 +2,49 @@
 	import AddCircleBtn from './AddCircleBtn.svelte'
 	import AddPathBtn from './AddPathBtn.svelte'
 	import AddRectBtn from './AddRectBtn.svelte'
-	import type { Registry } from '$lib/registry'
+	import type { Registry, Position } from '$lib/registry'
 
 	let registry: Registry = {
+		shapes: [],
 		svgOnClick: undefined,
 		svgOnMouseMove: undefined,
 		svgOnMouseUp: undefined,
 		svgOnMouseLeave: undefined,
 	}
 
-	function calcXY(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
+	function calcXY(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }): Position {
 		const { left, top } = e.currentTarget.getBoundingClientRect()
-		return {
-			x: e.clientX - left,
-			y: e.clientY - top,
-		}
+		const x = e.clientX - left;
+		const y = e.clientY - top;
+		return { x, y }
 	}
 
 	function handleClick(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
 		if (registry.svgOnClick === undefined) {
 			return
 		}
-		const {x, y} = calcXY(e)
-		registry.svgOnClick(x, y)
+		registry.svgOnClick(calcXY(e))
 	}
 
 	function handleMouseMove(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
 		if (registry.svgOnMouseMove === undefined) {
 			return
 		}
-		const {x, y} = calcXY(e)
-		registry.svgOnMouseMove(x, y)
+		registry.svgOnMouseMove(calcXY(e))
 	}
 
 	function handleMouseUp(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
 		if (registry.svgOnMouseUp === undefined) {
 			return
 		}
-		const {x, y} = calcXY(e)
-		registry.svgOnMouseUp(x, y)
+		registry.svgOnMouseUp(calcXY(e))
 	}
 
 	function handleMouseLeave(e: MouseEvent & { currentTarget: EventTarget & SVGSVGElement }) {
 		if (registry.svgOnMouseLeave === undefined) {
 			return
 		}
-		const {x, y} = calcXY(e)
-		registry.svgOnMouseLeave(x, y)
+		registry.svgOnMouseLeave(calcXY(e))
 	}
 </script>
 
@@ -62,7 +58,15 @@
 	on:mouseup={handleMouseUp}
 	on:mouseleave={handleMouseLeave}
 >
-
+	{#each registry.shapes as shape}
+		{#if shape.tag === 'rect'}
+			<rect x={shape.x} y={shape.y} width={shape.width} height={shape.height} fill={shape.fill} />
+		{:else if shape.tag === 'circle'}
+			<circle cx={shape.cx} cy={shape.cy} r={shape.r} fill={shape.fill} />
+		{:else if shape.tag === 'path'}
+			<path d={shape.d} stroke={shape.stroke} fill="none" stroke-width="2" />
+		{/if}
+	{/each}
 </svg>
 
 <style lang="postcss">
