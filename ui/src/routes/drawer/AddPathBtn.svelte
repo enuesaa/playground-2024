@@ -25,6 +25,7 @@
 					tag: 'path',
 					d: current,
 					stroke: '#000000',
+					strokeWidth: 2,
 				},
 			]
 			current = ''
@@ -39,6 +40,7 @@
 					tag: 'path',
 					d: current,
 					stroke: '#000000',
+					strokeWidth: 2,
 				},
 			]
 			current = ''

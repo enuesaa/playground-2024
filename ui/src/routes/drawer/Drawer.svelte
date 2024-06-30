@@ -64,7 +64,7 @@
 		{:else if shape.tag === 'circle'}
 			<circle cx={shape.cx} cy={shape.cy} r={shape.r} fill={shape.fill} />
 		{:else if shape.tag === 'path'}
-			<path d={shape.d} stroke={shape.stroke} fill="none" stroke-width="2" />
+			<path d={shape.d} stroke={shape.stroke} fill="none" stroke-width={shape.strokeWidth} />
 		{/if}
 	{/each}
 </svg>

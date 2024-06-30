@@ -2,6 +2,7 @@ export type Path = {
   tag: 'path'
   d: string
   stroke: string
+  strokeWidth: number
 }
 
 export type Circle = {
