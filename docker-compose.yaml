@@ -5,3 +5,12 @@ services:
       - 3002:8000
     volumes:
       - ./docker/dynamodb:/home/dynamodblocal/data
+
+  dynamodb-admin:
+    image: aaronshaf/dynamodb-admin
+    ports:
+      - 3003:8001
+    environment:
+      - DYNAMO_ENDPOINT=http://dynamodb:8000
+    depends_on:
+      - dynamodb
