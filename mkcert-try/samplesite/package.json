@@ -1,0 +1,41 @@
+{
+  "name": "my-nextjs-template",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "rm -rf .next && next dev --hostname 0.0.0.0 --experimental-https --experimental-https-key 0.0.0.0-key.pem --experimental-https-cert 0.0.0.0.pem",
+    "build": "next build",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\""
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@radix-ui/themes": "^3.1.1",
+    "@vanilla-extract/css": "^1.15.3",
+    "next": "14.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
+    "react-query": "^3.39.3"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.10",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "@vanilla-extract/next-plugin": "^2.4.3",
+    "prettier": "^3.3.2",
+    "prettier-plugin-organize-imports": "^4.0.0",
+    "typescript": "5.5.3"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "endOfLine": "lf"
+  }
+}
