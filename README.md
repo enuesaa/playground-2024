@@ -29,3 +29,4 @@
 
 ### Links
 - https://github.com/awslabs/aws-lambda-go-api-proxy
+- https://dev.classmethod.jp/articles/cloudfront-lambda-url-sigv4-signer/
