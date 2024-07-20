@@ -1,0 +1,17 @@
+# misc
+.DS_Store
+
+# editor
+.vscode
+
+# node.js
+node_modules
+
+# app
+.env
+.env.*
+docker
+ui/.output
+ui/.vercel
+ui/.svelte-kit
+ui/build
