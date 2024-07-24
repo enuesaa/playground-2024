@@ -1,0 +1,8 @@
+{
+  "name": "node-sqlite-try",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --experimental-sqlite src/index.js"
+  }
+}
