@@ -6,3 +6,14 @@
 
 ## Links
 - https://github.com/fyne-io/fyne
+
+## Commands
+### install fyne cli
+```bash
+go install fyne.io/fyne/v2/cmd/fyne@latest
+```
+
+### package app
+```bash
+fyne package -os darwin -icon icon.png
+```
