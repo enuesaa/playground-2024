@@ -1,0 +1,5 @@
+services:
+  db:
+    image: dicedb/dice-server
+    ports:
+      - 7379:7379
