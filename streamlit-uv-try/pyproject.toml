@@ -1,0 +1,15 @@
+[project]
+name = "streamlit-uv-try"
+version = "0.1.0"
+description = "Try streamlit with uv"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "streamlit>=1.37.1",
+    "streamlit-webrtc>=0.47.7",
+    "opencv-python-headless>=4.10.0.84",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
