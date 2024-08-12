@@ -1,3 +1,4 @@
+# see https://railsguides.jp/api_app.html
 class NotesController < ApplicationController
   def index
     @notes = Note.all
@@ -12,10 +13,10 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(params.require(:note).permit(:name, :description))
+    @note = Note.new(note_params)
   
     if @note.save
-      render status: :ok, json: {"success" => true}
+      render status: :ok, json: {success: true}
     else
       render status: :unprocessable_entity, json: @note.errors
     end
@@ -23,8 +24,8 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    if @note.update(params.require(:note).permit(:name, :description))
-      render status: :ok, json: {"success" => true}
+    if @note.update(note_params)
+      render status: :ok, json: {success: true}
     else
       render status: :unprocessable_entity, json: @note.errors
     end
@@ -34,6 +35,12 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     @note.destroy
 
-    render status: :ok, json: {"success" => true}
-  end  
+    render status: :ok, json: {success: true}
+  end
+
+  private
+    # see https://stackoverflow.com/questions/38432270
+    def note_params
+      params.require(:data).permit(:name, :description)
+    end
 end
