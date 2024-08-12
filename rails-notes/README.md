@@ -1,14 +1,25 @@
 # rails-notes
+
 ## Links
 - https://guides.rubyonrails.org/getting_started.html
 - https://railsguides.jp/getting_started.html
 
 ## Commands
 ```bash
+# install ruby
 brew install rbenv ruby-build
 rbenv init # also, need update ~/.zshrc
-rails new . -n notes # create app
+
+# install rails to machine
+gem install rails
+
+# create app
+rails new . -n notes
+
+# start server
 bin/rails server
+
+# gen code
 # modify config/routes.rb here
 bin/rails generate controller Notes index --skip-routes
 bin/rails generate model Notes name:string description:text
