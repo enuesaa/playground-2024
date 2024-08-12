@@ -42,3 +42,7 @@ bin/rails db:migrate
 - import 的なものがどうなっているのか分からない. グローバルに Note クラス?が存在する?
 - view で静的解析みたいなのできないのか. 存在しないプロパティを指定しても vscode でエラー表示にならず戸惑っている
   - rubocop で phpstan & prettier 的なものができるらしい
+
+## TODO
+- add docker-compose.yaml
+- bin/rails generate controller で view を作らない方法
