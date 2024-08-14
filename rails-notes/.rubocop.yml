@@ -1,4 +1,5 @@
 # inherit_from: .rubocop_todo.yml
+# see https://github.com/rubocop/rubocop/blob/master/config/default.yml
 
 require:
   - rubocop-capybara
@@ -10,8 +11,6 @@ AllCops:
 Rails:
   Enabled: true
 
-# Offense count: 7
-# Configuration parameters: AllowedConstants.
 Style/Documentation:
   Exclude:
     - 'spec/**/*'
@@ -24,70 +23,39 @@ Style/Documentation:
     - 'config/application.rb'
     - 'db/migrate/20240114103921_create_notes.rb'
 
-# Offense count: 39
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
 Style/GlobalStdStream:
   Exclude:
     - 'config/environments/production.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
 Style/IfUnlessModifier:
   Exclude:
     - 'bin/bundle'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: MinDigits, Strict, AllowedNumbers, AllowedPatterns.
 Style/NumericLiterals:
   Exclude:
     - 'db/schema.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: PreferredDelimiters.
 Style/PercentLiteralDelimiters:
   Exclude:
     - 'config/application.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
 Style/PerlBackrefs:
   Exclude:
     - 'bin/bundle'
 
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: SafeForConstants.
 Style/RedundantFetchBlock:
   Exclude:
     - 'config/puma.rb'
 
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: RequireEnglish.
-# SupportedStyles: use_perl_names, use_english_names, use_builtin_english_names
 Style/SpecialGlobalVars:
   EnforcedStyle: use_perl_names
 
-# Offense count: 112
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Enabled: false
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: .
-# SupportedStyles: percent, brackets
 Style/SymbolArray:
   EnforcedStyle: percent
   MinSize: 10
