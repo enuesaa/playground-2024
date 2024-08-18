@@ -5,6 +5,7 @@
 - https://railsguides.jp/getting_started.html
 
 ## Commands
+### How to create rails app at first.
 ```bash
 # install ruby
 brew install rbenv ruby-build
@@ -25,6 +26,12 @@ bin/rails generate controller Notes index --skip-routes
 bin/rails generate model Notes name:string description:text
 bin/rails db:migrate:status
 bin/rails db:migrate
+```
+
+### Local Development with Docker
+```bash
+docker compose build
+docker compose up -d
 ```
 
 ## Versions
