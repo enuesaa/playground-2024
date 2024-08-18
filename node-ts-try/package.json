@@ -1,0 +1,16 @@
+{
+  "name": "@enuesaa/node-ts-try",
+  "private": true,
+  "license": "MIT",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "node main.ts",
+    "dev-ts": "node --experimental-strip-types main.ts",
+    "cli": "node cli.ts",
+    "cli-ts": "node --experimental-strip-types cli.ts"
+  },
+  "dependencies": {
+    "@enuesaa/cmdgate": "^0.0.8"
+  }
+}
