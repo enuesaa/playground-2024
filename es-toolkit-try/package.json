@@ -1,0 +1,15 @@
+{
+  "name": "es-toolkit-try",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx main.ts"
+  },
+  "dependencies": {
+    "es-toolkit": "^1.16.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.17.0"
+  }
+}
