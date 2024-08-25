@@ -6,4 +6,3 @@
 
 ## Links
 - https://github.com/kbinani/screenshot
-- https://github.com/vova616/screenshot
