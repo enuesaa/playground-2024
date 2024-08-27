@@ -1,0 +1,29 @@
+services:
+  collector:
+    image: otel/opentelemetry-collector-contrib
+    command: [--config=/etc/otel-collector.yaml]
+    volumes:
+      - ./collector.yaml:/etc/otel-collector.yaml
+    ports:
+      # - 9464:9464
+      - 4317:4317
+      - 4318:4318
+    depends_on:
+      - tempo
+
+  tempo:
+    image: grafana/tempo:latest
+    command: [--config.file=/etc/tempo.yaml]
+    volumes:
+      - ./tempo.yaml:/etc/tempo.yaml
+    ports:
+      - 3200:3200
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - tempo
