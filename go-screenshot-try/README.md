@@ -11,7 +11,7 @@
   - やっぱ想定していたけど、処理が重たいなあ。
 
 ```bash
-ffmpeg -f avfoundation -framerate 30 -i "1:none" -video_size 1920x1080 output.mp4
+ffmpeg -f avfoundation -framerate 15 -i "1:none" -video_size 640x480 -t 1 -pix_fmt yuv420p output.mp4
 ```
 
 ## Links
