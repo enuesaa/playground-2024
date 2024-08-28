@@ -10,6 +10,16 @@ import (
 )
 
 func main() {
+	fmt.Println("hello")
+
+	// start up prompt here.
+	// - write contents
+	// - capture screenshot
+	// struct に詰める
+	// create pdf file
+}
+
+func CreatePdf() {
 	pdf := gopdf.GoPdf{}
 	pdf.Start(gopdf.Config{
 		PageSize: *gopdf.PageSizeA4,
