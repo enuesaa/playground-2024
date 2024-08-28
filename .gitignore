@@ -3,3 +3,6 @@
 
 # editor
 .vscode
+
+# app
+*.png
