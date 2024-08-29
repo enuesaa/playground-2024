@@ -10,3 +10,8 @@
 - https://medium.com/@sohaib278/distributed-tracing-with-elastic-apm-in-go-part-1-98ef94a514d7
 - https://zenn.dev/fujimotoshinji/scraps/4fb4616976ee00
 - https://zenn.dev/fujimotoshinji/scraps/4fb4616976ee00
+
+## Commands
+```bash
+ELASTIC_APM_SERVER_URL=http://localhost:8200 ELASTIC_APM_SERVICE_NAME=a ELASTIC_APM_LOG_LEVEL=debug ELASTIC_APM_ENVIRONMENT=a CGO_LDFLAGS="-Wl,-no_warn_duplicate_libraries" go run .
+```
