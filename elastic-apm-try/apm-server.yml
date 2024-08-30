@@ -1,0 +1,19 @@
+apm-server:
+  host: 0.0.0.0:8200
+  kibana:
+    enabled: true
+    host: kibana:5601
+  rum:
+    enabled: true
+
+output:
+  elasticsearch:
+    hosts: [elasticsearch:9200]
+
+setup:
+  kibana:
+    host: kibana:5601
+  template:
+    settings:
+      index:
+        number_of_replicas: 0
