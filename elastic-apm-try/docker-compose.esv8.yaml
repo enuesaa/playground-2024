@@ -1,3 +1,7 @@
+# TODO
+# 何かしらの設定が間違っている
+# Use https://github.com/sherifabdlnaby/elastdocker
+
 services:
   apm-server:
     image: docker.elastic.co/apm/apm-server:8.8.2
