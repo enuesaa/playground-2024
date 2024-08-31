@@ -13,8 +13,29 @@ func main() {
 	repos := repository.New()
 
 	app := &cli.App{
-		Name:  "codetrailer",
-		Usage: "",
+		Name:    "codetrailer",
+		Usage:   "A CLI tool to capture stdin/stdout and generate a step-by-step document.",
+		Version: "0.0.1",
+		Flags: []cli.Flag{
+			// markdown を作成
+			&cli.BoolFlag{
+				Name:  "init",
+				Usage: "Create new project",
+			},
+			&cli.StringFlag{
+				Name:  "start",
+				Usage: "Create new case or continue.",
+			},
+			&cli.BoolFlag{
+				Name:  "preview",
+				Usage: "Serve",
+			},
+			&cli.StringFlag{
+				Name:  "project",
+				Value: ".",
+				Usage: "Path to project. default: current dir.",
+			},
+		},
 		Action: func(*cli.Context) error {
 			go usecase.Prompt(repos)
 

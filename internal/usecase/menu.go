@@ -19,15 +19,15 @@ func startMenu() {
 	captureBtn := systray.AddMenuItem("Capture", "Capture")
 	go func() {
 		for {
-			<- captureBtn.ClickedCh
+			<-captureBtn.ClickedCh
 			fmt.Println("capture")
 		}
 	}()
 
 	quitBtn := systray.AddMenuItem("Quit", "Quit")
-	go func () {
+	go func() {
 		for {
-			<- quitBtn.ClickedCh
+			<-quitBtn.ClickedCh
 			os.Exit(0)
 		}
 	}()
