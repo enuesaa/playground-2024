@@ -1,22 +1,41 @@
 package main
 
 import (
-	"github.com/signintech/gopdf"
+	"log"
+
+	"github.com/playwright-community/playwright-go"
 )
 
-func CreatePdf() {
-	pdf := gopdf.GoPdf{}
-	pdf.Start(gopdf.Config{
-		PageSize: *gopdf.PageSizeA4,
+func Pdf() {
+	if err := playwright.Install(&playwright.RunOptions{
+		Browsers: []string{"chromium"},
+	}); err != nil {
+		log.Fatal(err)
+	}
+	pw, err := playwright.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer pw.Stop()
+	browser, err := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
+		Headless: playwright.Bool(false),
 	})
-	pdf.AddPage()
-	if err := pdf.AddTTFFont("HackNerdFont", "./HackNerdFont-Regular.ttf"); err != nil {
-		panic(err)
+	if err != nil {
+		log.Fatal(err)
 	}
-	if err := pdf.SetFont("HackNerdFont", "", 14); err != nil {
-		panic(err)
-	}
-	pdf.Cell(nil, "aa")
-	pdf.WritePdf("hello.pdf")
+	defer browser.Close()
 
+	page, err := browser.NewPage(playwright.BrowserNewPageOptions{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if _, err := page.Goto("https://yahoo.co.jp"); err != nil {
+		log.Fatal(err)
+	}
+	_, err = page.PDF(playwright.PagePdfOptions{
+		Path: playwright.String("aa.pdf"),
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
 }
