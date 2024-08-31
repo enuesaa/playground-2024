@@ -9,6 +9,18 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+// Dir structure
+//   README.md
+//   steps/0.aa.md
+//   steps/1.bb.md
+//   steps/0.image-name.png
+
+// Commands
+// - codetrailer init ... this create markdown
+// - codetrailer record ... create new step file
+// - codetrailer preview
+// - codetrailer export-pdf
+
 func main() {
 	repos := repository.New()
 
@@ -16,26 +28,6 @@ func main() {
 		Name:    "codetrailer",
 		Usage:   "A CLI tool to capture stdin/stdout and generate a step-by-step document.",
 		Version: "0.0.1",
-		Flags: []cli.Flag{
-			// markdown を作成
-			&cli.BoolFlag{
-				Name:  "init",
-				Usage: "Create new project",
-			},
-			&cli.StringFlag{
-				Name:  "start",
-				Usage: "Create new case or continue.",
-			},
-			&cli.BoolFlag{
-				Name:  "preview",
-				Usage: "Serve",
-			},
-			&cli.StringFlag{
-				Name:  "project",
-				Value: ".",
-				Usage: "Path to project. default: current dir.",
-			},
-		},
 		Action: func(*cli.Context) error {
 			go usecase.Prompt(repos)
 
