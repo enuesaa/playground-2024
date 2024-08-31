@@ -25,5 +25,5 @@ func (repo *CmdRepository) Exec(writer io.Writer, workdir string, command string
 }
 
 func (repo *CmdRepository) Kill(cmd *exec.Cmd) error {
-	return cmd.Process.Kill() 
+	return cmd.Process.Kill()
 }

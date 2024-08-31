@@ -8,6 +8,15 @@ import (
 	"github.com/erikgeiser/promptkit/textinput"
 )
 
+// see https://github.com/erikgeiser/promptkit/blob/main/textinput/prompt.go#L23C1-L29C1
+const (
+	askPromptTemplate = `
+	{{- Bold .Prompt }} {{ .Input -}}
+	{{- if .ValidationError }} {{ Foreground "1" (Bold "✘") }}
+	{{- end -}}
+	`
+)
+
 func init() {
 	log.SetFlags(0)
 }
@@ -36,6 +45,8 @@ func (repo *LogRepository) Fatal(err error) {
 func (repo *LogRepository) Ask(message string, defaultValue string) (string, error) {
 	input := textinput.New(message)
 	input.InitialValue = defaultValue
+	input.Validate = nil
+	input.Template = askPromptTemplate
 
 	return input.RunPrompt()
 }
