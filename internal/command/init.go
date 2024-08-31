@@ -20,6 +20,10 @@ func NewInitCommand(repos repository.Repos) *cli.Command {
 		Action: func(c *cli.Context) error {
 			// project := c.String("project")
 
+			if err := repos.Pw.Install(); err != nil {
+				return err
+			}
+
 			// download headless browser here.
 			// touch README.md
 

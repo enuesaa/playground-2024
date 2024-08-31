@@ -4,6 +4,7 @@ type Repos struct {
 	Cmd CmdRepositoryInterface
 	Fs  FsRepositoryInterface
 	Log LogRepositoryInterface
+	Pw PwRepositoryInterface
 }
 
 func New() Repos {
@@ -11,5 +12,6 @@ func New() Repos {
 		Cmd: &CmdRepository{},
 		Fs:  &FsRepository{},
 		Log: &LogRepository{},
+		Pw: &PwRepository{},
 	}
 }
