@@ -1,0 +1,35 @@
+title: Cobra で help フラグの説明文を変える方法
+description: |
+  help フラグの説明文はデフォルトで `help for コマンド名` だが、この文章を変えるには。
+
+  ・単に help フラグを定義してあげればいい
+  ・他にも方法はあると思う
+published: '2024-05-26'
+
+ignore:
+  - go.sum
+
+variants:
+  - name: normal
+    title: デフォルト
+    open: main.go
+    output: |
+      $ go run . --help
+      Usage:
+        sample [flags]
+
+      Flags:
+        -h, --help      help for sample
+        -v, --version   version for sample
+
+  - name: configured
+    title: 変更後
+    open: main.go
+    output: |
+      $ go run . --help
+      Usage:
+        sample [flags]
+
+      Flags:
+            --help      Show help information
+            --version   Show version
