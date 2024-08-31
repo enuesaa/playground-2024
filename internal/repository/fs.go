@@ -12,6 +12,7 @@ type FsRepositoryInterface interface {
 	IsDir(path string) (bool, error)
 	WorkDir() (string, error)
 	Read(path string) ([]byte, error)
+	Create(path string, body io.Reader) error
 }
 type FsRepository struct{}
 
@@ -45,4 +46,16 @@ func (repo *FsRepository) Read(path string) ([]byte, error) {
 	}
 	defer f.Close()
 	return io.ReadAll(f)
+}
+
+func (repo *FsRepository) Create(path string, body io.Reader) error {
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	if _, err := io.Copy(file, body); err != nil {
+		return err
+	}
+	return nil
 }

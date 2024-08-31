@@ -3,7 +3,6 @@ package usecase
 import (
 	"bytes"
 	"errors"
-	"fmt"
 	"io"
 	"os"
 	"os/exec"
@@ -14,8 +13,8 @@ import (
 )
 
 func Prompt(repos repository.Repos) error {
-	var stdout bytes.Buffer
-	stdoutWriter := io.MultiWriter(os.Stdout, &stdout)
+	var result bytes.Buffer
+	outputWriter := io.MultiWriter(os.Stdout, &result)
 
 	for {
 		args, err := repos.Log.Ask(">", "")
@@ -26,23 +25,17 @@ func Prompt(repos repository.Repos) error {
 			return err
 		}
 		if args == "q" {
-			fmt.Printf("captured: \n%s\n", stdout.String())
-			break
+			return repos.Fs.Create("out.txt", &result)
 		}
+
 		cmd := exec.Command("bash", "-c", args)
 
-		ptmx, err := pty.Start(cmd)
+		pf, err := pty.Start(cmd)
 		if err != nil {
 			return err
 		}
-		defer ptmx.Close()
+		defer pf.Close()
 
-		io.Copy(stdoutWriter, ptmx)
-		fmt.Printf("captured: \n%s\n", stdout.String())
-
-		if err := cmd.Run(); err != nil {
-			return err
-		}
+		io.Copy(outputWriter, pf)
 	}
-	return nil
 }

@@ -13,11 +13,3 @@ func New() Repos {
 		Log: &LogRepository{},
 	}
 }
-
-func NewMock() Repos {
-	return Repos{
-		Cmd: &CmdRepository{},
-		Fs:  &FsMockRepository{},
-		Log: &LogRepository{},
-	}
-}
