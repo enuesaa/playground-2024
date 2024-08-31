@@ -1,7 +1,10 @@
 package usecase
 
 import (
+	"bytes"
 	"errors"
+	"fmt"
+	"io"
 	"os"
 	"os/exec"
 
@@ -10,6 +13,11 @@ import (
 )
 
 func Prompt(repos repository.Repos) error {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+	stdoutWriter := io.MultiWriter(os.Stdout, &stdout)
+	stderrWriter := io.MultiWriter(os.Stderr, &stderr)
+
 	for {
 		args, err := repos.Log.Ask(">", "")
 		if err != nil {
@@ -19,16 +27,17 @@ func Prompt(repos repository.Repos) error {
 			return err
 		}
 		if args == "q" {
+			fmt.Printf("captured: \n%s\n", stdout.String())
+			fmt.Printf("captured: \n%s\n", stderr.String())
 			break
 		}
 		cmd := exec.Command("bash", "-c", args)
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
+		cmd.Stdout = stdoutWriter
+		cmd.Stderr = stderrWriter
 
 		if err := cmd.Run(); err != nil {
 			return err
 		}
 	}
-
 	return nil
 }
