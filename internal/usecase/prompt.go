@@ -8,15 +8,14 @@ import (
 	"os"
 	"os/exec"
 
+	"github.com/creack/pty"
 	"github.com/enuesaa/codetrailer/internal/repository"
 	"github.com/erikgeiser/promptkit"
 )
 
 func Prompt(repos repository.Repos) error {
 	var stdout bytes.Buffer
-	var stderr bytes.Buffer
 	stdoutWriter := io.MultiWriter(os.Stdout, &stdout)
-	stderrWriter := io.MultiWriter(os.Stderr, &stderr)
 
 	for {
 		args, err := repos.Log.Ask(">", "")
@@ -28,12 +27,18 @@ func Prompt(repos repository.Repos) error {
 		}
 		if args == "q" {
 			fmt.Printf("captured: \n%s\n", stdout.String())
-			fmt.Printf("captured: \n%s\n", stderr.String())
 			break
 		}
 		cmd := exec.Command("bash", "-c", args)
-		cmd.Stdout = stdoutWriter
-		cmd.Stderr = stderrWriter
+
+		ptmx, err := pty.Start(cmd)
+		if err != nil {
+			return err
+		}
+		defer ptmx.Close()
+
+		io.Copy(stdoutWriter, ptmx)
+		fmt.Printf("captured: \n%s\n", stdout.String())
 
 		if err := cmd.Run(); err != nil {
 			return err
