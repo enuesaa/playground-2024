@@ -3,11 +3,11 @@ module github.com/enuesaa/codetrailer
 go 1.23.0
 
 require (
+	github.com/creack/pty v1.1.23
 	github.com/erikgeiser/promptkit v0.9.0
 	github.com/getlantern/systray v1.2.2
 	github.com/kbinani/screenshot v0.0.0-20240820160931-a8a2c5d0e191
 	github.com/playwright-community/playwright-go v0.4501.1
-	github.com/signintech/gopdf v0.26.1
 	github.com/urfave/cli/v2 v2.27.4
 )
 
@@ -19,7 +19,6 @@ require (
 	github.com/charmbracelet/lipgloss v0.7.1 // indirect
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.4 // indirect
-	github.com/creack/pty v1.1.23 // indirect
 	github.com/deckarep/golang-set/v2 v2.6.0 // indirect
 	github.com/gen2brain/shm v0.1.0 // indirect
 	github.com/getlantern/context v0.0.0-20190109183933-c447772a6520 // indirect
@@ -42,8 +41,6 @@ require (
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/oxtoacart/bpool v0.0.0-20190530202638-03653db5a59c // indirect
-	github.com/phpdave11/gofpdi v1.0.14-0.20211212211723-1f10f9844311 // indirect
-	github.com/pkg/errors v0.8.1 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1 // indirect

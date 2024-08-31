@@ -1,6 +1,9 @@
 package usecase
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/getlantern/systray"
 )
 
@@ -11,9 +14,23 @@ func LaunchMenu() error {
 }
 
 func startMenu() {
-	systray.SetTitle("Hi")
-	systray.SetTooltip("Hello")
-	systray.AddMenuItem("Quit", "Quit")
+	systray.SetTitle("CodeTrailer")
+
+	captureBtn := systray.AddMenuItem("Capture", "Capture")
+	go func() {
+		for {
+			<- captureBtn.ClickedCh
+			fmt.Println("capture")
+		}
+	}()
+
+	quitBtn := systray.AddMenuItem("Quit", "Quit")
+	go func () {
+		for {
+			<- quitBtn.ClickedCh
+			os.Exit(0)
+		}
+	}()
 }
 
 func endMenu() {}
