@@ -1,41 +1,41 @@
 package usecase
 
 import (
-	"log"
-
 	"github.com/playwright-community/playwright-go"
 )
 
-func Pdf() {
+func ExportPdf() error {
 	if err := playwright.Install(&playwright.RunOptions{
 		Browsers: []string{"chromium"},
 	}); err != nil {
-		log.Fatal(err)
+		return err
 	}
 	pw, err := playwright.Run()
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	defer pw.Stop()
 	browser, err := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
 		Headless: playwright.Bool(false),
 	})
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	defer browser.Close()
 
 	page, err := browser.NewPage(playwright.BrowserNewPageOptions{})
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	if _, err := page.Goto("https://yahoo.co.jp"); err != nil {
-		log.Fatal(err)
+		return err
 	}
 	_, err = page.PDF(playwright.PagePdfOptions{
 		Path: playwright.String("aa.pdf"),
 	})
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
+
+	return nil
 }

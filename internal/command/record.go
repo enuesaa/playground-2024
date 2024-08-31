@@ -2,6 +2,7 @@ package command
 
 import (
 	"github.com/enuesaa/codetrailer/internal/repository"
+	"github.com/enuesaa/codetrailer/internal/usecase"
 	"github.com/urfave/cli/v2"
 )
 
@@ -18,8 +19,11 @@ func NewRecordCommand(repos repository.Repos) *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			// port := c.Int("port")
-			return nil
+			// project := c.String("project")
+
+			go usecase.Prompt(repos)
+
+			return usecase.LaunchMenu()
 		},
 	}
 

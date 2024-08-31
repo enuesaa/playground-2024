@@ -18,7 +18,11 @@ func NewInitCommand(repos repository.Repos) *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			// port := c.Int("port")
+			// project := c.String("project")
+
+			// download headless browser here.
+			// touch README.md
+
 			return nil
 		},
 	}
