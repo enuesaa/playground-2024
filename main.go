@@ -6,6 +6,7 @@ import (
     "os"
 
     "github.com/urfave/cli/v2"
+    "github.com/getlantern/systray"
 )
 
 func main() {
@@ -14,6 +15,7 @@ func main() {
 	// - capture screenshot
 	// struct に詰める
 	// create pdf file
+    systray.Run(startMenu, endMenu)
 
     app := &cli.App{
         Name:  "codetrailer",
