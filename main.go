@@ -11,9 +11,16 @@ import (
 
 // Dir structure
 //   README.md
-//   steps/0.aa.md
-//   steps/1.bb.md
-//   steps/0.image-name.png
+//   steps/0-aa.md
+//   steps/0.1-aa.md
+//   steps/0.2.1-bb.md
+//   steps/1-bb.md
+//   steps/0-image-name.png
+// 各ステップは細かく刻む
+//
+// ステップに必要な情報
+//   priority
+//   name, description
 
 func main() {
 	repos := repository.New()
@@ -23,10 +30,12 @@ func main() {
 		Usage:   "A CLI tool to capture stdin/stdout and generate a step-by-step document.",
 		Version: "0.0.1",
 		Commands: []*cli.Command{
+			// というか全部メニュー経由でいいか
 			command.NewInitCommand(repos),
 			command.NewRecordCommand(repos),
 			command.NewPreviewCommand(repos),
-			command.NewExportPdfCommand(repos),
+			// fmt
+			// command.NewExportPdfCommand(repos), // menu
 		},
 	}
 
