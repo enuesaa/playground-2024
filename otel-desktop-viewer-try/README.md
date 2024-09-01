@@ -7,6 +7,7 @@
 ## Links
 - https://github.com/CtrlSpice/otel-desktop-viewer
 - https://zenn.dev/ymtdzzz/articles/a3a809ca1ba440
+- https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/github.com/labstack/echo/otelecho/example/server.go
 
 ## Commands
 ### Start
