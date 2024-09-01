@@ -39,7 +39,7 @@ func main() {
 				return err
 			}
 
-			go usecase.Prompt(repos)
+			// go usecase.Prompt(repos)
 
 			return usecase.LaunchMenu()
 		},
