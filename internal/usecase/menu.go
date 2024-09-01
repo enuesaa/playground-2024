@@ -32,7 +32,13 @@ func startMenu() {
 			<-recordBtn.ClickedCh
 			fmt.Println("record")
 
-			Prompt(repository.New())
+			repos := repository.New()
+			priority, _ := repos.Log.Ask("Priority", "1")
+			fmt.Printf("%s\n", priority)
+			name, _ := repos.Log.Ask("Name", "")
+			fmt.Printf("%s\n", name)
+			description, _ := repos.Log.Ask("Description", "")
+			fmt.Printf("%s\n", description)
 		}
 	}()
 
