@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/enuesaa/codetrailer/internal/command"
 	"github.com/enuesaa/codetrailer/internal/repository"
+	"github.com/enuesaa/codetrailer/internal/usecase"
 	"github.com/urfave/cli/v2"
 )
 
@@ -30,12 +30,18 @@ func main() {
 		Usage:   "A CLI tool to capture stdin/stdout and generate a step-by-step document.",
 		Version: "0.0.1",
 		Commands: []*cli.Command{
-			// というか全部メニュー経由でいいか
-			command.NewInitCommand(repos),
-			command.NewRecordCommand(repos),
-			command.NewPreviewCommand(repos),
-			// fmt
-			// command.NewExportPdfCommand(repos), // menu
+			// command.NewRecordCommand(repos),
+			// command.NewPreviewCommand(repos),
+			// command.NewExportPdfCommand(repos),
+		},
+		Action: func(c *cli.Context) error {
+			if err := repos.Pw.Install(); err != nil {
+				return err
+			}
+
+			go usecase.Prompt(repos)
+
+			return usecase.LaunchMenu()
 		},
 	}
 

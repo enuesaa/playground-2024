@@ -24,6 +24,10 @@ func startMenu() {
 		}
 	}()
 
+	// record
+	// preview
+	// export-pdf
+
 	quitBtn := systray.AddMenuItem("Quit", "Quit")
 	go func() {
 		for {
