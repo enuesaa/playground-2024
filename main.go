@@ -9,11 +9,6 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-// 各ステップは細かく刻む
-// ステップに必要な情報
-//   priority
-//   name, description
-
 func main() {
 	repos := repository.New()
 
