@@ -9,15 +9,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-// Dir structure
-//   README.md
-//   steps/0-aa.md
-//   steps/0.1-aa.md
-//   steps/0.2.1-bb.md
-//   steps/1-bb.md
-//   steps/0-image-name.png
 // 各ステップは細かく刻む
-//
 // ステップに必要な情報
 //   priority
 //   name, description
@@ -29,18 +21,10 @@ func main() {
 		Name:    "codetrailer",
 		Usage:   "A CLI tool to capture stdin/stdout and generate a step-by-step document.",
 		Version: "0.0.1",
-		Commands: []*cli.Command{
-			// command.NewRecordCommand(repos),
-			// command.NewPreviewCommand(repos),
-			// command.NewExportPdfCommand(repos),
-		},
 		Action: func(c *cli.Context) error {
 			if err := repos.Pw.Install(); err != nil {
 				return err
 			}
-
-			// go usecase.Prompt(repos)
-
 			return usecase.LaunchMenu()
 		},
 	}

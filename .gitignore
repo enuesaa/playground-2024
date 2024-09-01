@@ -5,6 +5,4 @@
 .vscode
 
 # app
-*.png
-*.pdf
 out.txt
