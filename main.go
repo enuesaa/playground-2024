@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/enuesaa/codetrailer/internal/command"
 	"github.com/enuesaa/codetrailer/internal/repository"
-	"github.com/enuesaa/codetrailer/internal/usecase"
 	"github.com/urfave/cli/v2"
 )
 
@@ -16,11 +16,10 @@ func main() {
 		Name:    "codetrailer",
 		Usage:   "A CLI tool to capture stdin/stdout and generate a step-by-step document.",
 		Version: "0.0.1",
-		Action: func(c *cli.Context) error {
-			if err := repos.Pw.Install(); err != nil {
-				return err
-			}
-			return usecase.LaunchMenu()
+		Commands: []*cli.Command{
+			command.NewWriteCommand(repos),
+			command.NewPreviewCommand(repos),
+			command.NewExportCommand(repos),
 		},
 	}
 
