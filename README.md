@@ -14,10 +14,9 @@ A CLI tool to capture stdin/stdout and generate a step-by-step document.
   - priority
   - name
   - description
-- save ~/.codetrailer/<id>
-- 手順はディレクトリに紐づく
+- save .codetrailer/<name>.md
 
 ### Commands
-- codetrailer ls
 - codetrailer write <name>
-- codetrailer preview
+- codetrailer preview <name>
+- codetrailer export <name>
