@@ -9,3 +9,5 @@
 - https://zenn.dev/syumai/articles/cqud4gab5gv2qkig5vh0
 - https://tip.golang.org/doc/go1.23#iterators
 - https://zenn.dev/mattn/articles/641f1d86fffdc9
+- https://zenn.dev/takc923/articles/402a3a0a710ac3
+
