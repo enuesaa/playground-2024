@@ -12,6 +12,7 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 		Usage: "",
 		Args: true,
 		Action: func(c *cli.Context) error {
+			// start prompt
 			return usecase.LaunchMenu()
 		},
 	}

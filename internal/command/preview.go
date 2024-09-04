@@ -8,13 +8,11 @@ import (
 func NewPreviewCommand(repos repository.Repos) *cli.Command {
 	cmd := &cli.Command{
 		Name:  "preview",
-		Usage: "",
 		Args: true,
+		Before: func(ctx *cli.Context) error {
+			return repos.Pw.Install()
+		},
 		Action: func(c *cli.Context) error {
-			if err := repos.Pw.Install(); err != nil {
-				return err
-			}
-
 			return nil
 		},
 	}

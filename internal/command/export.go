@@ -9,21 +9,14 @@ import (
 func NewExportCommand(repos repository.Repos) *cli.Command {
 	cmd := &cli.Command{
 		Name:  "export",
-		Usage: "",
-		Flags: []cli.Flag{
-			&cli.StringFlag{
-				Name:  "project",
-				Aliases: []string{"p"},
-				Value: ".",
-				Usage: "Project path",
-			},
+		Before: func(ctx *cli.Context) error {
+			return repos.Pw.Install()
 		},
 		Action: func(c *cli.Context) error {
-			// project := c.String("project")
-
 			return usecase.ExportPdf()
 		},
 	}
+	// cmd.CustomHelpTemplate =
 
 	return cmd
 }
