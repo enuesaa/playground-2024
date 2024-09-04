@@ -42,6 +42,24 @@ FLAGS:{{range .Flags}}
 	{{.}}{{end}}
 {{end}}`
 
+	cli.CommandHelpTemplate = `{{template "helpNameTemplate" .}}
+ 
+USAGE:
+	{{template "usageTemplate" .}}{{if .Category}}
+ 
+CATEGORY:
+	{{.Category}}{{end}}{{if .Description}}
+ 
+DESCRIPTION:
+	{{template "descriptionTemplate" .}}{{end}}
+
+FLAGS:{{range $i, $e := .VisibleFlags}}
+	{{wrap $e.String 6}}
+{{end}}`
+ 
+
+
+
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}
