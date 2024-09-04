@@ -10,11 +10,16 @@
 - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/github.com/labstack/echo/otelecho/example/server.go
 
 ## Commands
-### Start
 ```bash
+# install
+brew tap CtrlSpice/homebrew-otel-desktop-viewer
+brew install otel-desktop-viewer
+
+# start up
 otel-desktop-viewer
 ```
 
+### configure app
 ```bash
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 ```

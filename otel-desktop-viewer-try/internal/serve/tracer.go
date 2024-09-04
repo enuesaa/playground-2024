@@ -7,7 +7,9 @@ import (
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
 	"go.opentelemetry.io/otel/propagation"
+	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.20.0"
 )
 
 func (ctl *ServeCtl) setupTracer() error {
@@ -20,9 +22,21 @@ func (ctl *ServeCtl) setupTracer() error {
 		return err
 	}
 
+	// root span に service name をセットする
+	rsource, err := resource.New(
+		context.Background(),
+		resource.WithAttributes(
+			semconv.ServiceNameKey.String("my app"),
+		),
+	)
+	if err != nil {
+		return err
+	}
+
 	ctl.tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(rsource),
 	)
 	otel.SetTracerProvider(ctl.tracerProvider)
 
