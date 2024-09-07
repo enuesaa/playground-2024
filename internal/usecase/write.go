@@ -11,14 +11,16 @@ func Write(repos repository.Repos, filename string) error {
 	texts := []string{}
 
 	for {
-		text, err := repos.Log.Ask(">", "#")
+		text, err := repos.Log.Ask(">", "")
 		if err != nil {
 			return err
 		}
 		if text == ".console" {
-			if err := Prompt(repos); err != nil {
+			result, err := Prompt(repos)
+			if err != nil {
 				return err
 			}
+			texts = append(texts, result)
 		} else if text == ".exit" {
 			fmt.Println(texts)
 			break

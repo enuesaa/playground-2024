@@ -12,7 +12,7 @@ import (
 	"github.com/erikgeiser/promptkit"
 )
 
-func Prompt(repos repository.Repos) error {
+func Prompt(repos repository.Repos) (string, error) {
 	var result bytes.Buffer
 	outputWriter := io.MultiWriter(os.Stdout, &result)
 
@@ -20,19 +20,19 @@ func Prompt(repos repository.Repos) error {
 		args, err := repos.Log.Ask("console>", "")
 		if err != nil {
 			if errors.Is(err, promptkit.ErrAborted) {
-				return nil
+				return "", nil
 			}
-			return err
+			return "", nil
 		}
 		if args == "q" {
-			return repos.Fs.Create("out.txt", &result)
+			return result.String(), nil
 		}
 
 		cmd := exec.Command("bash", "-c", args)
 
 		pf, err := pty.Start(cmd)
 		if err != nil {
-			return err
+			return result.String(), nil
 		}
 		defer pf.Close()
 
