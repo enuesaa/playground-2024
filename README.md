@@ -10,10 +10,6 @@ A CLI tool to capture stdin/stdout and generate a step-by-step document.
 
 ## designdoc
 - 各ステップは細かく刻む
-- ステップに必要な情報
-  - priority
-  - name
-  - description
 - save .codetrailer/<name>.md
 
 ### Commands
