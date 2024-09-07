@@ -17,7 +17,7 @@ func Prompt(repos repository.Repos) error {
 	outputWriter := io.MultiWriter(os.Stdout, &result)
 
 	for {
-		args, err := repos.Log.Ask(">", "")
+		args, err := repos.Log.Ask("console>", "")
 		if err != nil {
 			if errors.Is(err, promptkit.ErrAborted) {
 				return nil
