@@ -16,7 +16,6 @@ func NewExportCommand(repos repository.Repos) *cli.Command {
 			return usecase.ExportPdf()
 		},
 	}
-	// cmd.CustomHelpTemplate =
 
 	return cmd
 }

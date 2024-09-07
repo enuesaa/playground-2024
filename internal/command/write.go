@@ -9,8 +9,10 @@ import (
 func NewWriteCommand(repos repository.Repos) *cli.Command {
 	cmd := &cli.Command{
 		Name:  "write",
-		Usage: "",
 		Args: true,
+		Before: func(ctx *cli.Context) error {
+			return usecase.CreateRegistry(repos)
+		},
 		Action: func(c *cli.Context) error {
 			// start prompt
 			return usecase.LaunchMenu()

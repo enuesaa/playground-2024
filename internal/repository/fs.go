@@ -13,6 +13,7 @@ type FsRepositoryInterface interface {
 	WorkDir() (string, error)
 	Read(path string) ([]byte, error)
 	Create(path string, body io.Reader) error
+	CreateDir(path string) error
 }
 type FsRepository struct{}
 
@@ -58,4 +59,8 @@ func (repo *FsRepository) Create(path string, body io.Reader) error {
 		return err
 	}
 	return nil
+}
+
+func (repo *FsRepository) CreateDir(path string) error {
+	return os.MkdirAll(path, os.ModePerm)
 }
