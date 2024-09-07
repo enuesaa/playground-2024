@@ -14,8 +14,7 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 			return usecase.CreateRegistry(repos)
 		},
 		Action: func(c *cli.Context) error {
-			// start prompt
-			return usecase.LaunchMenu()
+			return usecase.WriteStep(repos)
 		},
 	}
 
