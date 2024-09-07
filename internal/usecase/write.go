@@ -12,33 +12,37 @@ import (
 func Write(repos repository.Repos, filename string) error {
 	texts := []string{}
 
+	// AppCommand
+	//   @ で始まるのが AppCommand
+	//   @ で始まったら行頭の > を消して @ を表示する
+	//   - @console
+	//   - @exit
+
 	for {
 		input := textinput.New(">")
 		input.InitialValue = ""
 		input.Validate = nil
 		input.Template = `
-		{{- A }}
-		{{- Bold .Prompt }} {{ .Input -}}
+		{{- if IsAppCommand .Input }}{{ else }}{{- Bold .Prompt }}{{ end -}} {{- .Input -}}
 		{{- if .ValidationError }} {{ Foreground "1" (Bold "✘") }}
 		{{- end -}}
 		`
 		input.ExtendedTemplateFuncs = template.FuncMap{
-			"A": func () string {
-				// fmt.Println("####")
-				return "####"
+			"IsAppCommand": func (s string) bool {
+				return strings.HasPrefix(s, "/")
 			},
 		}
 		text, err := input.RunPrompt()
 		if err != nil {
 			return err
 		}
-		if text == ".console" {
+		if text == "@console" {
 			result, err := Prompt(repos)
 			if err != nil {
 				return err
 			}
 			texts = append(texts, result)
-		} else if text == ".exit" {
+		} else if text == "@exit" {
 			fmt.Println(texts)
 			break
 		} else {

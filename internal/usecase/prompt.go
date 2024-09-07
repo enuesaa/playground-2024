@@ -24,7 +24,7 @@ func Prompt(repos repository.Repos) (string, error) {
 			}
 			return "", nil
 		}
-		if args == "q" {
+		if args == "@exit" {
 			return result.String(), nil
 		}
 
