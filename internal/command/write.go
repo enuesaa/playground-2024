@@ -14,13 +14,13 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 		Args: true,
 		ArgsUsage: "<filename>",
 		Before: func(ctx *cli.Context) error {
+			if ctx.Args().Len() == 0 {
+				return fmt.Errorf("filename is required")
+			}
 			return usecase.CreateRegistry(repos)
 		},
 		Action: func(c *cli.Context) error {
-			filename := c.Args().Get(0)
-			if filename == "" {
-				return fmt.Errorf("filename is required")
-			}
+			filename := c.Args().First()
 
 			go usecase.Write(repos, filename)
 
