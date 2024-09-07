@@ -23,13 +23,23 @@ func Write(repos repository.Repos, filename string) error {
 		input.InitialValue = ""
 		input.Validate = nil
 		input.Template = `
-		{{- if IsAppCommand .Input }}{{ else }}{{- Bold .Prompt }}{{ end -}} {{- .Input -}}
+		{{- if IsAppCommand .Input }}
+		{{- .Input -}}
+		{{- else -}}
+		{{- Bold .Prompt }} {{ .Input -}}
+		{{- end -}}
 		{{- if .ValidationError }} {{ Foreground "1" (Bold "✘") }}
+		{{- end -}}
+		`
+		input.ResultTemplate = `
+		{{- if IsAppCommand .FinalValue }}
+		{{- else -}}
+		{{- print .Prompt " " (Foreground "32"  (Mask .FinalValue)) "\n" -}}
 		{{- end -}}
 		`
 		input.ExtendedTemplateFuncs = template.FuncMap{
 			"IsAppCommand": func (s string) bool {
-				return strings.HasPrefix(s, "/")
+				return strings.HasPrefix(s, "@")
 			},
 		}
 		text, err := input.RunPrompt()
