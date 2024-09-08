@@ -20,7 +20,6 @@ func LaunchMenu(repos repository.Repos, path string) error {
 					fmt.Printf("Error: %s\n", err.Error())
 				}
 			}
-			// systray.Quit()
 		}()
 	}
 	onexit := func() {}

@@ -38,8 +38,10 @@ func Write(repos repository.Repos, path string) error {
 			if err != nil {
 				return err
 			}
+			texts = append(texts, "```console")
 			texts = append(texts, result)
-		} else if text == "@q" {
+			texts = append(texts, "```")
+		} else if text == "@" {
 			break
 		} else {
 			texts = append(texts, text)

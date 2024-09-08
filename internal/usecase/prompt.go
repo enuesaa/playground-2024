@@ -25,16 +25,17 @@ func Prompt(repos repository.Repos) (string, error) {
 			}
 			return fmt.Sprintf("$ %s", s), true
 		})
-		if err != nil {
-			if errors.Is(err, promptkit.ErrAborted) {
-				return "", nil
-			}
-			return "", nil
-		}
-		if args == "@q" {
+		if strings.HasPrefix(args, "@") {
 			return result.String(), nil
 		}
-		if _, err := result.Write([]byte(args)); err != nil {
+		if err != nil {
+			if errors.Is(err, promptkit.ErrAborted) {
+				return result.String(), nil
+			}
+			return "", err
+		}
+		executed := fmt.Sprintf("$ %s\n", args)
+		if _, err := result.Write([]byte(executed)); err != nil {
 			return result.String(), err
 		}
 
