@@ -1,33 +1,21 @@
 package usecase
 
 import (
-	"fmt"
+	"bytes"
 	"image/png"
-	"os"
 
-	"github.com/kbinani/screenshot"
+	"github.com/enuesaa/codetrailer/internal/repository"
 )
 
-func Capture() {
-	n := screenshot.NumActiveDisplays()
-
-	for i := 0; i < n; i++ {
-		bounds := screenshot.GetDisplayBounds(i)
-
-		img, err := screenshot.CaptureRect(bounds)
-		if err != nil {
-			panic(err)
-		}
-
-		filename := fmt.Sprintf("screenshot-%d.png", i)
-		f, err := os.Create(filename)
-		if err != nil {
-			panic(err)
-		}
-		defer f.Close()
-
-		if err := png.Encode(f, img); err != nil {
-			panic(err)
-		}
+func Capture(repos repository.Repos) error {
+	img, err := repos.Fs.Capture()
+	if err != nil {
+		return err
 	}
+
+	var buf bytes.Buffer
+	if err := png.Encode(&buf, img); err != nil {
+		return err
+	}
+	return repos.Fs.Create(".codetrailer/a.png", &buf)
 }

@@ -1,8 +1,12 @@
 package repository
 
 import (
+	"fmt"
+	"image"
 	"io"
 	"os"
+
+	"github.com/kbinani/screenshot"
 )
 
 type FsRepositoryInterface interface {
@@ -12,6 +16,7 @@ type FsRepositoryInterface interface {
 	Read(path string) ([]byte, error)
 	Create(path string, body io.Reader) error
 	CreateDir(path string) error
+	Capture() (*image.RGBA, error)
 }
 type FsRepository struct{}
 
@@ -57,4 +62,14 @@ func (repo *FsRepository) Create(path string, body io.Reader) error {
 
 func (repo *FsRepository) CreateDir(path string) error {
 	return os.MkdirAll(path, os.ModePerm)
+}
+
+func (repo *FsRepository) Capture() (*image.RGBA, error) {
+	n := screenshot.NumActiveDisplays()
+	if n == 0 {
+		return nil, fmt.Errorf("failed to capture screenshot")
+	}
+	bounds := screenshot.GetDisplayBounds(0)
+
+	return screenshot.CaptureRect(bounds)
 }
