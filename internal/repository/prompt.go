@@ -3,6 +3,7 @@ package repository
 import (
 	"text/template"
 
+	tea "github.com/charmbracelet/bubbletea"
 	"github.com/erikgeiser/promptkit/textinput"
 )
 
@@ -47,5 +48,13 @@ func (repo *PromptRepository) Render(defaultValue string, render func (s string)
 		},
 	}
 
-	return input.RunPrompt()
+	// see https://github.com/erikgeiser/promptkit/blob/v0.9.0/textinput/prompt.go#L187
+	m := textinput.NewModel(input)
+	p := tea.NewProgram(m, tea.WithOutput(input.Output), tea.WithInput(input.Input))
+	
+	if _, err := p.Run(); err != nil {
+		return "", err
+	}
+
+	return m.Value()
 }
