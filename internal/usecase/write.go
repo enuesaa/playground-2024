@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"fmt"
 	"path/filepath"
 	"strings"
 	"text/template"
@@ -54,8 +53,9 @@ func Write(repos repository.Repos, path string) error {
 				return err
 			}
 			texts = append(texts, result)
+		} else if text == "@capture" {
+			LaunchMenu()
 		} else if text == "@exit" {
-			fmt.Println(texts)
 			break
 		} else {
 			texts = append(texts, text)

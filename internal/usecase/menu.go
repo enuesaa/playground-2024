@@ -6,10 +6,8 @@ import (
 	"github.com/getlantern/systray"
 )
 
-func LaunchMenu() error {
+func LaunchMenu() {
 	systray.Run(startMenu, endMenu)
-
-	return nil
 }
 
 func startMenu() {

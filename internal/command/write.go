@@ -21,10 +21,8 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 		},
 		Action: func(c *cli.Context) error {
 			path := c.Args().First()
-
-			go usecase.Write(repos, path)
-
-			return usecase.LaunchMenu()
+	
+			return usecase.Write(repos, path)
 		},
 	}
 
