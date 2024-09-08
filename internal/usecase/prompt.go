@@ -27,6 +27,9 @@ func Prompt(repos repository.Repos) (string, error) {
 		if args == "@exit" {
 			return result.String(), nil
 		}
+		if _, err := result.Write([]byte(args)); err != nil {
+			return result.String(), err
+		}
 
 		cmd := exec.Command("bash", "-c", args)
 

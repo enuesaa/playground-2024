@@ -17,6 +17,7 @@ func Write(repos repository.Repos, filename string) error {
 	//   @ で始まったら行頭の > を消して @ を表示する
 	//   - @console
 	//   - @exit
+	//   - @cat
 
 	for {
 		input := textinput.New(">")

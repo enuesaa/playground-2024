@@ -16,3 +16,6 @@ A CLI tool to capture stdin/stdout and generate a step-by-step document.
 - codetrailer write <name>
 - codetrailer preview <name>
 - codetrailer export <name>
+
+## TODO
+- [] 環境変数で docs のディレクトリを変更できるように
