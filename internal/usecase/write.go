@@ -15,13 +15,19 @@ import (
 //   @ で始まるのが AppCommand
 //   @ で始まったら行頭の > を消して @ を表示する
 //   - @sh
-//   - @q
+//   - @
 //   - @cat
 func Write(repos repository.Repos, path string) error {
 	texts := []string{}
+	existing := Read(repos, path)
 
+	i := 0
 	for {
-		text, err := repos.Prompt.Render("", func(s string) (string, bool) {
+		defaultValue := ""
+		if len(existing) > i {
+			defaultValue = existing[i]
+		}
+		text, err := repos.Prompt.Render(defaultValue, func(s string) (string, bool) {
 			if strings.HasPrefix(s, "@") {
 				return s, false
 			}
@@ -46,6 +52,7 @@ func Write(repos repository.Repos, path string) error {
 		} else {
 			texts = append(texts, text)
 		}
+		i++
 	}
 
 	body := strings.Join(texts, "\n")
