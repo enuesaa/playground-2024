@@ -7,7 +7,6 @@ import (
 
 type CmdRepositoryInterface interface {
 	Exec(writer io.Writer, workdir string, command string, args []string) (*exec.Cmd, error)
-	Kill(cmd *exec.Cmd) error
 }
 type CmdRepository struct{}
 
@@ -22,8 +21,4 @@ func (repo *CmdRepository) Exec(writer io.Writer, workdir string, command string
 		return nil, err
 	}
 	return cmd, nil
-}
-
-func (repo *CmdRepository) Kill(cmd *exec.Cmd) error {
-	return cmd.Process.Kill()
 }

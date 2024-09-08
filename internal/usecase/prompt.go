@@ -17,7 +17,7 @@ func Prompt(repos repository.Repos) (string, error) {
 	outputWriter := io.MultiWriter(os.Stdout, &result)
 
 	for {
-		args, err := repos.Log.Ask("$", "")
+		args, err := repos.Prompt.Ask("$", "")
 		if err != nil {
 			if errors.Is(err, promptkit.ErrAborted) {
 				return "", nil

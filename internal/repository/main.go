@@ -3,15 +3,15 @@ package repository
 type Repos struct {
 	Cmd CmdRepositoryInterface
 	Fs  FsRepositoryInterface
-	Log LogRepositoryInterface
 	Pw PwRepositoryInterface
+	Prompt PromptRepositoryInterface
 }
 
 func New() Repos {
 	return Repos{
 		Cmd: &CmdRepository{},
 		Fs:  &FsRepository{},
-		Log: &LogRepository{},
 		Pw: &PwRepository{},
+		Prompt: &PromptRepository{},
 	}
 }

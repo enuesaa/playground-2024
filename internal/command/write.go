@@ -17,11 +17,11 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 			if ctx.Args().Len() == 0 {
 				return fmt.Errorf("path is required")
 			}
-			return usecase.CreateRegistry(repos)
+			return nil
 		},
 		Action: func(c *cli.Context) error {
 			path := c.Args().First()
-	
+
 			return usecase.Write(repos, path)
 		},
 	}

@@ -11,11 +11,8 @@ type PwRepositoryInterface interface {
 type PwRepository struct{}
 
 func (repo *PwRepository) Install() error {
-	err := playwright.Install(&playwright.RunOptions{
+	options := playwright.RunOptions{
 		Browsers: []string{"chromium"},
-	})
-	if err != nil {
-		return err
 	}
-	return nil
+	return playwright.Install(&options)
 }
