@@ -7,7 +7,7 @@ import (
 	"github.com/enuesaa/codetrailer/internal/repository"
 )
 
-func Capture(repos repository.Repos) error {
+func Capture(repos repository.Repos, path string) error {
 	img, err := repos.Fs.Capture()
 	if err != nil {
 		return err
@@ -17,5 +17,5 @@ func Capture(repos repository.Repos) error {
 	if err := png.Encode(&buf, img); err != nil {
 		return err
 	}
-	return repos.Fs.Create(".codetrailer/a.png", &buf)
+	return repos.Fs.Create(path, &buf)
 }

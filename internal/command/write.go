@@ -22,6 +22,10 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 		Action: func(c *cli.Context) error {
 			path := c.Args().First()
 
+			if err := usecase.Setup(repos, path); err != nil {
+				return err
+			}
+
 			return usecase.Write(repos, path)
 		},
 	}

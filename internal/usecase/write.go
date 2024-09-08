@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"fmt"
 	"path/filepath"
 	"strings"
 	"text/template"
@@ -10,15 +9,14 @@ import (
 	"github.com/erikgeiser/promptkit/textinput"
 )
 
+// AppCommand
+//   @ で始まるのが AppCommand
+//   @ で始まったら行頭の > を消して @ を表示する
+//   - @console
+//   - @exit
+//   - @cat
 func Write(repos repository.Repos, path string) error {
 	texts := []string{}
-
-	// AppCommand
-	//   @ で始まるのが AppCommand
-	//   @ で始まったら行頭の > を消して @ を表示する
-	//   - @console
-	//   - @exit
-	//   - @cat
 
 	for {
 		input := textinput.New(">")
@@ -55,8 +53,7 @@ func Write(repos repository.Repos, path string) error {
 			}
 			texts = append(texts, result)
 		} else if text == "@capture" {
-			LaunchMenu(repos)
-			fmt.Println("a")
+			LaunchMenu(repos, path)
 		} else if text == "@exit" {
 			break
 		} else {
@@ -66,15 +63,7 @@ func Write(repos repository.Repos, path string) error {
 
 	body := strings.Join(texts, "\n")
 	bodyreader := strings.NewReader(body)
-
-	if err := repos.Fs.CreateDir(path); err != nil {
-		return err
-	}
-	
 	readme := filepath.Join(path, "README.md")
-	if err := repos.Fs.Create(readme, bodyreader); err != nil {
-		return err
-	}
 
-	return nil
+	return repos.Fs.Create(readme, bodyreader)
 }
