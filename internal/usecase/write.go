@@ -1,12 +1,11 @@
 package usecase
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
-	"text/template"
 
 	"github.com/enuesaa/codetrailer/internal/repository"
-	"github.com/erikgeiser/promptkit/textinput"
 )
 
 // AppCommand
@@ -19,30 +18,12 @@ func Write(repos repository.Repos, path string) error {
 	texts := []string{}
 
 	for {
-		input := textinput.New(">")
-		input.InitialValue = ""
-		input.Validate = nil
-		input.Template = `
-		{{- if IsAppCommand .Input }}
-		{{- .Input -}}
-		{{- else -}}
-		{{- Bold .Prompt }} {{ .Input -}}
-		{{- end -}}
-		{{- if .ValidationError }} {{ Foreground "1" (Bold "✘") }}
-		{{- end -}}
-		`
-		input.ResultTemplate = `
-		{{- if IsAppCommand .FinalValue }}
-		{{- else -}}
-		{{- print .Prompt " " (Foreground "32"  (Mask .FinalValue)) "\n" -}}
-		{{- end -}}
-		`
-		input.ExtendedTemplateFuncs = template.FuncMap{
-			"IsAppCommand": func (s string) bool {
-				return strings.HasPrefix(s, "@")
-			},
-		}
-		text, err := input.RunPrompt()
+		text, err := repos.Prompt.Render("", func(s string) (string, bool) {
+			if strings.HasPrefix(s, "@") {
+				return s, false
+			}
+			return fmt.Sprintf("> %s", s), true
+		})
 		if err != nil {
 			return err
 		}
