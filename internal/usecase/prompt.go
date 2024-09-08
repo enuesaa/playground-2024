@@ -3,9 +3,11 @@ package usecase
 import (
 	"bytes"
 	"errors"
+	"fmt"
 	"io"
 	"os"
 	"os/exec"
+	"strings"
 
 	"github.com/creack/pty"
 	"github.com/enuesaa/codetrailer/internal/repository"
@@ -17,14 +19,19 @@ func Prompt(repos repository.Repos) (string, error) {
 	outputWriter := io.MultiWriter(os.Stdout, &result)
 
 	for {
-		args, err := repos.Prompt.Ask("$", "")
+		args, err := repos.Prompt.Render("", func(s string) (string, bool) {
+			if strings.HasPrefix(s, "@") {
+				return s, false
+			}
+			return fmt.Sprintf("$ %s", s), true
+		})
 		if err != nil {
 			if errors.Is(err, promptkit.ErrAborted) {
 				return "", nil
 			}
 			return "", nil
 		}
-		if args == "@exit" {
+		if args == "@q" {
 			return result.String(), nil
 		}
 		if _, err := result.Write([]byte(args)); err != nil {

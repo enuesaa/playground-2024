@@ -1,11 +1,14 @@
 package usecase
 
 import (
+	"errors"
 	"fmt"
 	"path/filepath"
 	"strings"
 
 	"github.com/enuesaa/codetrailer/internal/repository"
+	"github.com/erikgeiser/promptkit"
+	"github.com/getlantern/systray"
 )
 
 // AppCommand
@@ -25,6 +28,9 @@ func Write(repos repository.Repos, path string) error {
 			return fmt.Sprintf("> %s", s), true
 		})
 		if err != nil {
+			if errors.Is(err, promptkit.ErrAborted) {
+				break
+			}
 			return err
 		}
 		if text == "@sh" {
@@ -44,5 +50,10 @@ func Write(repos repository.Repos, path string) error {
 	bodyreader := strings.NewReader(body)
 	readme := filepath.Join(path, "README.md")
 
-	return repos.Fs.Create(readme, bodyreader)
+	if err := repos.Fs.Create(readme, bodyreader); err != nil {
+		return err
+	}
+	systray.Quit()
+
+	return nil
 }
