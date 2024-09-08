@@ -6,19 +6,17 @@ import (
 )
 
 type CmdRepositoryInterface interface {
-	Exec(writer io.Writer, workdir string, command string, args []string) (*exec.Cmd, error)
+	Exec(command string, writer io.Writer) error
 }
 type CmdRepository struct{}
 
-func (repo *CmdRepository) Exec(writer io.Writer, workdir string, command string, args []string) (*exec.Cmd, error) {
-	cmd := exec.Command(command, args...)
-	cmd.Dir = workdir
-
+func (repo *CmdRepository) Exec(command string, writer io.Writer) error {
+	cmd := exec.Command("bash", "-c", command)
 	cmd.Stdout = writer
 	cmd.Stderr = writer
 
 	if err := cmd.Start(); err != nil {
-		return nil, err
+		return err
 	}
-	return cmd, nil
+	return cmd.Wait()
 }

@@ -6,17 +6,15 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"os/exec"
 	"strings"
 
-	"github.com/creack/pty"
 	"github.com/enuesaa/codetrailer/internal/repository"
 	"github.com/erikgeiser/promptkit"
 )
 
 func Prompt(repos repository.Repos) (string, error) {
 	var result bytes.Buffer
-	outputWriter := io.MultiWriter(os.Stdout, &result)
+	output := io.MultiWriter(os.Stdout, &result)
 
 	for {
 		args, err := repos.Prompt.Render("", func(s string) (string, bool) {
@@ -25,28 +23,26 @@ func Prompt(repos repository.Repos) (string, error) {
 			}
 			return fmt.Sprintf("$ %s", s), true
 		})
-		if strings.HasPrefix(args, "@") {
-			return result.String(), nil
-		}
 		if err != nil {
 			if errors.Is(err, promptkit.ErrAborted) {
 				return result.String(), nil
 			}
 			return "", err
 		}
+		if strings.HasPrefix(args, "@") {
+			return result.String(), nil
+		}
+
 		executed := fmt.Sprintf("$ %s\n", args)
 		if _, err := result.Write([]byte(executed)); err != nil {
 			return result.String(), err
 		}
 
-		cmd := exec.Command("bash", "-c", args)
-
-		pf, err := pty.Start(cmd)
-		if err != nil {
+		if err := repos.Cmd.Exec(args, output); err != nil {
 			return result.String(), nil
 		}
-		defer pf.Close()
-
-		io.Copy(outputWriter, pf)
+		if _, err := output.Write([]byte("\n")); err != nil {
+			return result.String(), err
+		}
 	}
 }
