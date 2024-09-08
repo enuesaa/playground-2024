@@ -18,8 +18,8 @@ func main() {
 		Version: "0.0.1",
 		Commands: []*cli.Command{
 			command.NewWriteCommand(repos),
-			command.NewPreviewCommand(repos),
-			command.NewExportCommand(repos),
+			// command.NewPreviewCommand(repos),
+			// command.NewExportCommand(repos),
 		},
 	}
 
