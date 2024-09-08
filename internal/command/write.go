@@ -25,8 +25,9 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 			if err := usecase.Setup(repos, path); err != nil {
 				return err
 			}
+			go usecase.Write(repos, path)
 
-			return usecase.Write(repos, path)
+			return usecase.LaunchMenu(repos, path)
 		},
 	}
 

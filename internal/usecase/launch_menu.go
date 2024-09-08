@@ -7,19 +7,25 @@ import (
 	"github.com/getlantern/systray"
 )
 
-func LaunchMenu(repos repository.Repos, path string) {
+func LaunchMenu(repos repository.Repos, path string) error {
 	onready := func ()  {
 		systray.SetTitle("CodeTrailer")
 
 		captureBtn := systray.AddMenuItem("Capture", "Capture")	
 		go func() {
-			<-captureBtn.ClickedCh
-			capturePath := fmt.Sprintf("%s/aa.png", path)
-			Capture(repos, capturePath)
-			systray.Quit()
+			for {
+				<-captureBtn.ClickedCh
+				capturePath := fmt.Sprintf("%s/aa.png", path)
+				if err := Capture(repos, capturePath); err != nil {
+					fmt.Printf("Error: %s\n", err.Error())
+				}
+			}
+			// systray.Quit()
 		}()
 	}
 	onexit := func() {}
 
 	systray.Run(onready, onexit)
+
+	return nil
 }

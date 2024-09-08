@@ -12,8 +12,8 @@ import (
 // AppCommand
 //   @ で始まるのが AppCommand
 //   @ で始まったら行頭の > を消して @ を表示する
-//   - @console
-//   - @exit
+//   - @sh
+//   - @q
 //   - @cat
 func Write(repos repository.Repos, path string) error {
 	texts := []string{}
@@ -46,15 +46,13 @@ func Write(repos repository.Repos, path string) error {
 		if err != nil {
 			return err
 		}
-		if text == "@console" {
+		if text == "@sh" {
 			result, err := Prompt(repos)
 			if err != nil {
 				return err
 			}
 			texts = append(texts, result)
-		} else if text == "@capture" {
-			LaunchMenu(repos, path)
-		} else if text == "@exit" {
+		} else if text == "@q" {
 			break
 		} else {
 			texts = append(texts, text)
