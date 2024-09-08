@@ -12,17 +12,17 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 	cmd := &cli.Command{
 		Name:  "write",
 		Args: true,
-		ArgsUsage: "<filename>",
+		ArgsUsage: "<path>",
 		Before: func(ctx *cli.Context) error {
 			if ctx.Args().Len() == 0 {
-				return fmt.Errorf("filename is required")
+				return fmt.Errorf("path is required")
 			}
 			return usecase.CreateRegistry(repos)
 		},
 		Action: func(c *cli.Context) error {
-			filename := c.Args().First()
+			path := c.Args().First()
 
-			go usecase.Write(repos, filename)
+			go usecase.Write(repos, path)
 
 			return usecase.LaunchMenu()
 		},

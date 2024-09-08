@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"fmt"
+	"path/filepath"
 	"strings"
 	"text/template"
 
@@ -9,7 +10,7 @@ import (
 	"github.com/erikgeiser/promptkit/textinput"
 )
 
-func Write(repos repository.Repos, filename string) error {
+func Write(repos repository.Repos, path string) error {
 	texts := []string{}
 
 	// AppCommand
@@ -64,8 +65,12 @@ func Write(repos repository.Repos, filename string) error {
 	body := strings.Join(texts, "\n")
 	bodyreader := strings.NewReader(body)
 
-	path := fmt.Sprintf(".codetrailer/%s.md", filename)
-	if err := repos.Fs.Create(path, bodyreader); err != nil {
+	if err := repos.Fs.CreateDir(path); err != nil {
+		return err
+	}
+	
+	readme := filepath.Join(path, "README.md")
+	if err := repos.Fs.Create(readme, bodyreader); err != nil {
 		return err
 	}
 
