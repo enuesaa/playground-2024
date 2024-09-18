@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "localstack-try"
+version = "0.1.0"
+description = ""
+authors = ["nua <enuesaa@gmail.com>"]
+readme = "README.md"
+packages = [
+  { include = "app" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+boto3 = "^1.35.21"
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.13.0"
+
+[tool.poetry.scripts]
+start = "app.main:handler"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# [tool.taskipy.tasks]
+# dev = "echo a"

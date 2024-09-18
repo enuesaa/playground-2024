@@ -1,0 +1,26 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    volumes:
+      - .:/workspace
+      - venv:/workspace/.venv
+    environment:
+      - AWS_ACCESS_KEY_ID=aaa
+      - AWS_SECRET_ACCESS_KEY=aaa
+    tty: true
+    depends_on:
+      - localstack
+
+  localstack:
+    image: localstack/localstack
+    ports:
+      - 4566:4566            # LocalStack Gateway
+      - 4510-4559:4510-4559  # external services port
+    volumes:
+      - data:/var/lib/localstack
+
+volumes:
+  data:
+  venv:
