@@ -5,11 +5,13 @@ import (
 	"image"
 	"io"
 	"os"
+	"path/filepath"
 
 	"github.com/kbinani/screenshot"
 )
 
 type FsRepositoryInterface interface {
+	ListFiles(path string) ([]string, error)
 	IsExist(path string) bool
 	IsDir(path string) (bool, error)
 	WorkDir() (string, error)
@@ -19,6 +21,22 @@ type FsRepositoryInterface interface {
 	Capture() (*image.RGBA, error)
 }
 type FsRepository struct{}
+
+func (repo *FsRepository) ListFiles(path string) ([]string, error) {
+	entries, err := os.ReadDir(path)
+	if err != nil {
+			return []string{}, err
+	}
+	filenames := make([]string, 0)
+	for _, entry := range entries {
+		if entry.Name() == ".git" {
+			continue
+		}
+		path := filepath.Join(path, entry.Name())
+		filenames = append(filenames, path)
+	}
+	return filenames, nil
+}
 
 func (repo *FsRepository) IsExist(path string) bool {
 	if _, err := os.Stat(path); os.IsNotExist(err) {

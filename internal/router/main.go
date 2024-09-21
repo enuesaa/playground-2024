@@ -3,7 +3,7 @@ package router
 import (
 	"github.com/enuesaa/codetrailer/internal/repository"
 	"github.com/enuesaa/codetrailer/internal/router/middleware"
-	routes "github.com/enuesaa/codetrailer/internal/routes"
+	apiFiles "github.com/enuesaa/codetrailer/internal/routes/files"
 	"github.com/enuesaa/codetrailer/ui"
 
 	"github.com/labstack/echo/v4"
@@ -19,7 +19,7 @@ func New(repos repository.Repos) *echo.Echo {
 	api.Use(middleware.HandleData)
 	api.Use(middleware.HandleError)
 
-	api.GET("/", routes.List)
+	api.GET("/files", apiFiles.List)
 
 	app.Any("/*", ui.Serve)
 
