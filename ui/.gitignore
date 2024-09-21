@@ -1,10 +1,11 @@
-# misc
-.DS_Store
+# Logs
+logs
+*.log
+pnpm-debug.log*
 
-# nodejs
 node_modules
+dist
+dist-ssr
+*.local
 
-# sveltekit
-/dist
-/.svelte-kit
-vite.config.ts.timestamp-*
+.svelte-kit

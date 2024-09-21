@@ -1,16 +1,11 @@
 <script lang="ts">
-	import TrailerLink from './TrailerLink.svelte'
-	import type { PageData } from './$types'
+	import { page } from '$app/stores'
+	import { normalizePath } from '$lib/path'
+	import Files from './Files.svelte'
+	import GoToParentDir from './GoToParentDir.svelte'
 
-	export let data: PageData
+	const path = normalizePath($page.url.searchParams.get('path'))
 </script>
 
-<svelte:head>
-	<title>雑コード置き場</title>
-</svelte:head>
-
-<div class="text-center">
-	{#each data.projects as project}
-		<TrailerLink href={`/${project.name}`} title={project.title} />
-	{/each}
-</div>
+<GoToParentDir path={path} />
+<Files path={path} />

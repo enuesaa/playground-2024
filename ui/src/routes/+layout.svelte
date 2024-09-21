@@ -1,21 +1,22 @@
 <script lang="ts">
-	import './app.css'
-	import Footer from './Footer.svelte'
+	import '../app.css'
+	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query'
+	import Container from './Container.svelte'
 	import Header from './Header.svelte'
+
+	const queryClient = new QueryClient()
 </script>
 
-<Header />
-
-<main>
-	<div class="container mx-auto px-1 py-8">
+<QueryClientProvider client={queryClient}>
+	<Container>
+		<Header />
 		<slot />
-	</div>
-</main>
-
-<Footer />
+	</Container>
+</QueryClientProvider>
 
 <style lang="postcss">
-	main {
-		@apply bg-gray min-h-screen sm:mx-3 sm:w-[calc(100%_-_24px)] sm:shadow-sm;
+	:global(html) {
+		background-color: theme(colors.gray.900);
+		color: theme(colors.gray.300);
 	}
 </style>
