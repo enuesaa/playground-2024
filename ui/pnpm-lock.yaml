@@ -8,28 +8,43 @@ importers:
 
   .:
     dependencies:
+      '@excalidraw/excalidraw':
+        specifier: ^0.17.6
+        version: 0.17.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/svelte-query':
         specifier: ^5.28.4
         version: 5.28.4(svelte@4.2.12)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
     devDependencies:
       '@melt-ui/pp':
         specifier: ^0.3.0
-        version: 0.3.0(@melt-ui/svelte@0.76.0)(svelte@4.2.12)
+        version: 0.3.0(@melt-ui/svelte@0.76.0(svelte@4.2.12))(svelte@4.2.12)
       '@melt-ui/svelte':
         specifier: ^0.76.0
         version: 0.76.0(svelte@4.2.12)
       '@sveltejs/adapter-static':
         specifier: ^3.0.1
-        version: 3.0.1(@sveltejs/kit@2.5.4)
+        version: 3.0.1(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30)))(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30)))
       '@sveltejs/kit':
         specifier: ^2.0.0
-        version: 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.0)
+        version: 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30)))(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30))
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.0.0
-        version: 3.0.2(svelte@4.2.12)(vite@5.2.0)
+        version: 3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30))
       '@types/node':
         specifier: ^20.11.30
         version: 20.11.30
+      '@types/react':
+        specifier: ^18.3.8
+        version: 18.3.8
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
       autoprefixer:
         specifier: ^10.4.18
         version: 10.4.18(postcss@8.4.37)
@@ -205,6 +220,12 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@excalidraw/excalidraw@0.17.6':
+    resolution: {integrity: sha512-fyCl+zG/Z5yhHDh5Fq2ZGmphcrALmuOdtITm8gN4d8w4ntnaopTXcTfnAAaU3VleDC6LhTkoLOTG6P5kgREiIg==}
+    peerDependencies:
+      react: ^17.0.2 || ^18.2.0
+      react-dom: ^17.0.2 || ^18.2.0
 
   '@floating-ui/core@1.6.0':
     resolution: {integrity: sha512-PcF++MykgmTj3CIyOQbKA/hDzOAiqI3mhuoN44WRCopIs1sgoDoU4oty4Jtqaj/y3oDU6fnVSm4QG0a3t5i0+g==}
@@ -385,6 +406,15 @@ packages:
   '@types/node@20.11.30':
     resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
 
+  '@types/prop-types@15.7.13':
+    resolution: {integrity: sha512-hCZTSvwbzWGvhqxp/RqVqwU999pBf2vp7hzIjiYOsl8wqOmUxkQ6ddw1cV3l8811+kdUFus/q4d1Y3E3SyEifA==}
+
+  '@types/react-dom@18.3.0':
+    resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
+
+  '@types/react@18.3.8':
+    resolution: {integrity: sha512-syBUrW3/XpnW4WJ41Pft+I+aPoDVbrBVQGEnbD7NijDGlVC+8gV/XKRY+7vMDlfPpbwYt0l1vd/Sj8bJGMbs9Q==}
+
   acorn@8.11.3:
     resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
     engines: {node: '>=0.4.0'}
@@ -489,6 +519,9 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+
+  csstype@3.1.3:
+    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
   debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -635,6 +668,9 @@ packages:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
 
+  js-tokens@4.0.0:
+    resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+
   kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
@@ -652,6 +688,10 @@ packages:
 
   locate-character@3.0.0:
     resolution: {integrity: sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA==}
+
+  loose-envify@1.4.0:
+    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
 
   lru-cache@10.2.0:
     resolution: {integrity: sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==}
@@ -807,6 +847,15 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  react-dom@18.3.1:
+    resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
+    peerDependencies:
+      react: ^18.3.1
+
+  react@18.3.1:
+    resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
+    engines: {node: '>=0.10.0'}
+
   read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
 
@@ -833,6 +882,9 @@ packages:
   sade@1.8.1:
     resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
     engines: {node: '>=6'}
+
+  scheduler@0.23.2:
+    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
 
   set-cookie-parser@2.6.0:
     resolution: {integrity: sha512-RVnVQxTXuerk653XfuliOxBP81Sf0+qfQE73LIYKcyMYHG94AuH0kgrQpRDuTZnSmjpysHmzxJXKNfa6PjFhyQ==}
@@ -1080,6 +1132,11 @@ snapshots:
   '@esbuild/win32-x64@0.20.2':
     optional: true
 
+  '@excalidraw/excalidraw@0.17.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   '@floating-ui/core@1.6.0':
     dependencies:
       '@floating-ui/utils': 0.2.1
@@ -1121,7 +1178,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@melt-ui/pp@0.3.0(@melt-ui/svelte@0.76.0)(svelte@4.2.12)':
+  '@melt-ui/pp@0.3.0(@melt-ui/svelte@0.76.0(svelte@4.2.12))(svelte@4.2.12)':
     dependencies:
       '@melt-ui/svelte': 0.76.0(svelte@4.2.12)
       estree-walker: 3.0.3
@@ -1194,13 +1251,13 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.13.0':
     optional: true
 
-  '@sveltejs/adapter-static@3.0.1(@sveltejs/kit@2.5.4)':
+  '@sveltejs/adapter-static@3.0.1(@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30)))(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30)))':
     dependencies:
-      '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.0)
+      '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30)))(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30))
 
-  '@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.0)':
+  '@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30)))(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.2.0)
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30))
       '@types/cookie': 0.6.0
       cookie: 0.6.0
       devalue: 4.3.2
@@ -1216,18 +1273,18 @@ snapshots:
       tiny-glob: 0.2.9
       vite: 5.2.0(@types/node@20.11.30)
 
-  '@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.0)':
+  '@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30)))(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.2.0)
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30))
       debug: 4.3.4
       svelte: 4.2.12
       vite: 5.2.0(@types/node@20.11.30)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.0)':
+  '@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.0)
+      '@sveltejs/vite-plugin-svelte-inspector': 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30)))(svelte@4.2.12)(vite@5.2.0(@types/node@20.11.30))
       debug: 4.3.4
       deepmerge: 4.3.1
       kleur: 4.1.5
@@ -1235,7 +1292,7 @@ snapshots:
       svelte: 4.2.12
       svelte-hmr: 0.15.3(svelte@4.2.12)
       vite: 5.2.0(@types/node@20.11.30)
-      vitefu: 0.2.5(vite@5.2.0)
+      vitefu: 0.2.5(vite@5.2.0(@types/node@20.11.30))
     transitivePeerDependencies:
       - supports-color
 
@@ -1257,6 +1314,17 @@ snapshots:
   '@types/node@20.11.30':
     dependencies:
       undici-types: 5.26.5
+
+  '@types/prop-types@15.7.13': {}
+
+  '@types/react-dom@18.3.0':
+    dependencies:
+      '@types/react': 18.3.8
+
+  '@types/react@18.3.8':
+    dependencies:
+      '@types/prop-types': 15.7.13
+      csstype: 3.1.3
 
   acorn@8.11.3: {}
 
@@ -1362,6 +1430,8 @@ snapshots:
       source-map-js: 1.2.0
 
   cssesc@3.0.0: {}
+
+  csstype@3.1.3: {}
 
   debug@4.3.4:
     dependencies:
@@ -1509,6 +1579,8 @@ snapshots:
 
   jiti@1.21.0: {}
 
+  js-tokens@4.0.0: {}
+
   kleur@4.1.5: {}
 
   lilconfig@2.1.0: {}
@@ -1518,6 +1590,10 @@ snapshots:
   lines-and-columns@1.2.4: {}
 
   locate-character@3.0.0: {}
+
+  loose-envify@1.4.0:
+    dependencies:
+      js-tokens: 4.0.0
 
   lru-cache@10.2.0: {}
 
@@ -1604,8 +1680,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.37):
     dependencies:
       lilconfig: 3.1.1
-      postcss: 8.4.37
       yaml: 2.4.1
+    optionalDependencies:
+      postcss: 8.4.37
 
   postcss-nested@6.0.1(postcss@8.4.37):
     dependencies:
@@ -1633,6 +1710,16 @@ snapshots:
   prettier@3.2.5: {}
 
   queue-microtask@1.2.3: {}
+
+  react-dom@18.3.1(react@18.3.1):
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.3.1
+      scheduler: 0.23.2
+
+  react@18.3.1:
+    dependencies:
+      loose-envify: 1.4.0
 
   read-cache@1.0.0:
     dependencies:
@@ -1676,6 +1763,10 @@ snapshots:
   sade@1.8.1:
     dependencies:
       mri: 1.2.0
+
+  scheduler@0.23.2:
+    dependencies:
+      loose-envify: 1.4.0
 
   set-cookie-parser@2.6.0: {}
 
@@ -1820,15 +1911,15 @@ snapshots:
 
   vite@5.2.0(@types/node@20.11.30):
     dependencies:
-      '@types/node': 20.11.30
       esbuild: 0.20.2
       postcss: 8.4.37
       rollup: 4.13.0
     optionalDependencies:
+      '@types/node': 20.11.30
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.2.0):
-    dependencies:
+  vitefu@0.2.5(vite@5.2.0(@types/node@20.11.30)):
+    optionalDependencies:
       vite: 5.2.0(@types/node@20.11.30)
 
   which@2.0.2:
