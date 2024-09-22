@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Files from './Files.svelte'
+	import Docs from './Docs.svelte'
 </script>
 
 <main>
 	<div class="container mx-auto px-1 py-8 flex">
 		<div class="w-40">
-			<Files path="." />
+			<Docs />
 		</div>
 		<div class="flex-auto">
 			<slot />
