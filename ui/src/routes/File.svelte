@@ -1,18 +1,28 @@
 <script lang="ts">
 	import type { FileItem } from '$lib/api'
-	import { ArrowRightIcon } from 'svelte-feather-icons'
+	import { FolderIcon } from 'svelte-feather-icons'
+	import Files from './Files.svelte'
 
+	export let basepath: string
 	export let item: FileItem
+
+	let listed: boolean = false
+	function handleClick() {
+		listed = true
+	}
 </script>
 
-<div class="p-1 my-1 flex">
-	<span class="flex-none">
-		{item.name}
+<div class="p-1 my-1 flex gap-1">
+	<span class="w-6">
+		{#if item.isDir}
+			<button on:click|preventDefault={handleClick}><FolderIcon /></button>
+		{/if}
 	</span>
 
-	{#if item.isDir}
-		<a href={`/?path=${item.name}`} data-sveltekit-reload class="mx-3 px-1 bg-slate-600">
-			<ArrowRightIcon />
-		</a>
-	{/if}
+	<span class="flex-none">
+		{item.name}
+		{#if item.isDir && listed}
+			<Files {basepath} path={item.name} />
+		{/if}
+	</span>
 </div>

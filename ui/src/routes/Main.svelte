@@ -1,13 +1,11 @@
 <script lang="ts">
 	import Files from './Files.svelte'
-	import GoToParentDir from './GoToParentDir.svelte'
 </script>
 
 <main>
 	<div class="container mx-auto px-1 py-8 flex">
 		<div class="w-40">
-			<GoToParentDir path='./' />
-			<Files path='./' />
+			<Files basepath='./' path='' />
 		</div>
 		<div class="flex-auto">
 			<slot />

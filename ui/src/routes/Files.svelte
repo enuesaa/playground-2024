@@ -2,18 +2,15 @@
 	import { listFiles } from '$lib/api'
 	import File from './File.svelte'
 
+	export let basepath: string
 	export let path: string
-	const files = listFiles(path)
+	const files = listFiles(basepath + path)
 </script>
 
 <ul>
-	{#if $files.isLoading}
-		Loading...
-	{:else if $files.isError}
-		error: {$files.error.message}
-	{:else if $files.isSuccess}
+	{#if $files.isSuccess}
 		{#each $files.data.data as item}
-			<li><File {item} /></li>
+			<li><File {basepath} {item} /></li>
 		{/each}
 	{/if}
 </ul>
