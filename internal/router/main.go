@@ -4,6 +4,7 @@ import (
 	"github.com/enuesaa/codetrailer/internal/repository"
 	"github.com/enuesaa/codetrailer/internal/router/middleware"
 	apiFiles "github.com/enuesaa/codetrailer/internal/routes/files"
+	apiFile "github.com/enuesaa/codetrailer/internal/routes/file"
 	"github.com/enuesaa/codetrailer/ui"
 
 	"github.com/labstack/echo/v4"
@@ -20,7 +21,7 @@ func New(repos repository.Repos) *echo.Echo {
 	api.Use(middleware.HandleError)
 
 	api.GET("/files", apiFiles.List)
-	// api.POST("/file", apiFiles.List)
+	api.POST("/file", apiFile.Create)
 	// api.POST("/tree", apiFiles.List)
 	// api.POST("/prompt", apiFiles.List)
 	// api.POST("/prompt/{id}/command", apiFiles.List)
