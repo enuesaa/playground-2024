@@ -14,6 +14,7 @@
 		await $createDocs.mutateAsync({
 			dirName,
 		})
+		open.set(false)
 	}
 </script>
 
