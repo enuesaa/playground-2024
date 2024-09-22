@@ -6,3 +6,11 @@
 
 # app
 .codetrailer
+
+# node
+node_modules
+
+# sveltekit
+dist
+.svelte-kit
+vite.config.ts.timestamp-*

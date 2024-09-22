@@ -12,7 +12,7 @@
 	{:else if $files.isError}
 		error: {$files.error.message}
 	{:else if $files.isSuccess}
-		{#each $files.data as item}
+		{#each $files.data.data as item}
 			<li><File item={item} /></li>
 		{/each}
 	{/if}
