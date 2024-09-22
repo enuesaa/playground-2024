@@ -7,7 +7,7 @@
 
 	let listed: boolean = false
 	function handleClick() {
-		listed = true
+		listed = !listed
 	}
 </script>
 
