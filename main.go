@@ -56,9 +56,6 @@ DESCRIPTION:
 FLAGS:{{range $i, $e := .VisibleFlags}}
 	{{wrap $e.String 6}}
 {{end}}`
- 
-
-
 
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)

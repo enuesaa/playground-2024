@@ -12,11 +12,12 @@ import (
 )
 
 // AppCommand
-//   @ で始まるのが AppCommand
-//   @ で始まったら行頭の > を消して @ を表示する
-//   - @sh
-//   - @
-//   - @cat
+//
+//	@ で始まるのが AppCommand
+//	@ で始まったら行頭の > を消して @ を表示する
+//	- @sh
+//	- @
+//	- @cat
 func Write(repos repository.Repos, path string) error {
 	texts := []string{}
 	existing := Read(repos, path)

@@ -9,10 +9,10 @@ import (
 
 type PromptRepositoryInterface interface {
 	Ask(message string, defaultValue string) (string, error)
-	Render(defaultValue string, render func (s string) (string, bool)) (string, error)
+	Render(defaultValue string, render func(s string) (string, bool)) (string, error)
 }
 
-type PromptRepository struct {}
+type PromptRepository struct{}
 
 func (repo *PromptRepository) Ask(message string, defaultValue string) (string, error) {
 	input := textinput.New(message)
@@ -27,7 +27,7 @@ func (repo *PromptRepository) Ask(message string, defaultValue string) (string, 
 	return input.RunPrompt()
 }
 
-func (repo *PromptRepository) Render(defaultValue string, render func (s string) (string, bool)) (string, error) {
+func (repo *PromptRepository) Render(defaultValue string, render func(s string) (string, bool)) (string, error) {
 	input := textinput.New("")
 	input.InitialValue = defaultValue
 	input.Validate = nil
@@ -35,11 +35,11 @@ func (repo *PromptRepository) Render(defaultValue string, render func (s string)
 	input.ResultTemplate = `{{ ResultRender .FinalValue }}`
 
 	input.ExtendedTemplateFuncs = template.FuncMap{
-		"Render": func (s string) string {
+		"Render": func(s string) string {
 			result, _ := render(s)
 			return result
 		},
-		"ResultRender": func (s string) string {
+		"ResultRender": func(s string) string {
 			result, persist := render(s)
 			if persist {
 				return result
@@ -51,7 +51,7 @@ func (repo *PromptRepository) Render(defaultValue string, render func (s string)
 	// see https://github.com/erikgeiser/promptkit/blob/v0.9.0/textinput/prompt.go#L187
 	m := textinput.NewModel(input)
 	p := tea.NewProgram(m, tea.WithOutput(input.Output), tea.WithInput(input.Input))
-	
+
 	if _, err := p.Run(); err != nil {
 		return "", err
 	}

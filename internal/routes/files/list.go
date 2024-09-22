@@ -23,11 +23,11 @@ func List(c echo.Context) error {
 		}
 
 		splitted := strings.Split(f, "/")
-		filename := splitted[len(splitted) - 1]
+		filename := splitted[len(splitted)-1]
 		items = append(items, Item{
-			Path: f,
+			Path:     f,
 			Filename: filename,
-			IsDir: isDir,
+			IsDir:    isDir,
 		})
 	}
 

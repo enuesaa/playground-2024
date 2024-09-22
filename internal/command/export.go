@@ -8,7 +8,7 @@ import (
 
 func NewExportCommand(repos repository.Repos) *cli.Command {
 	cmd := &cli.Command{
-		Name:  "export",
+		Name: "export",
 		Before: func(ctx *cli.Context) error {
 			return repos.Pw.Install()
 		},

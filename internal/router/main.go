@@ -3,8 +3,8 @@ package router
 import (
 	"github.com/enuesaa/codetrailer/internal/repository"
 	"github.com/enuesaa/codetrailer/internal/router/middleware"
-	apiFiles "github.com/enuesaa/codetrailer/internal/routes/files"
 	apiFile "github.com/enuesaa/codetrailer/internal/routes/file"
+	apiFiles "github.com/enuesaa/codetrailer/internal/routes/files"
 	"github.com/enuesaa/codetrailer/ui"
 
 	"github.com/labstack/echo/v4"

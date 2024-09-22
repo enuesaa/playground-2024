@@ -8,10 +8,10 @@ import (
 )
 
 func LaunchMenu(repos repository.Repos, path string) error {
-	onready := func ()  {
+	onready := func() {
 		systray.SetTitle("CodeTrailer")
 
-		captureBtn := systray.AddMenuItem("Capture", "Capture")	
+		captureBtn := systray.AddMenuItem("Capture", "Capture")
 		go func() {
 			for {
 				<-captureBtn.ClickedCh

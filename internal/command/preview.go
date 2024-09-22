@@ -7,7 +7,7 @@ import (
 
 func NewPreviewCommand(repos repository.Repos) *cli.Command {
 	cmd := &cli.Command{
-		Name:  "preview",
+		Name: "preview",
 		Args: true,
 		Before: func(ctx *cli.Context) error {
 			return repos.Pw.Install()

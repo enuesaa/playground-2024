@@ -25,7 +25,7 @@ type FsRepository struct{}
 func (repo *FsRepository) ListFiles(path string) ([]string, error) {
 	entries, err := os.ReadDir(path)
 	if err != nil {
-			return []string{}, err
+		return []string{}, err
 	}
 	filenames := make([]string, 0)
 	for _, entry := range entries {
