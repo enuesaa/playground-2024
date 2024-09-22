@@ -20,6 +20,10 @@ func New(repos repository.Repos) *echo.Echo {
 	api.Use(middleware.HandleError)
 
 	api.GET("/files", apiFiles.List)
+	// api.POST("/file", apiFiles.List)
+	// api.POST("/tree", apiFiles.List)
+	// api.POST("/prompt", apiFiles.List)
+	// api.POST("/prompt/{id}/command", apiFiles.List)
 
 	app.Any("/*", ui.Serve)
 

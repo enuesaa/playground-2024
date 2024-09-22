@@ -1,8 +1,5 @@
 <script lang="ts">
-	import Markdown from 'svelte-exmarkdown'
-	let md = '# Hello'
+	import Editor from '$lib/components/Editor.svelte'
 </script>
 
-<textarea bind:value={md} />
-
-<Markdown {md} />
+<Editor />
