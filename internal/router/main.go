@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/enuesaa/codetrailer/internal/repository"
 	"github.com/enuesaa/codetrailer/internal/router/middleware"
+	apiDocs "github.com/enuesaa/codetrailer/internal/routes/docs"
 	apiFile "github.com/enuesaa/codetrailer/internal/routes/file"
 	apiFiles "github.com/enuesaa/codetrailer/internal/routes/files"
 	"github.com/enuesaa/codetrailer/ui"
@@ -20,6 +21,7 @@ func New(repos repository.Repos) *echo.Echo {
 	api.Use(middleware.HandleData)
 	api.Use(middleware.HandleError)
 
+	api.GET("/docs", apiDocs.List)
 	api.GET("/files", apiFiles.List)
 	api.POST("/file", apiFile.Create)
 	// api.POST("/tree", apiFiles.List)
