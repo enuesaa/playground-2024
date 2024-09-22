@@ -1,12 +1,26 @@
 <script lang="ts">
-	import { viewDoc } from '$lib/apidocs'
+	import { viewDoc, useUpdateDoc } from '$lib/apidocs'
 	import { page } from '$app/stores'
-	import Code from '$lib/components/editor/Code.svelte'
+	import Textarea from '$lib/components/form/Textarea.svelte'
+
+	const updateDoc = useUpdateDoc()
+
+	let content = ''
 
 	const name = $page.params.name
 	const doc = viewDoc(name)
+
+	$: if ($doc.isSuccess && content === '') {
+		content = $doc.data.data.content
+	}
+
+	async function save() {
+		console.log('save')
+		await $updateDoc.mutateAsync({
+			dirName: name,
+			content,
+		})
+	}
 </script>
 
-{#if $doc.isSuccess}
-	<Code language="md" code={$doc.data.data.content} />
-{/if}
+<Textarea bind:value={content} label='' handleKeyup={save} />

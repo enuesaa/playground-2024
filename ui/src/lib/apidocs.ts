@@ -48,4 +48,30 @@ export const useCreateDocs = () => {
     }
   })
 }
+
+type UpdateSchema = {
+  dirName: string
+  content: string
+}
+export const useUpdateDoc = () => {
+  const queryClient = getQueryClientContext()
+
+  return createMutation({
+    mutationFn: async (body: UpdateSchema) => {
+      const res = await fetch(`http://localhost:3000/api/docs/${body.dirName}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          content: body.content,
+        })
+      })
+      await res.json()
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['listDocs', 'viewDoc'] })
+    }
+  })
+}
   

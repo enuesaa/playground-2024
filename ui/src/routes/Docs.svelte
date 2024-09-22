@@ -6,6 +6,14 @@
 
 {#if $docs.isSuccess}
 	{#each $docs.data.data as item}
-		<a href={`/docs/${item.dirName}`}>{item.dirName}</a>
+		<a href={`/docs/${item.dirName}`}>
+			{item.dirName}
+		</a>
 	{/each}
 {/if}
+
+<style lang="postcss">
+	a {
+		@apply block;
+	}
+</style>

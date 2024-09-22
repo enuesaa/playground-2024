@@ -18,3 +18,7 @@ type CreateBody struct {
 type Created struct {
 	Ok bool `json:"ok"`
 }
+
+type UpdateBody struct {
+	Content string `json:"content"`
+}

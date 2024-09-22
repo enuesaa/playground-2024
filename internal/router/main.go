@@ -24,6 +24,7 @@ func New(repos repository.Repos) *echo.Echo {
 	api.GET("/docs", apiDocs.List)
 	api.GET("/docs/:name", apiDocs.View)
 	api.POST("/docs", apiDocs.Create)
+	api.PUT("/docs/:name", apiDocs.Update)
 
 	api.GET("/files", apiFiles.List)
 	// api.GET("/file", apiFile.Create)
