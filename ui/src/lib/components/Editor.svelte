@@ -1,11 +1,11 @@
 <script lang="ts">
 	import EditorMenu from './EditorMenu.svelte'
+	import Code from './Code.svelte'
 
-	import Markdown from 'svelte-exmarkdown'
-	let md = '# Hello'
+	let md = '# Hello\nhey\n```ts\nexport let a = "b"\n```'
 </script>
 
 <EditorMenu />
 
 <textarea bind:value={md} />
-<Markdown {md} />
+<Code language='md' code={md} />

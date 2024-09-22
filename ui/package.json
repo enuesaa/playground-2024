@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "@tanstack/svelte-query": "^5.56.2",
-    "svelte-exmarkdown": "^3.0.5"
+    "highlight.js": "^11.10.0"
   }
 }
