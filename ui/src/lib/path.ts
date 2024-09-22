@@ -1,4 +1,4 @@
-export const normalizePath = (path: string|null): string => {
+export const normalizePath = (path: string | null): string => {
   if (path === '') {
     return './'
   }

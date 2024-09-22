@@ -11,9 +11,9 @@
 	<div class="p-3 pb-1 flex-initial w-12 text-center">
 		<a href={`/?path=` + parentPath} class="inline-block" data-sveltekit-reload>
 			<ArrowUpIcon />
-		</a>		
+		</a>
 	</div>
 	<div class="p-3 pb-1 flex-none bg-slate-600" style="min-width: 300px;">
 		{path}
-	</div>	
+	</div>
 </div>
