@@ -4,7 +4,8 @@ type FilesSchema = {
   data: FileItem[]
 }
 export type FileItem = {
-  name: string
+  path: string
+  filename: string
   isDir: boolean
 }
 export const listFiles = (path: string) =>

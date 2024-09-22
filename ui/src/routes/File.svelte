@@ -3,7 +3,6 @@
 	import { FolderIcon } from 'svelte-feather-icons'
 	import Files from './Files.svelte'
 
-	export let basepath: string
 	export let item: FileItem
 
 	let listed: boolean = false
@@ -15,14 +14,18 @@
 <div class="p-1 my-1 flex gap-1">
 	<span class="w-6">
 		{#if item.isDir}
-			<button on:click|preventDefault={handleClick}><FolderIcon /></button>
+			<FolderIcon />
 		{/if}
 	</span>
 
 	<span class="flex-none">
-		{item.name}
+		{#if item.isDir}
+			<button on:click|preventDefault={handleClick}>{item.filename}</button>
+		{:else}
+			{item.filename}
+		{/if}
 		{#if item.isDir && listed}
-			<Files {basepath} path={item.name} />
+			<Files path={item.path} />
 		{/if}
 	</span>
 </div>
