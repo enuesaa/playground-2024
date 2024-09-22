@@ -13,6 +13,18 @@ export const listDocs = () =>
     }
   })
 
+type DocSchema = {
+  data: {path: string; dirName: string, content: string}
+}
+export const viewDoc = (name: string) =>
+  createQuery<DocSchema>({
+    queryKey: ['viewDoc', name],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:3000/api/docs/${name}`)
+      const body = await res.json()
+      return body
+    }
+  })
 
 type CreationSchema = {
   dirName: string

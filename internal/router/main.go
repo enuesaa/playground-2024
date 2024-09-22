@@ -22,10 +22,14 @@ func New(repos repository.Repos) *echo.Echo {
 	api.Use(middleware.HandleError)
 
 	api.GET("/docs", apiDocs.List)
+	api.GET("/docs/:name", apiDocs.View)
 	api.POST("/docs", apiDocs.Create)
+
 	api.GET("/files", apiFiles.List)
+	// api.GET("/file", apiFile.Create)
 	api.POST("/file", apiFile.Create)
-	// api.POST("/tree", apiFiles.List)
+	// api.GET("/filetree", apiFiles.List)
+
 	// api.POST("/prompt", apiFiles.List)
 	// api.POST("/prompt/{id}/command", apiFiles.List)
 
