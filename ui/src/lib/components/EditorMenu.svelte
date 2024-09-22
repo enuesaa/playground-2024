@@ -4,7 +4,7 @@
 	const createfile = useCreateFile()
 
 	function handleSave() {
-		$createfile.mutateAsync({path: 'aa.txt', content: 'bb'})
+		$createfile.mutateAsync({ path: 'aa.txt', content: 'bb' })
 	}
 </script>
 

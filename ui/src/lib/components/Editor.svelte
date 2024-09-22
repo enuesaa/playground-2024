@@ -8,4 +8,4 @@
 <EditorMenu />
 
 <textarea bind:value={md} />
-<Code language='md' code={md} />
+<Code language="md" code={md} />

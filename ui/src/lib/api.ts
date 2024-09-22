@@ -30,14 +30,14 @@ export const useCreateFile = () => {
       const res = await fetch(`http://localhost:3000/api/file`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify(body)
       })
       await res.json()
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['listFiles'] });
-    },
+      queryClient.invalidateQueries({ queryKey: ['listFiles'] })
+    }
   })
 }
