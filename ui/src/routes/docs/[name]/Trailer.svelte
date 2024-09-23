@@ -28,11 +28,11 @@
 <PromptBtn {updateContent} />
 <SaveBtn {dirName} {content} />
 
-<textarea bind:value={content} bind:this={textarea} on:keyup={save} />
+<textarea bind:value={content} bind:this={textarea} on:input={save} />
 
 <style lang="postcss">
 	textarea {
-		@apply font-normal w-full rounded px-3 py-2 block h-[80vh] text-black;
-		@apply text-lg outline-none border-black border bg-graywhite;
+		@apply font-normal w-full rounded p-5 block text-black min-h-screen;
+		@apply text-base outline-none border-black border bg-graywhite;
 	}
 </style>

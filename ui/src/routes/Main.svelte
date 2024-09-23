@@ -15,6 +15,6 @@
 
 <style lang="postcss">
 	main {
-		@apply bg-gray min-h-screen sm:mx-3 sm:w-[calc(100%_-_24px)] sm:shadow-sm;
+		@apply bg-gray min-h-screen;
 	}
 </style>
