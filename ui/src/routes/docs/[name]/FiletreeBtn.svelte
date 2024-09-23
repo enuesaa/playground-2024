@@ -1,16 +1,17 @@
 <script lang="ts">
 	import { lookupFiletree } from '$lib/apifiletree'
 
-	export let content: string
+	export let updateContent: (text: string) => void
 
 	const filetree = lookupFiletree()
 
 	async function handleClick() {
 		const res = await $filetree.mutateAsync()
-		content += '\n'
-		content += '```\n'
-		content += res.tree
-		content += '```\n'
+		let text = '\n'
+		text += '```\n'
+		text += res.tree
+		text += '```\n'
+		updateContent(text)
 	}
 </script>
 

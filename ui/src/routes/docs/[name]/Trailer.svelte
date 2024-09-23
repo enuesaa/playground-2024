@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { useUpdateDoc } from '$lib/apidocs'
-	import Textarea from '$lib/components/form/Textarea.svelte'
 	import FiletreeBtn from './FiletreeBtn.svelte'
 	import PromptBtn from './PromptBtn.svelte'
 	import SaveBtn from './SaveBtn.svelte'
@@ -10,15 +9,30 @@
 
 	const updateDoc = useUpdateDoc()
 
-	async function save() {
-		await $updateDoc.mutateAsync({
-			dirName,
-			content,
-		})
+	let textarea: HTMLTextAreaElement;
+
+	function updateContent(text: string) {
+		const position = textarea.selectionStart
+		const before = content.substring(0, position)
+        const after = content.substring(position, content.length)
+        content = before + text + after
+		save()
+	}
+
+	function save() {
+		$updateDoc.mutate({ dirName, content })
 	}
 </script>
 
-<FiletreeBtn bind:content={content} />
-<PromptBtn bind:content={content} />
+<FiletreeBtn {updateContent} />
+<PromptBtn {updateContent} />
 <SaveBtn {dirName} {content} />
-<Textarea bind:value={content} label='' handleKeyup={save} />
+
+<textarea bind:value={content} bind:this={textarea} on:keyup={save} />
+
+<style lang="postcss">
+	textarea {
+		@apply font-normal w-full rounded px-3 py-2 block h-[80vh] text-black;
+		@apply text-lg outline-none border-black border bg-graywhite;
+	}
+</style>
