@@ -20,6 +20,6 @@
 
 <style lang="postcss">
 	button {
-		@apply text-center rounded-md bg-white py-1 px-2 m-1 hover:bg-graywhite;
+		@apply block text-center rounded-md bg-white py-1 px-2 m-2 hover:bg-graywhite;
 	}
 </style>

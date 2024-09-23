@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { useUpdateDoc } from '$lib/apidocs'
-	import FiletreeBtn from './FiletreeBtn.svelte'
-	import PromptBtn from './PromptBtn.svelte'
-	import SaveBtn from './SaveBtn.svelte'
+	import Actions from './Actions.svelte'
 
 	export let dirName: string
 	export let content: string
@@ -24,15 +22,13 @@
 	}
 </script>
 
-<FiletreeBtn {updateContent} />
-<PromptBtn {updateContent} />
-<SaveBtn {dirName} {content} />
+<Actions {updateContent} {dirName} {content} />
 
 <textarea bind:value={content} bind:this={textarea} on:input={save} />
 
 <style lang="postcss">
 	textarea {
-		@apply font-normal w-full rounded p-5 block text-black min-h-screen;
+		@apply font-normal w-full p-5 block text-black min-h-screen;
 		@apply text-base outline-none border-black border bg-graywhite;
 	}
 </style>

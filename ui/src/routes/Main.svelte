@@ -1,20 +1,20 @@
 <script lang="ts">
 	import Docs from './Docs.svelte'
+	import Header from './Header.svelte'
 </script>
 
 <main>
-	<div class="container mx-auto px-1 py-8 flex">
-		<div class="w-40">
-			<Docs />
-		</div>
-		<div class="flex-auto">
-			<slot />
-		</div>
+	<div class="w-40 px-5 py-8">
+		<Header />
+		<Docs />
+	</div>
+	<div class="flex-auto">
+		<slot />
 	</div>
 </main>
 
 <style lang="postcss">
 	main {
-		@apply bg-gray min-h-screen;
+		@apply w-full max-w-[1300px] mx-auto h-screen flex overflow-y-hidden;
 	}
 </style>
