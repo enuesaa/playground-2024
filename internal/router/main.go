@@ -6,6 +6,7 @@ import (
 	apiDocs "github.com/enuesaa/codetrailer/internal/routes/docs"
 	apiFile "github.com/enuesaa/codetrailer/internal/routes/file"
 	apiFiles "github.com/enuesaa/codetrailer/internal/routes/files"
+	apiFiletree "github.com/enuesaa/codetrailer/internal/routes/filetree"
 	"github.com/enuesaa/codetrailer/ui"
 
 	"github.com/labstack/echo/v4"
@@ -29,7 +30,7 @@ func New(repos repository.Repos) *echo.Echo {
 	api.GET("/files", apiFiles.List)
 	// api.GET("/file", apiFile.Create)
 	api.POST("/file", apiFile.Create)
-	// api.GET("/filetree", apiFiles.List)
+	api.GET("/filetree", apiFiletree.View)
 
 	// api.POST("/prompt", apiFiles.List)
 	// api.POST("/prompt/{id}/command", apiFiles.List)
