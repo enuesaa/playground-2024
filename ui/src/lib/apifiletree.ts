@@ -6,7 +6,7 @@ type FiletreeResponse = {
 }
 export const lookupFiletree = () => createMutation({
     mutationFn: async (): Promise<FiletreeResponse> => {
-      const res = await fetch(`${baseUrl}filetree`)
+      const res = await fetch(`${baseUrl}/filetree`)
       return await res.json()
     },
   })

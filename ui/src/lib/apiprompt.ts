@@ -5,9 +5,7 @@ type RunPromptRequest = {
   command: string
 }
 type RunPromptOutput = {
-  data: {
-    output: string
-  }
+  output: string
 }
 export const runPrompt = () => createMutation({
     mutationFn: async (body: RunPromptRequest): Promise<RunPromptOutput> => {

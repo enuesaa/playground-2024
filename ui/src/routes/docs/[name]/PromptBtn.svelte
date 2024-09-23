@@ -2,10 +2,10 @@
 	import { createDialog, melt } from '@melt-ui/svelte'
 	import { runPrompt } from '$lib/apiprompt'
 
-	export let value: string
+	export let content: string
 
 	const {
-		elements: { trigger, overlay, content, title, portalled },
+		elements: { trigger, overlay, content: meltcontent, title, portalled },
 		states: { open }
 	} = createDialog({ forceVisible: true })
 
@@ -17,11 +17,11 @@
 			command,
 		})
 
-		value += '\n'
-		value += '```console\n'
-		value += `$ ${command}\n`
-		value += `${res.data.output}\n`
-		value += '```\n'
+		content += '\n'
+		content += '```console\n'
+		content += `$ ${command}\n`
+		content += `${res.output}`
+		content += '```\n'
 
 		open.set(false)
 	}
@@ -33,7 +33,7 @@
 	<div use:melt={$portalled}>
 		<div use:melt={$overlay} class="overlay" />
 
-		<div use:melt={$content} class="content">
+		<div use:melt={$meltcontent} class="content">
 			<h2 use:melt={$title}>Create New Doc</h2>
 
 			<input type="text" placeholder="title" class="w-full text-lg" bind:value={command} />
@@ -45,8 +45,7 @@
 
 <style lang="postcss">
 	.openbtn {
-		@apply inline-flex items-center justify-center rounded-xl bg-white;
-		@apply px-4 py-3 font-medium leading-none shadow hover:opacity-75;
+		@apply text-center rounded-md bg-white py-1 px-2 m-1 hover:bg-graywhite;
 	}
 	.overlay {
 		@apply fixed inset-0 z-50 bg-black/50;

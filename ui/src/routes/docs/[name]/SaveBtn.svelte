@@ -1,21 +1,21 @@
 <script lang="ts">
-	import { lookupFiletree } from '$lib/apifiletree'
+	import { useUpdateDoc } from '$lib/apidocs'
 
+	export let dirName: string
 	export let content: string
 
-	const filetree = lookupFiletree()
+	const updateDoc = useUpdateDoc()
 
 	async function handleClick() {
-		const res = await $filetree.mutateAsync()
-		content += '\n'
-		content += '```\n'
-		content += res.tree
-		content += '```\n'
+		await $updateDoc.mutateAsync({
+			dirName,
+			content,
+		})
 	}
 </script>
 
 <button on:click|preventDefault={handleClick}>
-	tree
+	Save
 </button>
 
 <style lang="postcss">

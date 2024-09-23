@@ -4,9 +4,6 @@
 # editor
 .vscode
 
-# app
-.codetrailer
-
 # node
 node_modules
 
@@ -14,3 +11,7 @@ node_modules
 dist
 .svelte-kit
 vite.config.ts.timestamp-*
+
+# app
+.codetrailer
+/docs

@@ -6,7 +6,7 @@
 	export let handleKeyup: () => void = () => {}
 </script>
 
-<label class="mx-auto w-11/12 block font-bold">
+<label class="w-11/12 block font-bold">
 	{label}
 	<textarea
 		bind:value
