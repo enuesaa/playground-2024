@@ -3,6 +3,7 @@
 	import { page } from '$app/stores'
 	import Textarea from '$lib/components/form/Textarea.svelte'
 	import FiletreeBtn from './FiletreeBtn.svelte'
+	import PromptBtn from './PromptBtn.svelte'
 
 	const updateDoc = useUpdateDoc()
 
@@ -28,4 +29,5 @@
 <button>prompt</button>
 
 <FiletreeBtn bind:value={content} />
+<PromptBtn bind:value={content} />
 <Textarea bind:value={content} label='' handleKeyup={save} />
