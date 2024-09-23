@@ -1,10 +1,15 @@
 package file
 
-type CreateBody struct {
+type Detail struct {
+	Path string `json:"path"`
+	Content string `json:"content"`
+}
+
+type CreateRequestBody struct {
 	Path    string `json:"path"`
 	Content string `json:"content"`
 }
 
-type Created struct {
+type Creation struct {
 	Ok bool `json:"ok"`
 }

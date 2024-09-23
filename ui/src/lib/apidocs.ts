@@ -1,40 +1,36 @@
 import { createMutation, createQuery, getQueryClientContext } from '@tanstack/svelte-query'
+import { baseUrl } from './api'
 
-type DocsSchema = {
-  data: {path: string; dirName: string}[]
-}
+type DocsResponse = {path: string; dirName: string}[]
 export const listDocs = () =>
-  createQuery<DocsSchema>({
+  createQuery({
     queryKey: ['listDocs'],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:3000/api/docs`)
+    queryFn: async (): Promise<DocsResponse> => {
+      const res = await fetch(`${baseUrl}/docs`)
       const body = await res.json()
       return body
     }
   })
 
-type DocSchema = {
-  data: {path: string; dirName: string, content: string}
-}
+type DocResponse = {path: string; dirName: string, content: string}
 export const viewDoc = (name: string) =>
-  createQuery<DocSchema>({
+  createQuery({
     queryKey: ['viewDoc', name],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:3000/api/docs/${name}`)
-      const body = await res.json()
-      return body
+    queryFn: async (): Promise<DocResponse> => {
+      const res = await fetch(`${baseUrl}/docs/${name}`)
+      return await res.json()
     }
   })
 
-type CreationSchema = {
+type CreateRequest = {
   dirName: string
 }
 export const useCreateDocs = () => {
   const queryClient = getQueryClientContext()
 
   return createMutation({
-    mutationFn: async (body: CreationSchema) => {
-      const res = await fetch(`http://localhost:3000/api/docs`, {
+    mutationFn: async (body: CreateRequest) => {
+      const res = await fetch(`${baseUrl}/docs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -49,7 +45,7 @@ export const useCreateDocs = () => {
   })
 }
 
-type UpdateSchema = {
+type UpdateRequest = {
   dirName: string
   content: string
 }
@@ -57,8 +53,8 @@ export const useUpdateDoc = () => {
   const queryClient = getQueryClientContext()
 
   return createMutation({
-    mutationFn: async (body: UpdateSchema) => {
-      const res = await fetch(`http://localhost:3000/api/docs/${body.dirName}`, {
+    mutationFn: async (body: UpdateRequest) => {
+      const res = await fetch(`${baseUrl}/docs/${body.dirName}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

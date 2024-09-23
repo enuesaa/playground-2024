@@ -13,7 +13,7 @@ func Update(c echo.Context) error {
 	cc := ctx.Use(c)
 	name := cc.Param("name")
 
-	var reqbody UpdateBody
+	var reqbody UpdateRequestBody
 	if err := c.Bind(&reqbody); err != nil {
 		return err
 	}
@@ -25,8 +25,8 @@ func Update(c echo.Context) error {
 		return err
 	}
 
-	res := Created{
+	res := Creation{
 		Ok: true,
 	}
-	return cc.WithData(res)
+	return cc.JSON(200, res)
 }

@@ -9,7 +9,7 @@
 		const res = await $filetree.mutateAsync()
 		value += '\n'
 		value += '```\n'
-		value += res.data.tree
+		value += res.tree
 		value += '```\n'
 	}
 </script>

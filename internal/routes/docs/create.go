@@ -12,7 +12,7 @@ import (
 func Create(c echo.Context) error {
 	cc := ctx.Use(c)
 
-	var reqbody CreateBody
+	var reqbody CreateRequestBody
 	if err := c.Bind(&reqbody); err != nil {
 		return err
 	}
@@ -30,8 +30,8 @@ func Create(c echo.Context) error {
 		return err
 	}
 
-	res := Created{
+	res := Creation{
 		Ok: true,
 	}
-	return cc.WithData(res)
+	return cc.JSON(200, res)
 }

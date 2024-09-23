@@ -5,20 +5,20 @@ type Item struct {
 	DirName string `json:"dirName"`
 }
 
-type ItemWithContent struct {
+type Detail struct {
 	Path    string `json:"path"`
 	DirName string `json:"dirName"`
 	Content string `json:"content"`
 }
 
-type CreateBody struct {
+type CreateRequestBody struct {
 	DirName string `json:"dirName"`
 }
 
-type Created struct {
+type Creation struct {
 	Ok bool `json:"ok"`
 }
 
-type UpdateBody struct {
+type UpdateRequestBody struct {
 	Content string `json:"content"`
 }

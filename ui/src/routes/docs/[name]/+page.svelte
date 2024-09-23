@@ -14,7 +14,7 @@
 	const doc = viewDoc(name)
 
 	$: if ($doc.isSuccess && loading) {
-		content = $doc.data.data.content
+		content = $doc.data.content
 		loading = false
 	}
 

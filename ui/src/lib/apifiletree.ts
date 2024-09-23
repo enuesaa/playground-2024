@@ -1,9 +1,12 @@
 import { createMutation, createQuery, getQueryClientContext } from '@tanstack/svelte-query'
+import { baseUrl } from './api'
 
+type FiletreeResponse = {
+  tree: string
+}
 export const lookupFiletree = () => createMutation({
-    mutationFn: async (): Promise<{data: {tree: string}}> => {
-      const res = await fetch(`http://localhost:3000/api/filetree`)
-      const body = await res.json()
-      return body
+    mutationFn: async (): Promise<FiletreeResponse> => {
+      const res = await fetch(`${baseUrl}filetree`)
+      return await res.json()
     },
   })

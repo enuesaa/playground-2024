@@ -24,6 +24,9 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 			// 	Destination: &docspath,
 			// },
 		},
+		Before: func(ctx *cli.Context) error {
+			return repos.Fs.CreateDir(repos.Config.DocsPath)
+		},
 		Action: func(c *cli.Context) error {
 			app := router.New(repos)
 

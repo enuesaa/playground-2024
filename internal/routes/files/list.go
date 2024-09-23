@@ -31,5 +31,5 @@ func List(c echo.Context) error {
 		})
 	}
 
-	return cc.WithData(items)
+	return cc.JSON(200, items)
 }

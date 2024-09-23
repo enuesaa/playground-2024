@@ -29,12 +29,12 @@ func New(repos repository.Repos) *echo.Echo {
 	api.PUT("/docs/:name", apiDocs.Update)
 
 	api.GET("/files", apiFiles.List)
-	// api.GET("/file", apiFile.Create)
+	api.GET("/file", apiFile.View)
 	api.POST("/file", apiFile.Create)
+
 	api.GET("/filetree", apiFiletree.View)
 
 	api.POST("/prompt", apiPrompt.Create)
-	// api.POST("/prompt/{id}/command", apiFiles.List)
 
 	app.Any("/*", ui.Serve)
 

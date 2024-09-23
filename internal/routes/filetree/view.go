@@ -18,5 +18,5 @@ func View(c echo.Context) error {
 	res := Item{
 		Tree: buffer.String(),
 	}
-	return cc.WithData(res)
+	return cc.JSON(200, res)
 }

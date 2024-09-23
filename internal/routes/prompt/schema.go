@@ -1,9 +1,9 @@
 package prompt
 
-type CreateBody struct {
+type CreateRequestBody struct {
 	Command string `json:"command"`
 }
 
-type Created struct {
+type Creation struct {
 	Output string `json:"output"`
 }

@@ -1,23 +1,16 @@
 import { createMutation, createQuery, getQueryClientContext } from '@tanstack/svelte-query'
 
-type FilesSchema = {
-  data: FileItem[]
-}
-export type FileItem = {
-  path: string
-  filename: string
-  isDir: boolean
-}
+export const baseUrl = 'http://localhost:3000/api'
+
+type FilesResponse = {path: string; filename: string; isDir: boolean}[]
 export const listFiles = (path: string) =>
-  createQuery<FilesSchema>({
+  createQuery({
     queryKey: ['listFiles', path],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:3000/api/files?path=${path}`)
-      const body = await res.json()
-      return body
+    queryFn: async (): Promise<FilesResponse> => {
+      const res = await fetch(`${baseUrl}/files?path=${path}`)
+      return await res.json()
     }
   })
-
 
 type CreateFileRequest = {
   path: string
@@ -28,7 +21,7 @@ export const useCreateFile = () => {
 
   return createMutation({
     mutationFn: async (body: CreateFileRequest) => {
-      const res = await fetch(`http://localhost:3000/api/file`, {
+      const res = await fetch(`${baseUrl}/file`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

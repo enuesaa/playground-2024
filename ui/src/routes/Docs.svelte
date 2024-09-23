@@ -5,7 +5,7 @@
 </script>
 
 {#if $docs.isSuccess}
-	{#each $docs.data.data as item}
+	{#each $docs.data as item}
 		<a href={`/docs/${item.dirName}`}>
 			{item.dirName}
 		</a>
