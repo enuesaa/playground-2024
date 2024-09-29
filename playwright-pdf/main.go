@@ -46,6 +46,7 @@ func main() {
 	defer f.Close()
 	f.Write(fbytes)
 
+	// merge pdf files
 	if err := api.MergeCreateFile([]string{"a.pdf", "a.pdf"}, "o.pdf", false, nil); err != nil {
 		log.Fatalf("Error: %s", err.Error())
 	}
