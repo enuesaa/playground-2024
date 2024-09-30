@@ -1,26 +1,9 @@
 <script lang="ts">
 	import SlideMd from './SlideMd.svelte'
 
-	export let slides: string[]
-	export let selected: number
-
-	if (slides.length <= selected) {
-		slides.push('')
-	}
-
-	let content = slides[selected]
-	$: {
-		slides[selected] = content
-
-		// if (slides.length > selected) {
-		// 	slides[selected] = content
-		// } else {
-		// 	slides.push(content)
-		// }
-	}
+	export let content: string
 </script>
 
-{selected}
 <section class="w-full flex h-full">
 	<div class="w-[1000px] h-[800px] px-5 py-8 border-2">
 		<SlideMd {content} />

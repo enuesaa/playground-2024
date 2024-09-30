@@ -15,7 +15,7 @@ func Update(c echo.Context) error {
 		return err
 	}
 
-	content := strings.Join(reqbody.Slides, "\n---\n")
+	content := strings.Join(reqbody.Slides, "\n\n---\n\n")
 	reader := strings.NewReader(content)
 	if err := cc.Repos.Fs.Create(cc.Repos.Config.DocPath, reader); err != nil {
 		return err

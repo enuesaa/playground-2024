@@ -15,7 +15,7 @@ func View(c echo.Context) error {
 		return err
 	}
 	content := string(fbytes)
-	slides := strings.Split(content, "\n---\n")
+	slides := strings.Split(content, "\n\n---\n\n")
 
 	res := Detail{
 		Slides: slides,
