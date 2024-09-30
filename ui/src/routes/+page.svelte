@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Doc from './Doc.svelte'
-	import { viewDoc } from '$lib/apidoc'
+	import { viewDoc } from '$lib/api/doc'
 
 	const doc = viewDoc()
 </script>

@@ -1,5 +1,5 @@
 import { createMutation, createQuery, getQueryClientContext } from '@tanstack/svelte-query'
-import { baseUrl } from './api'
+import { baseUrl } from './common'
 
 export type SlideSchema = {
   content: string

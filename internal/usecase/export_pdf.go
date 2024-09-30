@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"log"
 	"os"
 
 	"github.com/pdfcpu/pdfcpu/pkg/api"

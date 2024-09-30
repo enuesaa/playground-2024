@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Slide from './Slide.svelte'
-	import { useUpdateDoc } from '$lib/apidoc'
-	import type { SlideSchema } from '$lib/apidoc'
+	import { useUpdateDoc } from '$lib/api/doc'
+	import type { SlideSchema } from '$lib/api/doc'
 
 	export let slides: SlideSchema[]
 	let selected = 0
