@@ -13,6 +13,6 @@
 
 <style lang="postcss">
 	div {
-		@apply w-full max-w-[1500px] mx-auto h-screen;
+		@apply w-full max-w-[1500px] mx-auto h-screen max-h-screen overflow-hidden;
 	}
 </style>

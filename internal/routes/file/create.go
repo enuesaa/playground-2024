@@ -1,7 +1,7 @@
 package file
 
 import (
-	"strings"
+	"path/filepath"
 
 	"github.com/enuesaa/codetrailer/internal/router/ctx"
 	"github.com/labstack/echo/v4"
@@ -9,14 +9,20 @@ import (
 
 func Create(c echo.Context) error {
 	cc := ctx.Use(c)
+	filename := cc.Param("filename")
+	basepath := filepath.Dir(cc.Repos.Config.DocPath)
+	path := filepath.Join(basepath, filename)
 
-	var reqbody CreateRequestBody
-	if err := c.Bind(&reqbody); err != nil {
+	file, err := cc.FormFile("file")
+	if err != nil {
 		return err
 	}
 
-	reader := strings.NewReader(reqbody.Content)
-	if err := cc.Repos.Fs.Create(reqbody.Path, reader); err != nil {
+	f, err := file.Open()
+	if err != nil {
+		return err
+	}
+	if err := cc.Repos.Fs.Create(path, f); err != nil {
 		return err
 	}
 

@@ -4,14 +4,32 @@
 	import MenuNextBtn from './MenuNextBtn.svelte'
 	import SlideMd from './SlideMd.svelte'
 	import MenuPreviewBtn from './MenuPreviewBtn.svelte'
+	import { useUploadFile } from '$lib/api/file'
 
 	export let slides: string[]
 
 	let selected = 0
 	let content = slides[selected]
+
+	const uploadFile = useUploadFile()
+
+	async function handleDrop(e: DragEvent) {
+		const files = e?.dataTransfer?.files ?? null
+		if (files === null) {
+			return
+		}
+		const file = files[0]
+		await $uploadFile.mutateAsync(file)
+		content += `\n\n![${file.name}](./${file.name})\n\n`
+	}
 </script>
 
-<section class="w-full h-full flex">
+<section
+	class="w-full h-full flex"
+	on:drop|preventDefault={handleDrop}
+	on:dragover|preventDefault
+	on:dragleave|preventDefault
+>
 	<div class="w-[1000px] h-[800px] px-5 py-8 border-2 relative">
 		<SlideMd {content} />
 

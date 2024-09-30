@@ -5,7 +5,6 @@ import (
 	"github.com/enuesaa/codetrailer/internal/router/middleware"
 	apiDoc "github.com/enuesaa/codetrailer/internal/routes/doc"
 	apiFile "github.com/enuesaa/codetrailer/internal/routes/file"
-	apiFiles "github.com/enuesaa/codetrailer/internal/routes/files"
 	apiFiletree "github.com/enuesaa/codetrailer/internal/routes/filetree"
 	apiPrompt "github.com/enuesaa/codetrailer/internal/routes/prompt"
 	"github.com/enuesaa/codetrailer/ui"
@@ -25,10 +24,7 @@ func New(repos repository.Repos) *echo.Echo {
 
 	api.GET("/doc", apiDoc.View)
 	api.PUT("/doc", apiDoc.Update)
-
-	api.GET("/files", apiFiles.List)
-	api.GET("/file", apiFile.View)
-	api.POST("/file", apiFile.Create)
+	api.POST("/file/:filename", apiFile.Create)
 
 	api.GET("/filetree", apiFiletree.View)
 

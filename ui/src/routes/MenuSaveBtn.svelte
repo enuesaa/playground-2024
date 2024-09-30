@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { useUpdateDoc } from '$lib/api/doc'
-	import { SaveIcon } from 'svelte-feather-icons'
+	import { SaveIcon, ClockIcon } from 'svelte-feather-icons'
 
 	export let slides: string[]
 	export let selected: number
 	export let content: string
 
 	let saving: boolean = false
+	let autoSave: boolean = true
 
 	const updateDoc = useUpdateDoc()
 
@@ -17,6 +18,9 @@
 		setTimeout(() => {
 			saving = false
 		}, 1000)
+		if (autoSave) {
+			setTimeout(async() => await handleSave(), 5000)
+		}
 	}
 
 	async function handleClick(e: KeyboardEvent) {
@@ -26,6 +30,12 @@
 			await handleSave()
 		}
 	}
+	function toggleAutoSave() {
+		autoSave = !autoSave
+		if (autoSave) {
+			setTimeout(async() => await handleSave(), 5000)
+		}
+	}
 </script>
 
 {#if saving}
@@ -33,6 +43,8 @@
 {:else}
 	<button on:click|preventDefault={handleSave}><SaveIcon /></button>
 {/if}
+
+<button on:click={toggleAutoSave} style={autoSave ? "color: purple;" : "opacity: 0.35;"}><ClockIcon /></button>
 
 <svelte:window on:keydown={handleClick} />
 

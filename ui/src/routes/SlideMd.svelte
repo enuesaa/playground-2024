@@ -11,7 +11,11 @@
 <!-- svelte-ignore css-unused-selector -->
 <style lang="postcss">
 	main {
-		@apply py-1 px-2;
+		@apply p-2;
+	}
+	:global(main) {
+		@apply text-2xl;
+		@apply overflow-hidden;
 	}
 	:global(main h1) {
 		@apply text-6xl mt-40 mb-5 font-bold;
@@ -20,12 +24,21 @@
 		@apply text-5xl my-1 font-bold;
 	}
 	:global(main p) {
-		@apply my-1;
+		@apply py-2;
 	}
 	:global(main ul) {
-		@apply my-1 pl-3;
+		@apply py-2 pl-6;
+	}
+	:global(main ul p) {
+		@apply py-1;
+	}
+	:global(main a) {
+		@apply underline;
 	}
 	:global(main li) {
-		list-style-type: "- ";
+		list-style-type: disc;
+	}
+	:global(main img) {
+		@apply max-w-full max-h-full;
 	}
 </style>
