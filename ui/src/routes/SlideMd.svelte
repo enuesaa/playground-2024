@@ -4,28 +4,28 @@
 	export let content: string
 </script>
 
-<div class="appdoc">
+<main>
 	<Markdown md={content} />
-</div>
+</main>
 
 <!-- svelte-ignore css-unused-selector -->
 <style lang="postcss">
-	.appdoc {
+	main {
 		@apply py-1 px-2;
 	}
-	:global(.appdoc h1) {
+	:global(main h1) {
 		@apply text-6xl mt-40 mb-5 font-bold;
 	}
-	:global(.appdoc h2) {
+	:global(main h2) {
 		@apply text-5xl my-1 font-bold;
 	}
-	:global(.appdoc p) {
+	:global(main p) {
 		@apply my-1;
 	}
-	:global(.appdoc ul) {
+	:global(main ul) {
 		@apply my-1 pl-3;
 	}
-	:global(.appdoc li) {
+	:global(main li) {
 		list-style-type: "- ";
 	}
 </style>

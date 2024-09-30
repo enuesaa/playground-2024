@@ -1,0 +1,28 @@
+<script lang="ts">
+	import { ArrowLeftIcon } from 'svelte-feather-icons'
+
+	export let slides: string[]
+	export let selected: number
+	export let content: string
+
+	function handlePrev() {
+		slides[selected] = content
+		selected -= 1
+		content = slides[selected]
+	}
+</script>
+
+{#if selected === 0}
+	<button disabled><ArrowLeftIcon /></button>
+{:else}
+	<button on:click|preventDefault={handlePrev}><ArrowLeftIcon /></button>
+{/if}
+
+<style lang="postcss">
+	button {
+		@apply bg-blackgray text-gray rounded-md;
+	}
+	button:disabled {
+		@apply bg-gray;
+	}
+</style>

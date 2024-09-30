@@ -15,13 +15,7 @@ func View(c echo.Context) error {
 		return err
 	}
 	readme := string(fbytes)
-
-	slides := []Slide{}
-	for _, content := range strings.Split(readme, "\n\n---\n\n") {
-		slides = append(slides, Slide{
-			Content: content,
-		})
-	}
+	slides := strings.Split(readme, "\n\n---\n\n")
 
 	res := Detail{
 		Slides: slides,

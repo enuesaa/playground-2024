@@ -14,14 +14,9 @@ func Update(c echo.Context) error {
 	if err := c.Bind(&reqbody); err != nil {
 		return err
 	}
-
-	readme := ""
-	for _, slide := range reqbody.Slides {
-		readme += slide.Content + "\n\n---\n\n"
-	}
-
-	reader := strings.NewReader(readme)
-	if err := cc.Repos.Fs.Create(cc.Repos.Config.DocPath, reader); err != nil {
+	
+	readme := strings.Join(reqbody.Slides, "\n\n---\n\n")
+	if err := cc.Repos.Fs.Create(cc.Repos.Config.DocPath, strings.NewReader(readme)); err != nil {
 		return err
 	}
 

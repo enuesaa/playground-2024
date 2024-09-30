@@ -1,42 +1,33 @@
 <script lang="ts">
 	import Slide from './Slide.svelte'
-	import { useUpdateDoc } from '$lib/api/doc'
-	import type { SlideSchema } from '$lib/api/doc'
-	import { ArrowLeftIcon, ArrowRightIcon, SaveIcon } from 'svelte-feather-icons'
+	import MenuSaveBtn from './MenuSaveBtn.svelte'
+	import MenuPrevBtn from './MenuPrevBtn.svelte'
+	import MenuNextBtn from './MenuNextBtn.svelte'
+	import SlideMd from './SlideMd.svelte'
 
-	export let slides: SlideSchema[]
+	export let slides: string[]
 	let selected = 0
-	let content = slides[selected].content
-
-	const updateDoc = useUpdateDoc()
-
-	async function handleSave() {
-		slides[selected] = { content }
-		await $updateDoc.mutateAsync({slides})
-	}
-
-	function handleNext() {
-		slides[selected] = { content }
-		selected += 1
-		content = slides[selected].content
-	}
-	function handlePrev() {
-		slides[selected] = { content }
-		selected -= 1
-		content = slides[selected].content
-	}
+	let content = slides[selected]
 </script>
 
-<div class="w-full h-full relative">
-	<Slide bind:content />
+<section class="w-full h-full flex">
+	<div class="w-[1000px] h-[800px] px-5 py-8 border-2 relative">
+		<SlideMd {content} />
 
-	<div class="absolute bottom-0 right-0">
-		<button on:click|preventDefault={handleSave}><SaveIcon /></button>
-		{#if selected === 0}
-			<button disabled class="bg-blackgray text-gray rounded-md"><ArrowLeftIcon /></button>
-		{:else}
-			<button on:click|preventDefault={handlePrev}><ArrowLeftIcon /></button>
-		{/if}
-		<button on:click|preventDefault={handleNext}><ArrowRightIcon /></button>		
+		<div class="absolute bottom-5 right-5">
+			<MenuSaveBtn {slides} {selected} {content} />
+			<MenuPrevBtn bind:slides bind:selected bind:content />
+			<MenuNextBtn bind:slides bind:selected bind:content />
+		</div>
 	</div>
-</div>
+	<div class="flex-auto">
+		<textarea bind:value={content} />
+	</div>
+</section>
+
+<style lang="postcss">
+	textarea {
+		@apply block h-full bg-[rgba(0,0,0,0)];
+		@apply font-normal w-full p-3 text-black text-lg outline-none;
+	}
+</style>

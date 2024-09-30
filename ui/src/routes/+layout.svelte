@@ -6,13 +6,13 @@
 </script>
 
 <QueryClientProvider client={queryClient}>
-	<main>
+	<div>
 		<slot />
-	</main>
+	</div>
 </QueryClientProvider>
 
 <style lang="postcss">
-	main {
+	div {
 		@apply w-full max-w-[1500px] mx-auto h-screen;
 	}
 </style>

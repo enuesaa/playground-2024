@@ -17,3 +17,9 @@
 <button on:click|preventDefault={handleClick}>
 	<SaveIcon />
 </button>
+
+<style lang="postcss">
+	button {
+		@apply bg-blackgray text-gray rounded-md;
+	}
+</style>
