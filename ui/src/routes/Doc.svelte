@@ -33,10 +33,14 @@
 	<div class="w-[1000px] h-[800px] px-5 py-8 border-2 relative">
 		<SlideMd {content} />
 
-		<div class="absolute bottom-5 right-5">
+		<div class="absolute bottom-5 right-5 z-10">
 			<MenuPreviewBtn />
 			<MenuSaveBtn {slides} {selected} {content} />
+		</div>
+		<div class="absolute top-0 left-[0px] w-[150px] h-full">
 			<MenuPrevBtn bind:slides bind:selected bind:content />
+		</div>
+		<div class="absolute top-0 left-[850px] w-[150px] h-full">
 			<MenuNextBtn bind:slides bind:selected bind:content />
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ArrowRightIcon, PlusIcon } from 'svelte-feather-icons'
+	import { PlusIcon } from 'svelte-feather-icons'
 	import { createDialog, melt } from '@melt-ui/svelte'
 	const {
 	  elements: { trigger, portalled, content: dialogContent, title: dialogTitle, overlay },
@@ -27,7 +27,7 @@
 {#if slides.length === selected + 1}
 	<button use:melt={$trigger}><PlusIcon /></button>
 {:else}
-	<button on:click|preventDefault={handleNext}><ArrowRightIcon /></button>
+	<button on:click|preventDefault={handleNext} />
 {/if}
 
 {#if $dialogOpen}
@@ -42,7 +42,7 @@
 
 <style lang="postcss">
 	button {
-		@apply text-blackgray;
+		@apply text-blackgray w-full h-full bg-[rgba(0,0,0,0.01)] pl-20;
 	}
 	.overlay {
 		@apply fixed inset-0 z-50 bg-black/50;

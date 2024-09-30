@@ -11,7 +11,7 @@
 <!-- svelte-ignore css-unused-selector -->
 <style lang="postcss">
 	main {
-		@apply p-2;
+		@apply p-9;
 	}
 	:global(main) {
 		@apply text-2xl;

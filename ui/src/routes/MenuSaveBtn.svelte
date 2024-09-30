@@ -32,9 +32,9 @@
 	}
 	function toggleAutoSave() {
 		autoSave = !autoSave
-		if (autoSave) {
-			setTimeout(async() => await handleSave(), 5000)
-		}
+	}
+	$: if (autoSave) {
+		setTimeout(async() => await handleSave(), 5000)
 	}
 </script>
 
