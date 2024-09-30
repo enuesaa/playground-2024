@@ -30,7 +30,7 @@
 	on:dragover|preventDefault
 	on:dragleave|preventDefault
 >
-	<div class="w-[1000px] h-[800px] px-5 py-8 border-2 relative">
+	<div class="w-[1000px] h-[700px] px-5 py-8 border-2 relative">
 		<SlideMd {content} />
 
 		<div class="absolute bottom-5 right-5 z-10">

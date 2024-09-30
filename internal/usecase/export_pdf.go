@@ -33,13 +33,18 @@ func ExportPdf(repos repository.Repos) error {
 	}
 	defer browser.Close()
 
-	page, err := browser.NewPage()
+	page, err := browser.NewPage(playwright.BrowserNewPageOptions{
+		Screen: &playwright.Size{
+			Width: 1000,
+			Height: 700,
+		},
+	})
 	if err != nil {
 		return err
 	}
 	defer page.Close()
 
-	_, err = page.Goto("http://localhost:3000?preview")
+	_, err = page.Goto("http://localhost:3000/?preview")
 	if err != nil {
 		return err
 	}
@@ -50,10 +55,12 @@ func ExportPdf(repos repository.Repos) error {
 		if err != nil {
 			return err
 		}
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(1 * time.Second)
 		fbytes, err = page.PDF(playwright.PagePdfOptions{
 			Width: playwright.String("1000"),
-			Height: playwright.String("800"),
+			Height: playwright.String("700"),
+			PageRanges: playwright.String("1"),
+			PrintBackground: playwright.Bool(true),
 		})
 		if err != nil {
 			return err

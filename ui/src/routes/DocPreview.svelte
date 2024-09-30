@@ -32,7 +32,7 @@
 	}
 </script>
 
-<div class="w-[1000px] h-[800px] px-5 py-8 border-2 mx-auto">
+<div class="w-[1000px] h-[700px] px-5 py-8 border-2 mx-auto">
 	<SlideMd {content} />
 </div>
 
