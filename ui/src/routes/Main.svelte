@@ -1,14 +1,12 @@
 <script lang="ts">
 	import Docs from './Docs.svelte'
-	import Header from './Header.svelte'
 </script>
 
 <main>
-	<div class="w-40 px-5 py-8">
-		<Header />
+	<div class="w-20 px-5 py-8 border">
 		<Docs />
 	</div>
-	<div class="flex-auto">
+	<div class="flex-auto border">
 		<slot />
 	</div>
 </main>
