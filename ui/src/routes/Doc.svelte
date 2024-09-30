@@ -23,6 +23,7 @@
 		const drawing = convertToSvg(registry)
 		slides[selected] = { content, drawing }
 		selected += 1
+
 		if (slides.length <= selected) {
 			slides.push({content: '', drawing: ''})
 		}
