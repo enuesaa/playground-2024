@@ -5,6 +5,7 @@
 	import SlideMd from './SlideMd.svelte'
 
 	export let slides: string[]
+
 	let selected = 0
 	let content = slides[selected]
 </script>
