@@ -10,7 +10,7 @@ export default {
       graywhite: '#dadada',
       grayblacker: '#bfbfbf',
       grayblack: '#b3b3b3',
-      white: '#fafafa'
+      white: '#fafafa',
     },
     fontFamily: {
       zenmaru: ['Zen Maru Gothic', 'serif'],
