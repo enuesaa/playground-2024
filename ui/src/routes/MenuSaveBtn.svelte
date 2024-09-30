@@ -6,20 +6,37 @@
 	export let selected: number
 	export let content: string
 
+	let saving: boolean = false
+
 	const updateDoc = useUpdateDoc()
 
-	async function handleClick() {
+	async function handleSave() {
+		saving = true
 		slides[selected] = content
 		await $updateDoc.mutateAsync({slides})
+		setTimeout(() => {
+			saving = false
+		}, 1000)
+	}
+
+	async function handleClick(e: KeyboardEvent) {
+		// command + s
+		if (e.metaKey && e.key === 's') {
+			await handleSave()
+		}
 	}
 </script>
 
-<button on:click|preventDefault={handleClick}>
-	<SaveIcon />
-</button>
+{#if saving}
+	<button disabled class="opacity-35"><SaveIcon /></button>
+{:else}
+	<button on:click|preventDefault={handleSave}><SaveIcon /></button>
+{/if}
+
+<svelte:window on:keydown|preventDefault={handleClick} />
 
 <style lang="postcss">
 	button {
-		@apply bg-blackgray text-gray rounded-md;
+		@apply text-blackgray;
 	}
 </style>

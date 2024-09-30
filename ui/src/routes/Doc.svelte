@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Slide from './Slide.svelte'
 	import MenuSaveBtn from './MenuSaveBtn.svelte'
 	import MenuPrevBtn from './MenuPrevBtn.svelte'
 	import MenuNextBtn from './MenuNextBtn.svelte'

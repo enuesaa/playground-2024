@@ -15,6 +15,15 @@
 		selected += 1
 		content = slides[selected]
 	}
+
+	function handleClick(e: KeyboardEvent) {
+		if (e.key === 'ArrowRight') {
+			if (slides.length === selected + 1) {
+				return
+			}
+			handleNext()
+		}
+	}
 </script>
 
 {#if slides.length === selected + 1}
@@ -23,8 +32,10 @@
 	<button on:click|preventDefault={handleNext}><ArrowRightIcon /></button>
 {/if}
 
+<svelte:window on:keydown|preventDefault={handleClick} />
+
 <style lang="postcss">
 	button {
-		@apply bg-blackgray text-gray rounded-md;
+		@apply text-blackgray;
 	}
 </style>
