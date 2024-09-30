@@ -14,12 +14,11 @@ func main() {
 
 	app := &cli.App{
 		Name:    "codetrailer",
-		Usage:   "A CLI tool to capture stdin/stdout and generate a step-by-step document.",
+		Usage:   "A CLI tool to generate a step-by-step document.",
 		Version: "0.0.1",
 		Commands: []*cli.Command{
 			command.NewWriteCommand(repos),
-			// command.NewPreviewCommand(repos),
-			// command.NewExportCommand(repos),
+			command.NewExportCommand(repos),
 		},
 	}
 

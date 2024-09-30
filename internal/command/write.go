@@ -1,6 +1,8 @@
 package command
 
 import (
+	"fmt"
+
 	"github.com/enuesaa/codetrailer/internal/repository"
 	"github.com/enuesaa/codetrailer/internal/router"
 	"github.com/urfave/cli/v2"
@@ -9,23 +11,15 @@ import (
 func NewWriteCommand(repos repository.Repos) *cli.Command {
 	cmd := &cli.Command{
 		Name: "write",
-		Flags: []cli.Flag{
-			&cli.StringFlag{
-				Name:        "docs",
-				Value:       "docs",
-				Usage:       "docs dir path",
-				Destination: &repos.Config.DocsPath,
-			},
-			// TODO
-			// &cli.StringFlag{
-			// 	Name:        "project",
-			// 	Value:       "project",
-			// 	Usage:       "project dir path",
-			// 	Destination: &docspath,
-			// },
-		},
-		Before: func(ctx *cli.Context) error {
-			return repos.Fs.CreateDir(repos.Config.DocsPath)
+		Args: true,
+		ArgsUsage: "<filename>",
+		Before: func(c *cli.Context) error {
+			if c.Args().Len() == 0 {
+				return fmt.Errorf("<filename> is required.")
+			}
+			repos.Config.DocPath = c.Args().Get(0)
+
+			return nil
 		},
 		Action: func(c *cli.Context) error {
 			app := router.New(repos)

@@ -1,5 +1,5 @@
 # codetrailer
-A CLI tool to capture stdin/stdout and generate a step-by-step document.
+A CLI tool to generate a step-by-step document.
 
 ## コンセプト
 コマンドの実行やキャプチャを行えるCLIツール
