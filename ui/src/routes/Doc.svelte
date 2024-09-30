@@ -1,31 +1,31 @@
 <script lang="ts">
-	import Markdown from 'svelte-exmarkdown'
+	import Slide from './Slide.svelte'
+	import { useUpdateDoc } from '$lib/apidoc'
 
-	export let content: string
+	export let slides: string[]
+	let selected: number = 0
+
+	const updateDoc = useUpdateDoc()
+
+	async function handleSave() {
+		await $updateDoc.mutateAsync({slides})
+	}
+
+	function handleNext() {
+		selected += 1
+	}
 </script>
 
-<div class="appdoc">
-	<Markdown md={content} />
-</div>
+<button on:click|preventDefault={handleSave}>save</button>
+<button on:click|preventDefault={handleNext}>next</button>
 
-<!-- svelte-ignore css-unused-selector -->
+{#key selected}
+	<Slide bind:slides={slides} {selected} />
+{/key}
+
 <style lang="postcss">
-	.appdoc {
-		@apply py-1 px-2;
-	}
-	:global(.appdoc h1) {
-		@apply text-6xl mt-40 mb-5 font-bold;
-	}
-	:global(.appdoc h2) {
-		@apply text-5xl my-1 font-bold;
-	}
-	:global(.appdoc p) {
-		@apply my-1;
-	}
-	:global(.appdoc ul) {
-		@apply my-1 pl-3;
-	}
-	:global(.appdoc li) {
-		list-style-type: "- ";
+	textarea {
+		@apply block h-full bg-[rgba(0,0,0,0)];
+		@apply font-normal w-full p-3 text-black text-lg outline-none;
 	}
 </style>

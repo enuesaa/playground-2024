@@ -17,7 +17,7 @@ func Update(c echo.Context) error {
 
 	content := strings.Join(reqbody.Slides, "\n---\n")
 	reader := strings.NewReader(content)
-	if err := cc.Repos.Fs.Create(cc.Repos.Config.DocsPath, reader); err != nil {
+	if err := cc.Repos.Fs.Create(cc.Repos.Config.DocPath, reader); err != nil {
 		return err
 	}
 

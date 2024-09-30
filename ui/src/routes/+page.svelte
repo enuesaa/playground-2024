@@ -1,21 +1,10 @@
 <script lang="ts">
 	import Doc from './Doc.svelte'
+	import { viewDoc } from '$lib/apidoc'
 
-	let content = ''
+	const doc = viewDoc()
 </script>
 
-<section class="w-full flex h-full">
-	<div class="w-[1000px] h-[800px] px-5 py-8 border-2">
-		<Doc {content} />
-	</div>
-	<div class="flex-auto">
-		<textarea bind:value={content} />
-	</div>
-</section>
-
-<style lang="postcss">
-	textarea {
-		@apply block h-full bg-[rgba(0,0,0,0)];
-		@apply font-normal w-full p-3 text-black text-lg outline-none;
-	}
-</style>
+{#if $doc.isSuccess}
+	<Doc slides={$doc.data.slides} />
+{/if}
