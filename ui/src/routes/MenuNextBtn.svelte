@@ -7,8 +7,9 @@
 
 	function handleAdd() {
 		slides[selected] = content
+		slides.push('')
 		selected += 1
-		content = ''
+		content = slides[selected]
 	}
 	function handleNext() {
 		slides[selected] = content

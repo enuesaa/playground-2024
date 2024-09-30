@@ -3,6 +3,7 @@
 	import MenuPrevBtn from './MenuPrevBtn.svelte'
 	import MenuNextBtn from './MenuNextBtn.svelte'
 	import SlideMd from './SlideMd.svelte'
+	import MenuPreviewBtn from './MenuPreviewBtn.svelte'
 
 	export let slides: string[]
 
@@ -15,6 +16,7 @@
 		<SlideMd {content} />
 
 		<div class="absolute bottom-5 right-5">
+			<MenuPreviewBtn />
 			<MenuSaveBtn {slides} {selected} {content} />
 			<MenuPrevBtn bind:slides bind:selected bind:content />
 			<MenuNextBtn bind:slides bind:selected bind:content />
