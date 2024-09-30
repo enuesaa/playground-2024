@@ -3,7 +3,6 @@ import { baseUrl } from './api'
 
 export type SlideSchema = {
   content: string
-  drawing: string
 }
 
 type DocResponse = {slides: SlideSchema[]}

@@ -2,7 +2,6 @@ package doc
 
 type Slide struct {
 	Content string `json:"content"`
-	Drawing string `json:"drawing"`
 }
 
 type Detail struct {
