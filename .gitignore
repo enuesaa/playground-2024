@@ -13,5 +13,4 @@ dist
 vite.config.ts.timestamp-*
 
 # app
-.codetrailer
-/docs
+*.pdf

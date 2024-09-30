@@ -7,7 +7,8 @@ export default {
   preprocess: sequence([vitePreprocess(), preprocessMeltUI()]),
   kit: {
     adapter: adapter({
-      pages: 'dist'
+      pages: 'dist',
+      fallback: 'index.html',
     })
   }
 }

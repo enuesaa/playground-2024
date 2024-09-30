@@ -10,15 +10,6 @@
 		selected -= 1
 		content = slides[selected]
 	}
-
-	function handleClick(e: KeyboardEvent) {
-		if (e.key === 'ArrowLeft') {
-			if (selected === 0) {
-				return
-			}
-			handlePrev()
-		}
-	}
 </script>
 
 {#if selected === 0}
@@ -26,8 +17,6 @@
 {:else}
 	<button on:click|preventDefault={handlePrev}><ArrowLeftIcon /></button>
 {/if}
-
-<svelte:window on:keydown|preventDefault={handleClick} />
 
 <style lang="postcss">
 	button {

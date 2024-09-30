@@ -22,6 +22,7 @@
 	async function handleClick(e: KeyboardEvent) {
 		// command + s
 		if (e.metaKey && e.key === 's') {
+			e.preventDefault()
 			await handleSave()
 		}
 	}
@@ -33,7 +34,7 @@
 	<button on:click|preventDefault={handleSave}><SaveIcon /></button>
 {/if}
 
-<svelte:window on:keydown|preventDefault={handleClick} />
+<svelte:window on:keydown={handleClick} />
 
 <style lang="postcss">
 	button {
