@@ -1,7 +1,12 @@
 import { createMutation, createQuery, getQueryClientContext } from '@tanstack/svelte-query'
 import { baseUrl } from './api'
 
-type DocResponse = {slides: string[]}
+export type SlideSchema = {
+  content: string
+  drawing: string
+}
+
+type DocResponse = {slides: SlideSchema[]}
 export const viewDoc = () =>
   createQuery({
     queryKey: ['viewDoc'],
@@ -12,7 +17,7 @@ export const viewDoc = () =>
   })
 
 type UpdateRequest = {
-  slides: string[]
+  slides: SlideSchema[]
 }
 export const useUpdateDoc = () => {
   const queryClient = getQueryClientContext()

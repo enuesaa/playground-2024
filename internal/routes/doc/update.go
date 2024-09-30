@@ -1,6 +1,8 @@
 package doc
 
 import (
+	"fmt"
+	"path/filepath"
 	"strings"
 
 	"github.com/enuesaa/codetrailer/internal/router/ctx"
@@ -15,8 +17,18 @@ func Update(c echo.Context) error {
 		return err
 	}
 
-	content := strings.Join(reqbody.Slides, "\n\n---\n\n")
-	reader := strings.NewReader(content)
+	docDir := filepath.Dir(cc.Repos.Config.DocPath)
+
+	readme := ""
+	for i, slide := range reqbody.Slides {
+		readme += slide.Content + "\n\n---\n\n"
+		drawingPath := filepath.Join(docDir, fmt.Sprintf("%d.svg", i))
+		if err := cc.Repos.Fs.Create(drawingPath, strings.NewReader(slide.Drawing)); err != nil {
+			continue
+		}
+	}
+
+	reader := strings.NewReader(readme)
 	if err := cc.Repos.Fs.Create(cc.Repos.Config.DocPath, reader); err != nil {
 		return err
 	}

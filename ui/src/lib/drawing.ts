@@ -10,6 +10,7 @@ export const createRegistry = (): Registry => {
 		svgOnMouseMove: undefined,
 		svgOnMouseUp: undefined,
 		svgOnMouseLeave: undefined,
+		svgOnMouseDown: undefined,
 		rectOnMouseDown: undefined,
 	}
 }

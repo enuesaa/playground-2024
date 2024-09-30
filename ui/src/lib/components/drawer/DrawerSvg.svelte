@@ -87,8 +87,7 @@
 
 <style lang="postcss">
 	svg {
-		width: 1000px;
-		height: 600px;
-		border: solid 1px #000;
+		width: 100%;
+		height: 100%;
 	}
 </style>
