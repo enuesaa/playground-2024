@@ -1,39 +1,56 @@
 package usecase
 
 import (
+	"log"
+	"os"
+
+	"github.com/pdfcpu/pdfcpu/pkg/api"
 	"github.com/playwright-community/playwright-go"
 )
 
 func ExportPdf() error {
-	if err := playwright.Install(&playwright.RunOptions{
-		Browsers: []string{"chromium"},
-	}); err != nil {
+	if err := playwright.Install(); err != nil {
 		return err
 	}
+
 	pw, err := playwright.Run()
 	if err != nil {
 		return err
 	}
-	defer pw.Stop()
-	browser, err := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
-		Headless: playwright.Bool(false),
+	browser, err := pw.Chromium.Launch()
+	if err != nil {
+		return err
+	}
+	page, err := browser.NewPage(playwright.BrowserNewPageOptions{
+		Screen: &playwright.Size{
+			Width: 1000,
+			Height: 500,
+		},
 	})
 	if err != nil {
 		return err
 	}
-	defer browser.Close()
+	_, err = page.Goto("https://example.com")
+	if err != nil {
+		return err
+	}
 
-	page, err := browser.NewPage(playwright.BrowserNewPageOptions{})
-	if err != nil {
-		return err
-	}
-	if _, err := page.Goto("https://yahoo.co.jp"); err != nil {
-		return err
-	}
-	_, err = page.PDF(playwright.PagePdfOptions{
-		Path: playwright.String("aa.pdf"),
+	fbytes, err := page.PDF(playwright.PagePdfOptions{
+		Width: playwright.String("1000"),
+		Height: playwright.String("500"),
 	})
 	if err != nil {
+		return err
+	}
+	f, err := os.Create("a.pdf")
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	f.Write(fbytes)
+
+	// merge pdf files
+	if err := api.MergeCreateFile([]string{"a.pdf", "a.pdf"}, "o.pdf", false, nil); err != nil {
 		return err
 	}
 
