@@ -1,11 +1,11 @@
-package doc
+package files
 
 type Detail struct {
-	Slides []string `json:"slides"`
+	Content  string `json:"content"`
 }
 
 type UpdateRequestBody struct {
-	Slides []string `json:"slides"`
+	Content  string `json:"content"`
 }
 
 type Creation struct {

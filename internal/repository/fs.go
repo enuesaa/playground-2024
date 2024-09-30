@@ -18,6 +18,7 @@ type FsRepositoryInterface interface {
 	Read(path string) ([]byte, error)
 	Create(path string, body io.Reader) error
 	CreateDir(path string) error
+	Delete(path string) error
 	Capture() (*image.RGBA, error)
 }
 type FsRepository struct{}
@@ -80,6 +81,10 @@ func (repo *FsRepository) Create(path string, body io.Reader) error {
 
 func (repo *FsRepository) CreateDir(path string) error {
 	return os.MkdirAll(path, os.ModePerm)
+}
+
+func (repo *FsRepository) Delete(path string) error {
+	return os.Remove(path)
 }
 
 func (repo *FsRepository) Capture() (*image.RGBA, error) {

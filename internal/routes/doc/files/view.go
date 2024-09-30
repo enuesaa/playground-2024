@@ -1,7 +1,7 @@
-package doc
+package files
 
 import (
-	"strings"
+	"path/filepath"
 
 	"github.com/enuesaa/codetrailer/internal/router/ctx"
 	"github.com/labstack/echo/v4"
@@ -9,16 +9,17 @@ import (
 
 func View(c echo.Context) error {
 	cc := ctx.Use(c)
+	filename := cc.Param("filename")
 
-	fbytes, err := cc.Repos.Fs.Read(cc.Repos.Config.DocPath)
+	path := filepath.Join(cc.Repos.Config.DocsPath, filename)
+	fbytes, err := cc.Repos.Fs.Read(path)
 	if err != nil {
 		return err
 	}
 	content := string(fbytes)
-	slides := strings.Split(content, "\n---\n")
 
 	res := Detail{
-		Slides: slides,
+		Content: content,
 	}
 	return cc.JSON(200, res)
 }
