@@ -11,7 +11,7 @@
 <!-- svelte-ignore css-unused-selector -->
 <style lang="postcss">
 	main {
-		@apply p-9;
+		@apply px-9 py-1;
 	}
 	:global(main) {
 		@apply text-2xl;
@@ -21,7 +21,7 @@
 		@apply text-7xl mt-32 mb-20 font-bold;
 	}
 	:global(main h2) {
-		@apply text-5xl mt-10 mb-6 font-bold;
+		@apply text-5xl mt-10 mb-5 font-bold;
 	}
 	:global(main p) {
 		@apply py-2 leading-[2];

@@ -5,6 +5,7 @@
 	import SlideMd from './SlideMd.svelte'
 	import MenuPreviewBtn from './MenuPreviewBtn.svelte'
 	import MenuPageNumber from './MenuPageNumber.svelte'
+	import MenuDeleteBtn from './MenuDeleteBtn.svelte'
 	import { useUploadFile } from '$lib/api/file'
 
 	export let slides: string[]
@@ -37,6 +38,7 @@
 		<div class="absolute bottom-5 right-5 z-10">
 			<MenuPreviewBtn />
 			<MenuSaveBtn {slides} {selected} {content} />
+			<MenuDeleteBtn bind:slides bind:selected bind:content />
 			<MenuPageNumber {selected} />
 		</div>
 		<div class="absolute top-0 left-[0px] w-[150px] h-full">

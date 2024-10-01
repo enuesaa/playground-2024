@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PlusIcon } from 'svelte-feather-icons'
+	import { DeleteIcon } from 'svelte-feather-icons'
 	import { createDialog, melt } from '@melt-ui/svelte'
 	const {
 	  elements: { trigger, portalled, content: dialogContent, title: dialogTitle, overlay },
@@ -11,38 +11,30 @@
 	export let content: string
 
 	function handleAdd() {
-		slides[selected] = content
-		slides.push('')
-		selected += 1
+		slides.splice(selected, 1)
+		if (slides.length === selected) {
+			slides.push('')
+		}
 		content = slides[selected]
 		dialogOpen.set(false)
 	}
-	function handleNext() {
-		slides[selected] = content
-		selected += 1
-		content = slides[selected]
-	}
 </script>
 
-{#if slides.length === selected + 1}
-	<button use:melt={$trigger} class="pl-20"><PlusIcon /></button>
-{:else}
-	<button on:click|preventDefault={handleNext} class="pl-20" />
-{/if}
+<button use:melt={$trigger}><DeleteIcon /></button>
 
 {#if $dialogOpen}
 	<div use:melt={$portalled}>
 		<div use:melt={$overlay} class="overlay" />
 		<div use:melt={$dialogContent} class="content">
-			<h2 use:melt={$dialogTitle}>Are you sure to create new slide ?</h2>
-			<button on:click|preventDefault={handleAdd} class="border rounded-lg mt-2 p-2 block">Create</button>
+			<h2 use:melt={$dialogTitle}>Are you sure to delete this slide ?</h2>
+			<button on:click|preventDefault={handleAdd} class="border rounded-lg mt-2 p-2 block">Delete</button>
 		</div>
 	</div>
 {/if}
 
 <style lang="postcss">
 	button {
-		@apply text-blackgray w-full h-full bg-[rgba(0,0,0,0.01)];
+		@apply text-blackgray;
 	}
 	.overlay {
 		@apply fixed inset-0 z-50 bg-black/50;
