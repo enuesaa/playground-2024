@@ -9,6 +9,7 @@ require (
 	github.com/kbinani/screenshot v0.0.0-20240820160931-a8a2c5d0e191
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/pdfcpu/pdfcpu v0.8.1
+	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
 	github.com/playwright-community/playwright-go v0.4501.1
 	github.com/urfave/cli/v2 v2.27.4
 )

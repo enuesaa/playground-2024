@@ -2,9 +2,11 @@ package command
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/enuesaa/codetrailer/internal/repository"
 	"github.com/enuesaa/codetrailer/internal/router"
+	"github.com/pkg/browser"
 	"github.com/urfave/cli/v2"
 )
 
@@ -23,6 +25,11 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 		},
 		Action: func(c *cli.Context) error {
 			app := router.New(repos)
+
+			go func () {
+				time.Sleep(1 * time.Second)
+				browser.OpenURL("http://localhost:3000/")
+			}()
 
 			return app.Start(":3000")
 		},
