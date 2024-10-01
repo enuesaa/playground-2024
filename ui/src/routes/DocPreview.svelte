@@ -1,5 +1,6 @@
 <script lang="ts">
 	import SlideMd from './SlideMd.svelte'
+	import MenuPageNumber from './MenuPageNumber.svelte'
 
 	export let slides: string[]
 
@@ -32,8 +33,12 @@
 	}
 </script>
 
-<div class="w-[1000px] h-[700px] px-5 py-8 border-2 mx-auto">
+<div class="w-[1000px] h-[700px] px-5 py-8 border-2 mx-auto relative">
 	<SlideMd {content} />
+
+	<div class="absolute bottom-5 right-5 z-10">
+		<MenuPageNumber {selected} />
+	</div>
 </div>
 
 <svelte:window on:keydown|preventDefault={handleClick} />

@@ -18,10 +18,10 @@
 		@apply overflow-hidden;
 	}
 	:global(main h1) {
-		@apply text-7xl mt-32 mb-16 font-bold;
+		@apply text-7xl mt-32 mb-20 font-bold;
 	}
 	:global(main h2) {
-		@apply text-5xl my-10 font-bold;
+		@apply text-5xl mt-10 mb-6 font-bold;
 	}
 	:global(main p) {
 		@apply py-2 leading-[2];
