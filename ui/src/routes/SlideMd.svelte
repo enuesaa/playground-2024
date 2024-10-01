@@ -18,16 +18,19 @@
 		@apply overflow-hidden;
 	}
 	:global(main h1) {
-		@apply text-6xl mt-40 mb-5 font-bold;
+		@apply text-7xl mt-32 mb-16 font-bold;
 	}
 	:global(main h2) {
-		@apply text-5xl my-1 font-bold;
+		@apply text-5xl my-10 font-bold;
 	}
 	:global(main p) {
-		@apply py-2;
+		@apply py-2 leading-[2];
 	}
 	:global(main ul) {
-		@apply py-2 pl-6;
+		@apply py-6 pl-6;
+	}
+	:global(main ul li) {
+		@apply py-1;
 	}
 	:global(main ul p) {
 		@apply py-1;
@@ -35,8 +38,11 @@
 	:global(main a) {
 		@apply underline;
 	}
-	:global(main li) {
+	:global(main ul li) {
 		list-style-type: disc;
+	}
+	:global(main ol li) {
+		list-style-type: decimal;
 	}
 	:global(main img) {
 		@apply max-w-full max-h-full;

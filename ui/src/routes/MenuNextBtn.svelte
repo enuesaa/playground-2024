@@ -25,9 +25,9 @@
 </script>
 
 {#if slides.length === selected + 1}
-	<button use:melt={$trigger}><PlusIcon /></button>
+	<button use:melt={$trigger} class="pl-20"><PlusIcon /></button>
 {:else}
-	<button on:click|preventDefault={handleNext} />
+	<button on:click|preventDefault={handleNext} class="pl-20" />
 {/if}
 
 {#if $dialogOpen}
@@ -35,14 +35,14 @@
 		<div use:melt={$overlay} class="overlay" />
 		<div use:melt={$dialogContent} class="content">
 			<h2 use:melt={$dialogTitle}>Are you sure to create new slide ?</h2>
-			<button on:click|preventDefault={handleAdd} class="border rounded-lg mt-2 p-2">Create</button>
+			<button on:click|preventDefault={handleAdd} class="border rounded-lg mt-2 py-2 block">Create</button>
 		</div>
 	</div>
 {/if}
 
 <style lang="postcss">
 	button {
-		@apply text-blackgray w-full h-full bg-[rgba(0,0,0,0.01)] pl-20;
+		@apply text-blackgray w-full h-full bg-[rgba(0,0,0,0.01)];
 	}
 	.overlay {
 		@apply fixed inset-0 z-50 bg-black/50;
