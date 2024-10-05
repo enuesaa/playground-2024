@@ -19,7 +19,7 @@ func View(c echo.Context) error {
 	content := string(fbytes)
 
 	res := Detail{
-		Path: fmt.Sprintf("%s/%s", cc.Repos.Config.DocsPath, name),
+		Path:    fmt.Sprintf("%s/%s", cc.Repos.Config.DocsPath, name),
 		DirName: name,
 		Content: content,
 	}

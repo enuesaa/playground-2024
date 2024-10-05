@@ -12,8 +12,8 @@ import (
 
 func NewExportCommand(repos repository.Repos) *cli.Command {
 	cmd := &cli.Command{
-		Name: "export",
-		Args: true,
+		Name:      "export",
+		Args:      true,
 		ArgsUsage: "<filename>",
 		Before: func(c *cli.Context) error {
 			if c.Args().Len() == 0 {

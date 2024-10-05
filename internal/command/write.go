@@ -12,8 +12,8 @@ import (
 
 func NewWriteCommand(repos repository.Repos) *cli.Command {
 	cmd := &cli.Command{
-		Name: "write",
-		Args: true,
+		Name:      "write",
+		Args:      true,
 		ArgsUsage: "<filename>",
 		Before: func(c *cli.Context) error {
 			if c.Args().Len() == 0 {
@@ -26,7 +26,7 @@ func NewWriteCommand(repos repository.Repos) *cli.Command {
 		Action: func(c *cli.Context) error {
 			app := router.New(repos)
 
-			go func () {
+			go func() {
 				time.Sleep(1 * time.Second)
 				browser.OpenURL("http://localhost:3000/")
 			}()

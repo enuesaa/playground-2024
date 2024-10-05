@@ -1,6 +1,6 @@
 package repository
 
 type Config struct {
-	DocsPath string    // like docs
-	DocPath string
+	DocsPath string // like docs
+	DocPath  string
 }

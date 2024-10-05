@@ -1,6 +1,5 @@
 package docs
 
-
 import (
 	"path/filepath"
 	"strings"

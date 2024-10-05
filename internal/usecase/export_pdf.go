@@ -20,7 +20,6 @@ func ExportPdf(repos repository.Repos) error {
 	slides := strings.Split(readme, "\n\n---\n\n")
 	slidesCount := len(slides)
 
-
 	pw, err := playwright.Run()
 	if err != nil {
 		return err
@@ -35,7 +34,7 @@ func ExportPdf(repos repository.Repos) error {
 
 	page, err := browser.NewPage(playwright.BrowserNewPageOptions{
 		Screen: &playwright.Size{
-			Width: 1000,
+			Width:  1000,
 			Height: 700,
 		},
 	})
@@ -57,9 +56,9 @@ func ExportPdf(repos repository.Repos) error {
 		}
 		time.Sleep(1 * time.Second)
 		fbytes, err = page.PDF(playwright.PagePdfOptions{
-			Width: playwright.String("1000"),
-			Height: playwright.String("700"),
-			PageRanges: playwright.String("1"),
+			Width:           playwright.String("1000"),
+			Height:          playwright.String("700"),
+			PageRanges:      playwright.String("1"),
 			PrintBackground: playwright.Bool(true),
 		})
 		if err != nil {

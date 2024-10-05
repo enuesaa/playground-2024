@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/labstack/echo/v4"
 	"github.com/enuesaa/codetrailer/internal/router/ctx"
+	"github.com/labstack/echo/v4"
 )
 
 //go:generate pnpm install
@@ -20,7 +20,7 @@ var dist embed.FS
 func Serve(c echo.Context) error {
 	cc := ctx.Use(c)
 
-	path := cc.Request().URL.Path // like `/index.html`
+	path := cc.Request().URL.Path        // like `/index.html`
 	path = strings.TrimPrefix(path, "/") // like `index.html`
 
 	distpath := fmt.Sprintf("dist/%s", path)
