@@ -1,0 +1,41 @@
+{
+  "name": "@enuesaa/react-router-v7-try",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "react-router dev --port 3000",
+    "build": "react-router build",
+    "start": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc",
+    "format": "prettier --write \"app/**/*.{ts,tsx}\""
+  },
+  "dependencies": {
+    "@react-router/node": "7.0.0-pre.0",
+    "@react-router/serve": "7.0.0-pre.0",
+    "isbot": "^5.1.17",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router": "7.0.0-pre.0"
+  },
+  "devDependencies": {
+    "@react-router/dev": "7.0.0-pre.0",
+    "@types/react": "^18.3.9",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vite-tsconfig-paths": "^5.0.1"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "endOfLine": "lf"
+  }
+}

@@ -1,0 +1,8 @@
+# node.js
+node_modules
+
+# react router v7
+/.cache
+/build
+.env
+.react-router
