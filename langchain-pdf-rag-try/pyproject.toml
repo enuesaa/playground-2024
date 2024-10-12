@@ -8,10 +8,13 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 langchain = "^0.3.3"
 langchain-community = "^0.3.2"
 pdfminer-six = "^20240706"
+sentence-transformers = "^3.2.0"
+langchain-huggingface = "^0.1.0"
+faiss-cpu = "^1.9.0"
 
 
 [tool.poetry.group.dev.dependencies]
