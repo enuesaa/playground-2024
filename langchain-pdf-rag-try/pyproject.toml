@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "langchain-pdf-rag-try"
+version = "0.1.0"
+description = ""
+authors = ["nua <enuesaa@gmail.com>"]
+packages = [
+  { include = "app" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+langchain = "^0.3.3"
+langchain-community = "^0.3.2"
+pdfminer-six = "^20240706"
+
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.13.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+dev = "python3 app/main.py"
