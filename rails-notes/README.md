@@ -51,5 +51,4 @@ docker compose up -d
   - rubocop で phpstan & prettier 的なものができるらしい
 
 ## TODO
-- add docker-compose.yaml
 - bin/rails generate controller で view を作らない方法

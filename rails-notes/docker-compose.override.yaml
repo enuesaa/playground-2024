@@ -1,6 +1,0 @@
-# This file should be ignored from git.
-# For development purpose, I'll commit this file.
-
-services:
-  mysql:
-    platform: linux/amd64

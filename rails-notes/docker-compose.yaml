@@ -7,25 +7,26 @@ services:
       - .:/workspace
     ports:
       - 3000:3000
-    tty: true
     depends_on:
       - mysql
+    tty: true
 
   mysql:
     image: mysql:8
+    platform: linux/amd64
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: rails
-      TZ: Asia/Tokyo
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=rails
+      - TZ=Asia/Tokyo
     volumes:
       - mysqldata:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin:latest
     environment:
-      PMA_HOSTS: mysql
-      PMA_USER: root
-      PMA_PASSWORD: password
+      - PMA_HOSTS=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=password
     ports:
       - 3001:80
     depends_on:
