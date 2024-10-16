@@ -13,7 +13,6 @@ services:
 
   mysql:
     image: mysql:8
-    platform: linux/amd64
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=rails
@@ -24,9 +23,10 @@ services:
   phpmyadmin:
     image: phpmyadmin:latest
     environment:
-      - PMA_HOSTS=mysql
+      - PMA_HOST=mysql
       - PMA_USER=root
       - PMA_PASSWORD=password
+      - PMA_PORT=3306
     ports:
       - 3001:80
     depends_on:
