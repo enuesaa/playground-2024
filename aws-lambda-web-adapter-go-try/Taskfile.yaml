@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - cd $(dirname "$0")
+      - GOOS=linux GOARCH=arm64 go build -o bootstrap main.go
+      - zip app.zip bootstrap
+  
+  deploy:
+    cmds:
+      - cd $(dirname "$0")
+      - aws s3 cp app.zip s3://${LAMBDA_S3_BUCKET}/lambda/aws-lambda-web-adapter-go-try-$(date '+%Y%m%d%H%M%S')
+    env:
+      LAMBDA_S3_BUCKET: ''
