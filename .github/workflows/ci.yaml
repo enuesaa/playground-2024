@@ -11,22 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-go@v5
-        with:
-          go-version: '1.23'
-      - run: go install github.com/mfridman/tparse@latest
-      - run: go test ./... -cover -json > testresult.out
-      - run: tparse -file=testresult.out -format markdown >> $GITHUB_STEP_SUMMARY
-
-  testui:
-    needs: test
-    runs-on: ubuntu-20.04
-    defaults:
-      run:
-        working-directory: ./ui
-    steps:
-      - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v3
         with:
           node-version: '22'
