@@ -1,0 +1,40 @@
+title: '[Node.js] fs.readdir() で withFileTypes: true を指定した時の返り値'
+description: |
+  fs.readdir() のオプションで withFileTypes: true を指定すると返り値の型が変わる。びっくりした
+
+  ・デフォルト (withFileTypes: false) では、ファイル名が文字列で返ってくる
+  ・withFileTypes: true を指定すると、`fs.Dirent` が返ってくる
+  ・fs.Dirent には isDirectory() や isSymbolicLink() などメソッドが生えており withFileTypes を付けない場合に比べ情報量が多い
+published: '2024-05-26'
+
+ignore:
+  - pnpm-lock.yaml
+  - tsconfig.json
+
+variants:
+  - name: normal
+    title: デフォルト
+    open: main.ts
+    output: |
+      $ pnpm tsx main.ts
+      [ 'a.txt', 'b.txt' ]
+
+  - name: with-file-types
+    title: 'withFileTypes: true を指定'
+    open: main.ts
+    output: |
+      $ pnpm tsx main.ts
+      [
+        Dirent {
+          name: 'a.txt',
+          parentPath: '../data',
+          path: '../data',
+          [Symbol(type)]: 1
+        },
+        Dirent {
+          name: 'b.txt',
+          parentPath: '../data',
+          path: '../data',
+          [Symbol(type)]: 1
+        }
+      ]

@@ -1,0 +1,16 @@
+# misc
+.DS_Store
+
+# editor
+.vscode
+
+# node
+node_modules
+
+# sveltekit
+dist
+.svelte-kit
+vite.config.ts.timestamp-*
+
+# app
+*.pdf

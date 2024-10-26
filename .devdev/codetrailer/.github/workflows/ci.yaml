@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - uses: pnpm/action-setup@v2
+        with:
+          version: '9'
+
+      - run: pnpm install
+      - run: pnpm build

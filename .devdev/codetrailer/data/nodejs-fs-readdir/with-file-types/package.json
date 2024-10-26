@@ -1,0 +1,11 @@
+{
+	"name": "with-file-types",
+	"type": "module",
+	"scripts": {
+		"dev": "tsx main.ts"
+	},
+	"devDependencies": {
+		"@types/node": "^20.12.12",
+		"tsx": "^4.11.0"
+	}
+}

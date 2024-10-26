@@ -1,0 +1,55 @@
+{
+	"name": "uipreview",
+	"version": "0.0.2",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "rm -rf .svelte-kit && svelte-kit sync && vite dev --port 3000",
+		"build": "vite build",
+		"postbuild": "svelte-sitemap --domain https://trailer.enuesaa.dev/ --out-dir dist",
+		"format": "prettier --write src/**/*.{ts,svelte}"
+	},
+	"devDependencies": {
+		"@melt-ui/pp": "^0.3.2",
+		"@melt-ui/svelte": "^0.79.1",
+		"@sveltejs/adapter-static": "^3.0.1",
+		"@sveltejs/kit": "^2.5.10",
+		"@sveltejs/vite-plugin-svelte": "^3.1.1",
+		"@types/node": "^20.13.0",
+		"autoprefixer": "^10.4.19",
+		"highlight.js": "^11.9.0",
+		"postcss": "^8.4.38",
+		"prettier": "^3.2.5",
+		"prettier-plugin-svelte": "^3.2.3",
+		"svelte": "^4.2.17",
+		"svelte-sitemap": "^2.6.0",
+		"tailwindcss": "^3.4.3",
+		"tsx": "^4.11.0",
+		"typescript": "^5.4.5",
+		"vite": "^5.2.12"
+	},
+	"dependencies": {
+		"svelte-feather-icons": "^4.1.0",
+		"yaml": "^2.4.2"
+	},
+	"prettier": {
+		"printWidth": 120,
+		"tabWidth": 2,
+		"semi": false,
+		"singleQuote": true,
+		"endOfLine": "lf",
+		"trailingComma": "es5",
+		"plugins": [
+			"prettier-plugin-svelte"
+		],
+		"useTabs": true,
+		"overrides": [
+			{
+				"files": "*.svelte",
+				"options": {
+					"parser": "svelte"
+				}
+			}
+		]
+	}
+}
