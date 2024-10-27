@@ -1,0 +1,17 @@
+add_newline = false
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)" 
+
+[cmd_duration]
+disabled = true
+
+[git_status]
+disabled = true
+
+[python]
+python_binary = ["python3"]
+
+[gcloud]
+disabled = true

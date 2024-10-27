@@ -1,0 +1,125 @@
+{
+    "editor.fontSize": 17,
+    "extensions.ignoreRecommendations": true,
+    "workbench.preferredHighContrastColorTheme": "Dracula",
+    "workbench.preferredDarkColorTheme": "Dracula",
+    "workbench.editor.showIcons": false,
+    "markdown.extension.print.theme": "dark",
+    "python.testing.autoTestDiscoverOnSaveEnabled": false,
+    "markdown.extension.toc.updateOnSave": false,
+    "update.showReleaseNotes": false,
+    "git.confirmSync": false,
+    "terminal.integrated.fontSize": 16,
+    "editor.lightbulb.enabled": "off",
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "workbench.iconTheme": null,
+    "editor.smoothScrolling": true,
+    "editor.scrollBeyondLastLine": false,
+    "editor.renderLineHighlight": "none",
+    "python.analysis.typeCheckingMode": "basic",
+    "go.toolsManagement.checkForUpdates": "off",
+    "go.testExplorer.showOutput": false,
+    "go.testExplorer.enable": false,
+    "go.testExplorer.concatenateMessages": false,
+    "go.survey.prompt": false,
+    "go.terminal.activateEnvironment": false,
+    "go.logging.level": "off",
+    "workbench.startupEditor": "none",
+    "redhat.telemetry.enabled": false,
+    "git.allowForcePush": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[typescript]": {
+        "editor.tabSize": 2
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "[go]": {
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "never"
+        }
+    },
+    "gopls": {
+
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2
+    },
+    "github.copilot.advanced": {},
+    "editor.inlineSuggest.enabled": true,
+    "rust-analyzer.linkedProjects": [],
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "git.openRepositoryInParentFolders": "always",
+    "[json]": {
+        "editor.tabSize": 2
+    },
+    "[mdx]": {
+        "editor.tabSize": 2
+    },
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.codeActionsOnSave": {},
+    "[toml]": {
+        "editor.tabSize": 2
+    },
+    "workbench.statusBar.visible": false,
+    "dev.containers.defaultExtensions": [
+        "mhutchie.git-graph"
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "workbench.activityBar.location": "hidden",
+    "typescript.preferences.quoteStyle": "single",
+    "cSpell.enabledLanguageIds": [
+        "scminput"
+    ],
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "[ruby]": {
+        "editor.tabSize": 2
+    },
+    "editor.stickyScroll.enabled": false,
+    "cSpell.enableFiletypes": [
+        "!svelte",
+        "!sql"
+    ],
+    "svelte.enable-ts-plugin": true,
+    "svelte.ask-to-enable-ts-plugin": false,
+    "svelte.plugin.svelte.compilerWarnings": {
+        "a11y-aria-attributes": "ignore",
+        "a11y-incorrect-aria-attribute-type": "ignore",
+        "a11y-unknown-aria-attribute": "ignore",
+        "a11y-hidden": "ignore",
+        "a11y-misplaced-role": "ignore",
+        "a11y-unknown-role": "ignore",
+        "a11y-no-abstract-role": "ignore",
+        "a11y-no-redundant-roles": "ignore",
+        "a11y-role-has-required-aria-props": "ignore",
+        "a11y-accesskey": "ignore",
+        "a11y-autofocus": "ignore",
+        "a11y-misplaced-scope": "ignore",
+        "a11y-positive-tabindex": "ignore",
+        "a11y-invalid-attribute": "ignore",
+        "a11y-missing-attribute": "ignore",
+        "a11y-img-redundant-alt": "ignore",
+        "a11y-label-has-associated-control": "ignore",
+        "a11y-media-has-caption": "ignore",
+        "a11y-distracting-elements": "ignore",
+        "a11y-structure": "ignore",
+        "a11y-mouse-events-have-key-events": "ignore",
+        "a11y-missing-content": "ignore",
+        "a11y-no-static-element-interactions": "ignore",
+        "a11y-click-events-have-key-events": "ignore"
+    },
+    "[svelte]": {
+        "editor.insertSpaces": false
+    },
+    "prisma.showPrismaDataPlatformNotification": false,
+    "python.experiments.enabled": false,
+    "[terraform]": {
+        "editor.tabSize": 2
+    },
+    "terraform.validation.enableEnhancedValidation": false
+}
