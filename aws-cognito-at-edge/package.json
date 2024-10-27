@@ -1,0 +1,10 @@
+{
+  "name": "aws-cognito-at-edge",
+  "type": "module",
+  "scripts": {
+    "build": "zip -r app.zip *"
+  },
+  "dependencies": {
+    "cognito-at-edge": "^1.5.3"
+  }
+}
