@@ -17,16 +17,17 @@ services:
       - ./tempo.yaml:/etc/tempo.yaml
     ports:
       - 3200:3200
-
-  collector:
-    image: otel/opentelemetry-collector-contrib
-    command: [--config=/etc/otel-collector.yaml]
-    volumes:
-      - ./collector.yaml:/etc/otel-collector.yaml
-    ports:
       - 4318:4318
-    depends_on:
-      - tempo
+
+  # collector:
+  #   image: otel/opentelemetry-collector-contrib
+  #   command: [--config=/etc/otel-collector.yaml]
+  #   volumes:
+  #     - ./collector.yaml:/etc/otel-collector.yaml
+  #   ports:
+  #     - 4318:4318
+  #   depends_on:
+  #     - tempo
 
 volumes:
   grafanadata:

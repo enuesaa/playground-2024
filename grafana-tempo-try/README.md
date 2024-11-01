@@ -27,6 +27,8 @@ go run .
   - jaeger は比較的独自路線のはずなので、open telemetry に沿う意味合いでは、将来的にはこちらの方がいいかも
 - ローカル開発環境では、まあ必要あれば使えるし有用だが、プロダクションでは悩む
 
+- otel-collector はなくてもいい。アプリから tempo に直接送ることもできる
+
 ## Links
 - https://techblog.goinc.jp/entry/2024/05/17/153729
 - https://grafana.com/oss/tempo/
