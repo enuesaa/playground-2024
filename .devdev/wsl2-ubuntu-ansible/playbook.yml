@@ -1,0 +1,60 @@
+- hosts: localhost
+  become: yes
+
+  tasks:
+    - ansible.builtin.apt:
+        update_cache: yes
+
+    - ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - vim
+        - git
+        - curl
+        - make
+        - build-essential
+
+    - ansible.builtin.git:
+        repo: https://github.com/go-nv/goenv.git
+        dest: "{{ ansible_env.HOME }}/.goenv"
+        version: master
+
+    - ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: |
+          export GOENV_ROOT="${HOME}/.goenv"
+          export PATH="${GOENV_ROOT}/bin:${PATH}"
+          eval "$(goenv init -)"
+        state: present
+
+    - ansible.builtin.git:
+        repo: https://github.com/tfutils/tfenv.git
+        dest: "{{ ansible_env.HOME }}/.tfenv"
+        version: master
+
+    - ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: export PATH="${HOME}/.tfenv/bin:${PATH}"
+        state: present
+
+    - ansible.builtin.git:
+        repo: https://github.com/pyenv/pyenv.git
+        dest: "{{ ansible_env.HOME }}/.pyenv"
+        version: master
+
+    - ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: |
+          export PYENV_ROOT="${HOME}/.pyenv"
+          export PATH="${PYENV_ROOT}/bin:${PATH}"
+          eval "$(pyenv init --path)"
+        state: present
+
+    - ansible.builtin.shell:
+        cmd: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+    - ansible.builtin.shell:
+        cmd: source ~/.bashrc
+        executable: /bin/bash
