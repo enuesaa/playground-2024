@@ -1,0 +1,66 @@
+services:
+  lightdash:
+    platform: linux/amd64
+    image: lightdash/lightdash:latest
+    environment:
+      - PGHOST=db
+      - PGPORT=5432
+      - PGUSER=postgres
+      - PGPASSWORD=password
+      - PGDATABASE=postgres
+      - SECURE_COOKIES=${SECURE_COOKIES:-false}
+      - TRUST_PROXY=${TRUST_PROXY:-false}
+      - LIGHTDASH_SECRET=lightdashsecret
+      - PORT=${PORT:-8080}
+      - LIGHTDASH_LOG_LEVEL=${LIGHTDASH_LOG_LEVEL}
+      - LIGHTDASH_INSTALL_ID=${LIGHTDASH_INSTALL_ID}
+      - LIGHTDASH_INSTALL_TYPE=${LIGHTDASH_INSTALL_TYPE:-docker_image}
+      - AUTH_DISABLE_PASSWORD_AUTHENTICATION=${AUTH_DISABLE_PASSWORD_AUTHENTICATION}
+      - AUTH_ENABLE_GROUP_SYNC=${AUTH_ENABLE_GROUP_SYNC}
+      - AUTH_GOOGLE_ENABLED=${AUTH_GOOGLE_ENABLED}
+      - AUTH_GOOGLE_OAUTH2_CLIENT_ID=${AUTH_GOOGLE_OAUTH2_CLIENT_ID}
+      - AUTH_GOOGLE_OAUTH2_CLIENT_SECRET=${AUTH_GOOGLE_OAUTH2_CLIENT_SECRET}
+      - SITE_URL=${SITE_URL}
+      - EMAIL_SMTP_HOST=${EMAIL_SMTP_HOST}
+      - EMAIL_SMTP_PORT=${EMAIL_SMTP_PORT}
+      - EMAIL_SMTP_SECURE=${EMAIL_SMTP_SECURE}
+      - EMAIL_SMTP_USER=${EMAIL_SMTP_USER}
+      - EMAIL_SMTP_PASSWORD=${EMAIL_SMTP_PASSWORD}
+      - EMAIL_SMTP_ALLOW_INVALID_CERT=${EMAIL_SMTP_ALLOW_INVALID_CERT}
+      - EMAIL_SMTP_SENDER_NAME=${EMAIL_SMTP_SENDER_NAME}
+      - EMAIL_SMTP_SENDER_EMAIL=${EMAIL_SMTP_SENDER_EMAIL}
+      - ALLOW_MULTIPLE_ORGS=${ALLOW_MULTIPLE_ORGS:-false}
+      - LIGHTDASH_QUERY_MAX_LIMIT=5000
+      - LIGHTDASH_MAX_PAYLOAD=${LIGHTDASH_MAX_PAYLOAD:-5mb}
+      - HEADLESS_BROWSER_HOST=headless-browser
+      - HEADLESS_BROWSER_PORT=3000
+      - RUDDERSTACK_WRITE_KEY=${RUDDERSTACK_WRITE_KEY}
+      - SCHEDULER_ENABLED=true
+      - GROUPS_ENABLED=${GROUPS_ENABLED:-false}
+      - POSTHOG_PROJECT_API_KEY=${POSTHOG_PROJECT_API_KEY}
+      - POSTHOG_FE_API_HOST=${POSTHOG_FE_API_HOST}
+      - POSTHOG_BE_API_HOST=${POSTHOG_BE_API_HOST}
+    volumes:
+      # see https://github.com/lightdash/lightdash/tree/main/examples/full-jaffle-shop-demo
+      - ./examples/full-jaffle-shop-demo/dbt:/usr/app/dbt
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15.4
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+  headless-browser:
+    image: browserless/chrome
+    ports:
+      - 3001:3000
+
+volumes:
+  dbdata:
