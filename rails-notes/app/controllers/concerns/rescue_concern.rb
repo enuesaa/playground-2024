@@ -1,4 +1,6 @@
-# 他言語でいう trait 的なもの
+# module は他言語でいう trait 的なもの
+# concern は Laravel で見かける Concern と同義。というかその由来がこれ
+
 module RescueConcern
   extend ActiveSupport::Concern
 

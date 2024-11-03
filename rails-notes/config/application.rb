@@ -20,8 +20,11 @@ module Notes
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Tokyo"
+    config.active_record.default_timezone = :local
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # see https://railsguides.jp/api_app.html#既存アプリケーションを変更する
+    config.api_only = true
   end
 end

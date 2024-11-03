@@ -1,4 +1,7 @@
+# Note Controller
+#
 # see https://railsguides.jp/api_app.html
+
 class NotesController < ApplicationController
   def index
     @notes = Note.all
