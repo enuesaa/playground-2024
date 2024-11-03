@@ -5,7 +5,7 @@
 - https://railsguides.jp/getting_started.html
 
 ## Commands
-### How to create rails app at first.
+### How to create rails app
 ```bash
 # install ruby
 brew install rbenv ruby-build
@@ -17,21 +17,22 @@ gem install rails
 # create app
 rails new . -n notes
 
+# migrate. see storage/development.sqlite3
+bin/rails db:migrate:status
+bin/rails db:migrate
+
 # start server
 bin/rails server
 
 # gen code
-# modify config/routes.rb here
 bin/rails generate controller Notes index --skip-routes
 bin/rails generate model Notes name:string description:text
-bin/rails db:migrate:status
-bin/rails db:migrate
 ```
 
-### Local Development with Docker
+### How to setup Local Dev Environment
 ```bash
-docker compose build
-docker compose up -d
+bin/rails db:migrate
+bin/rails server
 ```
 
 ## Versions
