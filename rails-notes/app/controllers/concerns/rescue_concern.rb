@@ -11,11 +11,12 @@ module RescueConcern
   end
 
   private
-    def handle_parameter_missing(e)
-      render status: 400, json: { message: e.original_message }
-    end
 
-    def handle_record_not_found
-      render status: 404, json: { message: "not found" }
-    end
+  def handle_parameter_missing(e)
+    render status: 400, json: { error: e.original_message }
+  end
+
+  def handle_record_not_found
+    render status: 404, json: { error: "not found" }
+  end
 end

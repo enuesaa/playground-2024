@@ -1,3 +1,7 @@
+# serializer
+#
+# see https://github.com/rails-api/active_model_serializers/issues/1788
+
 class NoteSerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :memo
 
