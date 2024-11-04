@@ -26,5 +26,12 @@ module Notes
 
     # see https://railsguides.jp/api_app.html#既存アプリケーションを変更する
     config.api_only = true
+
+    config.log_level = :debug
+    config.log_formatter = ::Logger::Formatter.new
+    config.logger = Logger.new(STDOUT)
+    config.logger.formatter = proc do |severity, datetime, progname, msg|
+      "[#{datetime}] #{severity} -- #{msg}\n"
+    end
   end
 end

@@ -4,6 +4,8 @@
 
 class NotesController < ApplicationController
   def index
+    Rails.logger.info "hello this is notes controller."
+
     @notes = Note.all
 
     # see https://github.com/rails-api/active_model_serializers/issues/1788
