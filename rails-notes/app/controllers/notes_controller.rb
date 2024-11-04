@@ -20,7 +20,7 @@ class NotesController < ApplicationController
     unless @note.save
       return render status: 422, json: @note.errors
     end
-    render_success
+    render200
   end
 
   def update
@@ -29,16 +29,16 @@ class NotesController < ApplicationController
     unless @note.update(reqbody)
       return render status: 422, json: @note.errors
     end
-    render_success
+    render200
   end
 
   def destroy
     @note = Note.find(params[:id])
     
     unless @note.destroy
-      return render status: 500, json: {error: "Internal Server Error"}
+      return render500
     end
-    render_success
+    render200
   end
 
   private

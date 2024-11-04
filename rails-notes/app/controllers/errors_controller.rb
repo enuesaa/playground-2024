@@ -1,5 +1,5 @@
 class ErrorsController < ApplicationController
   def notfound
-    render status: 404, json: { error: "Not Found" }
+    render404
   end
 end
