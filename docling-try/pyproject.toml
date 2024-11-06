@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "docling-try"
+version = "0.1.0"
+description = ""
+authors = ["nua <enuesaa@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+docling = "^2.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.14.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+dev = "python3 src/main.py"
