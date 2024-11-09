@@ -1,0 +1,11 @@
+Timestamp,Method,Path,HTTP,Code,Size,Referrer
+"2024-11-09T10:20:30Z","GET","/home","HTTP/1.1",200,512,"-"
+"2024-11-09T10:21:00Z","POST","/login","HTTP/1.1",302,256,"/home"
+"2024-11-09T10:22:15Z","GET","/about","HTTP/1.1",404,128,"/home"
+"2024-11-09T10:23:45Z","GET","/contact","HTTP/1.1",200,512,"/about"
+"2024-11-09T10:24:10Z","GET","/services","HTTP/1.1",200,768,"/home"
+"2024-11-09T10:25:20Z","POST","/submit","HTTP/1.1",201,1024,"/contact"
+"2024-11-09T10:26:30Z","GET","/blog","HTTP/1.1",200,640,"/home"
+"2024-11-09T10:27:45Z","GET","/faq","HTTP/1.1",404,256,"/home"
+"2024-11-09T10:28:10Z","GET","/services","HTTP/1.1",200,512,"/blog"
+"2024-11-09T10:29:00Z","POST","/login","HTTP/1.1",302,256,"/services"
