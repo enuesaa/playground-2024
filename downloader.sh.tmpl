@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "looking up {{ .Host }}/archive.tar.gz ..."
+curl -O {{ .Host }}/archive.tar.gz
+
+echo "download succeeded!"
+tar -zxf archive.tar.gz
+rm -rf archive.tar.gz
+
+echo "succeeded"
