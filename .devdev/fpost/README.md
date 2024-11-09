@@ -3,7 +3,9 @@ File sharing app
 
 ## Install
 ```bash
-go install github.com/enuesaa/playground-2024/.devdev/fpost
+git clone https://github.com/enuesaa/playground-2024
+cd .devdev/fpost
+go install
 ```
 
 ## How to use
