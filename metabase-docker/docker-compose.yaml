@@ -1,7 +1,15 @@
-version: '3.8'
-
 services:
   metabase:
-    image: metabase/metabase
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - 3000:3000
+    environment:
+      - MB_PASSWORD_COMPLEXITY=weak
+    volumes:
+      - metabasedb:/metabase.db
+      - ./csv:/csv
+
+volumes:
+  metabasedb:
