@@ -15,9 +15,7 @@ vector_store = RedisVectorStore(embeddings, config=config)
 basepath = "../cpbuf/pkg"
 
 def create():
-    print('a')
     for root, _, files in os.walk(basepath):
-        print('b')
         for file in files:
             file_path = os.path.join(root, file)
             print(file_path)
