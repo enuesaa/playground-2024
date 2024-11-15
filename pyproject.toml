@@ -4,18 +4,18 @@ version = "0.1.0"
 description = ""
 authors = ["nua <enuesaa@gmail.com>"]
 readme = "README.md"
-packages = [{include="src"}]
+packages = [{include = "localseek"}]
 
 [tool.poetry.dependencies]
 python = "3.11.10"
 langchain-huggingface = "^0.1.2"
 langchain-redis = "^0.1.1"
 langchain = "^0.3.7"
+click = "^8.1.7"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-create = "src.files:create"
-search = "src.files:search"
+dev = "localseek.cli:main"
