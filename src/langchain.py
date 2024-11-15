@@ -24,8 +24,8 @@ def create():
     metadata = [
         {"category": newsgroups.target_names[target]} for target in newsgroups.target[:250]
     ]
+    print(metadata)
     ids = vector_store.add_texts(texts, metadata)
-
     print(ids[0:10])
 
 def search():
