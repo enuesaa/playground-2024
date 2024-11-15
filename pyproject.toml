@@ -20,4 +20,5 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-start = "src.main:main"
+create = "src.main:create"
+search = "src.main:search"
