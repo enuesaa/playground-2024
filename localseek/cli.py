@@ -1,6 +1,8 @@
 import click
 from localseek import vd
 from localseek import chat as _chat
+from dotenv import load_dotenv
+load_dotenv()
 
 def main():
     cli()

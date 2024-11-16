@@ -27,5 +27,5 @@ Answer the following question:
         | prompt
         | llm
     )
-    res = qa.invoke("os に依存しそうなパッケージを教えて")
+    res = qa.invoke("repository の役割")
     print(res)
