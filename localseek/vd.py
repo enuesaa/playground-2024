@@ -1,4 +1,3 @@
-import os
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_redis import RedisConfig, RedisVectorStore
 import pathlib

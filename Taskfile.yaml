@@ -1,0 +1,6 @@
+version: 3
+
+tasks:
+  ollama:
+    cmds:
+      - ollama serve
