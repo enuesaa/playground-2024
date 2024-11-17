@@ -7,5 +7,15 @@ services:
     volumes:
       - redisdata:/data
 
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - 6333:6333
+      - 6334:6334
+    volumes:
+      - qdrantdata:/qdrant/storage
+  # see http://localhost:6333/dashboard
+
 volumes:
   redisdata:
+  qdrantdata:

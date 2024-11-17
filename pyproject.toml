@@ -13,8 +13,8 @@ langchain-redis = "^0.1.1"
 langchain = "^0.3.7"
 click = "^8.1.7"
 langchain-ollama = "^0.2.0"
-langsmith = "^0.1.143"
-python-dotenv = "^1.0.1"
+langchain-qdrant = "^0.2.0"
+qdrant-client = "^1.12.1"
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.14.0"

@@ -1,8 +1,6 @@
 import click
-from localseek import vd
+from localseek import vd, vdqdrant
 from localseek import chat as _chat
-from dotenv import load_dotenv
-load_dotenv()
 
 def main():
     cli()
@@ -27,3 +25,16 @@ def search(keyword: str):
 def chat():
     click.echo('[cli] start `chat`')
     _chat.chat()
+
+# qdrant
+@cli.command()
+@click.option('--path', type=str, required=True)
+def qdrantsave(path: str):
+    click.echo('[cli] start `save`')
+    vdqdrant.save(path)
+
+@cli.command()
+@click.option('--keyword', type=str, required=True)
+def qdrantsearch(keyword: str):
+    click.echo('[cli] start `search`')
+    vdqdrant.search(keyword)
