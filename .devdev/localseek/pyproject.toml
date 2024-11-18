@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "localseek"
+version = "0.1.0"
+description = ""
+authors = ["nua <enuesaa@gmail.com>"]
+readme = "README.md"
+packages = [{include = "localseek"}]
+
+[tool.poetry.dependencies]
+python = "3.11.10"
+langchain-huggingface = "^0.1.2"
+langchain-redis = "^0.1.1"
+langchain = "^0.3.7"
+click = "^8.1.7"
+langchain-ollama = "^0.2.0"
+langchain-qdrant = "^0.2.0"
+qdrant-client = "^1.12.1"
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.14.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+dev = "localseek.cli:main"
+
+[tool.taskipy.tasks]
+ollama = "ollama serve"
