@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "qwik build",
+    "build.client": "vite build",
+    "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.types": "tsc --incremental --noEmit",
+    "dev": "vite --mode ssr --port 3000",
+    "fmt": "prettier --write .",
+    "preview": "qwik build preview && vite preview --open",
+    "start": "vite --open --mode ssr"
+  },
+  "devDependencies": {
+    "@builder.io/qwik": "^1.10.0",
+    "@builder.io/qwik-city": "^1.10.0",
+    "@types/node": "20.14.11",
+    "prettier": "3.3.3",
+    "typescript": "5.4.5",
+    "undici": "*",
+    "vite": "5.3.5",
+    "vite-tsconfig-paths": "^4.2.1"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "endOfLine": "lf"
+  }
+}
