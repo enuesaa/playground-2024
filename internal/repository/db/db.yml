@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://json.schemastore.org/sqlc-2.0.json
+
+# to generate code,
+# run `sqlc generate --file db.yml`
+
+version: '2'
+
+sql:
+  - engine: sqlite
+    queries: dbquery.sql
+    schema: dbschema.sql
+    gen:
+      go:
+        package: dbq
+        out: dbq
