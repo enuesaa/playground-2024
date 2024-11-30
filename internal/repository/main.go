@@ -1,15 +1,13 @@
 package repository
 
-import "github.com/enuesaa/sample-books-api/internal/repository/db"
-
 func New() Repos {
 	repos := Repos{
-		DB: &db.Repo{},
+		DB: &DBRepo{},
 	}
 
 	return repos
 }
 
 type Repos struct {
-	DB db.RepoInterface
+	DB DBRepoInterface
 }
