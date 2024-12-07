@@ -36,5 +36,9 @@ Workflow を作成するとき、どうしても printf とかすると思うん
 ### 3. ECR にホストしている Docker イメージを使用したいとき
 このケースはある気がする。例えば監査目的とかで、ログを全部保存しておきたい際は、ECR にそういうセットアップ済みの Docker イメージを登録しておいて、CodeBuild Project で使えばいい。普通の GitHub Actions だとなかなか難しいと思う。GitHub API をポーリングすればできるのかな
 
+### 4. terraform, ansible の実行
+CodeBuild の IAM ロールで GitHub Actions が実行されるのはメリットかも。OIDC を使わずに済む。
+まあいずれにしてもプライベートサブネットにあるリソースへアクセスできるようになるのは、大きなメリット。
+
 ## Links
 - https://qiita.com/k-kojima-yumemi/items/573bda88d0fb607b3224
