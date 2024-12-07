@@ -1,0 +1,22 @@
+name: codebuile-runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: codebuild-deleteme-codebuild-runner-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - run: echo a
+      - run: aws sts get-caller-identity
+      - uses: actions/checkout@v4
+      - run: echo a
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '9'
+      - run: node -v
+      - run: pnpm -v
