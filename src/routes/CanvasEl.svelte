@@ -19,20 +19,10 @@
 		}
 	})
 
-	// function add() {
-	// 	el.children.push({
-	// 		styles: '',
-	// 		classes: 'bg-black/30 w-2/3 h-2/3',
-	// 		children: [],
-	// 	})
-	// }
-
 	const handleClick: EventHandler = (e) => {
 		e.preventDefault()
 		e.stopPropagation()
 		elcurrent.update(id)
-		// elstore.styles = el.styles
-		// add()
 	}
 </script>
 
