@@ -13,6 +13,6 @@
 
 <style lang="postcss">
 	section {
-		@apply h-full w-full border border-black;
+		@apply w-full aspect-square bg-zinc-700;
 	}
 </style>
