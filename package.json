@@ -25,7 +25,7 @@
 	},
 	"dependencies": {
 		"@tanstack/svelte-query": "^5.62.0",
-		"lucide-svelte": "^0.462.0"
+		"html-to-image": "^1.11.11"
 	},
 	"prettier": {
 		"printWidth": 120,
