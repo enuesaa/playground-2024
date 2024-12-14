@@ -14,6 +14,9 @@ importers:
       html-to-image:
         specifier: ^1.11.11
         version: 1.11.11
+      nanoid:
+        specifier: ^5.0.9
+        version: 5.0.9
     devDependencies:
       '@melt-ui/pp':
         specifier: ^0.3.2

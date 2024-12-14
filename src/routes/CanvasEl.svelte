@@ -1,39 +1,57 @@
 <script lang="ts">
-	import { createContextMenu, melt } from '@melt-ui/svelte'
 	import type { El } from '$lib/el.svelte'
 	import Self from './CanvasEl.svelte'
+	import { elcurrent, elstore } from '$lib/el.svelte'
+	import type { EventHandler } from 'svelte/elements'
 
 	type Props = {
-		el: El
+		id: string
 	}
-	let { el }: Props = $props()
+	let { id }: Props = $props()
 
-	const { elements: { menu, item, trigger }} = createContextMenu()
-	function add() {
-		el.children = [{
-			styles: '',
-			classes: 'bg-black/30 w-2/3 h-2/3',
-			children: [],
-		}]
-	}	
+	let el: El|undefined = $state(undefined)
+
+	$effect(() => {
+		if (elstore.hasOwnProperty(id)) {
+			el = elstore[id]
+		} else {
+			el = undefined
+		}
+	})
+
+	// function add() {
+	// 	el.children.push({
+	// 		styles: '',
+	// 		classes: 'bg-black/30 w-2/3 h-2/3',
+	// 		children: [],
+	// 	})
+	// }
+
+	const handleClick: EventHandler = (e) => {
+		e.preventDefault()
+		e.stopPropagation()
+		elcurrent.update(id)
+		// elstore.styles = el.styles
+		// add()
+	}
 </script>
 
-<div use:melt={$trigger} class={el.classes} style={el.styles}>
-	{#each el.children as child}
-		<Self el={child} />
-	{/each}
-</div>
+{#if el !== undefined}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<div
+		class={elcurrent.id === id ? `${el.classes} outlined` :  el.classes}
+		style={el.styles}
+		onclick={handleClick}
+	>
+		{#each el.children as childId}
+			<Self id={childId} />
+		{/each}
+	</div>
+{/if}
 
-<ol use:melt={$menu}>
-	<li use:melt={$item} on:m-click={add}>Add</li>
-	<li use:melt={$item}>Remove</li>
-</ol>
-  
 <style lang="postcss">
-	ol {
-		@apply w-20 shadow rounded-lg bg-zinc-100 p-1;
-	}
-	li {
-		@apply px-2 py-1 text-zinc-800 text-sm font-semibold;
+	.outlined {
+		@apply outline-dashed outline-zinc-300 outline-1 outline-offset-2;
 	}
 </style>

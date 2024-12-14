@@ -26,7 +26,8 @@
 	},
 	"dependencies": {
 		"@tanstack/svelte-query": "^5.62.0",
-		"html-to-image": "^1.11.11"
+		"html-to-image": "^1.11.11",
+		"nanoid": "^5.0.9"
 	},
 	"prettier": {
 		"printWidth": 120,
