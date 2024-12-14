@@ -1,12 +1,11 @@
 <script lang="ts">
-	let style = ''
-	let border = 'none'
+	let style = $state('')
+	let border = $state('none')
 
-	$: {
+	$effect(() => {
 		console.log(border)
 		style = `border: ${border};`
-	}
-	
+	})
 </script>
 
 border

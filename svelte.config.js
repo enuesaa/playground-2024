@@ -10,4 +10,7 @@ export default {
 			fallback: '404.html',
 		}),
 	},
+	compilerOptions: {
+		runes: true,
+	}
 }
