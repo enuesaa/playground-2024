@@ -3,7 +3,7 @@
 	import Composer from './Composer.svelte'
 </script>
 
-<div class="flex gap-1 h-screen">
+<div class="flex gap-3 h-screen">
 	<div class="w-1/2">
 		<Canvas />
 	</div>
