@@ -1,16 +1,31 @@
 <script lang="ts">
 	import { createContextMenu, melt } from '@melt-ui/svelte'
-	const {
-	  elements: { menu, item, trigger }
-	} = createContextMenu()
+	import type { El } from '$lib/el.svelte'
+	import Self from './CanvasEl.svelte'
+
+	type Props = {
+		el: El
+	}
+	let { el }: Props = $props()
+
+	const { elements: { menu, item, trigger }} = createContextMenu()
+	function add() {
+		el.children = [{
+			styles: '',
+			classes: 'bg-black/30 w-2/3 h-2/3',
+			children: [],
+		}]
+	}	
 </script>
 
-<div use:melt={$trigger}>
-	a
+<div use:melt={$trigger} class={el.classes} style={el.styles}>
+	{#each el.children as child}
+		<Self el={child} />
+	{/each}
 </div>
 
 <ol use:melt={$menu}>
-	<li use:melt={$item}>Add</li>
+	<li use:melt={$item} on:m-click={add}>Add</li>
 	<li use:melt={$item}>Remove</li>
 </ol>
   

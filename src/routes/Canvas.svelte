@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
 	import CanvasEl from './CanvasEl.svelte'
+	import { elstore } from '$lib/el.svelte'
 </script>
 
 {#if browser}
@@ -8,7 +9,7 @@
 {/if}
 
 <section>
-	<CanvasEl />
+	<CanvasEl el={elstore} />
 </section>
 
 <style lang="postcss">
