@@ -3,6 +3,7 @@
 
 	let canvas: undefined|HTMLDivElement = undefined;
 	let style = $state('')
+	let classe = $state('bg-black')
 	let border = $state('none')
 	let imgsrc = $state('')
 
@@ -23,7 +24,10 @@
 border
 <input type="text" bind:value={border} />
 
-<div {style} bind:this={canvas}>
+class
+<input type="text" bind:value={classe} />
+
+<div {style} class={classe} bind:this={canvas}>
 	hello
 </div>
 
