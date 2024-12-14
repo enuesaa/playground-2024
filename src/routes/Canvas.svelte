@@ -4,7 +4,7 @@
 	import CanvasAddButton from './CanvasAddButton.svelte'
 	import CanvasConvertImageButton from './CanvasConvertImageButton.svelte'
 
-	let canvas: HTMLDivElement|undefined = $state(undefined)
+	let canvas: HTMLDivElement | undefined = $state(undefined)
 </script>
 
 {#if browser}
@@ -12,7 +12,7 @@
 {/if}
 
 <div bind:this={canvas}>
-	<CanvasEl id='root' />
+	<CanvasEl id="root" />
 </div>
 
 <CanvasAddButton />

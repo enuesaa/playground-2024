@@ -9,7 +9,7 @@
 	}
 	let { id }: Props = $props()
 
-	let el: El|undefined = $state(undefined)
+	let el: El | undefined = $state(undefined)
 
 	$effect(() => {
 		if (elstore.hasOwnProperty(id)) {
@@ -29,11 +29,7 @@
 {#if el !== undefined}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
-	<div
-		class={elcurrent.id === id ? `${el.classes} outlined` :  el.classes}
-		style={el.styles}
-		onclick={handleClick}
-	>
+	<div class={elcurrent.id === id ? `${el.classes} outlined` : el.classes} style={el.styles} onclick={handleClick}>
 		{#each el.children as childId}
 			<Self id={childId} />
 		{/each}

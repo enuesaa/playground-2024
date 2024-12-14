@@ -22,10 +22,10 @@
 	})
 </script>
 
-<ComposerTitle title='style' />
+<ComposerTitle title="style" />
 <textarea bind:value={el.styles}></textarea>
 
-<ComposerTitle title='tailwind' />
+<ComposerTitle title="tailwind" />
 <textarea bind:value={el.classes}></textarea>
 
 <style lang="postcss">
