@@ -8,28 +8,37 @@ import (
 	"go.uber.org/fx"
 )
 
+// http リクエストする CLI ツール。curl みたいに。
 func main() {
 	fxapp := fx.New(
 		clifx.Module,
 		callerfx.Module,
+
+		// メインロジック (上から順に実行される)
 		fx.Invoke(func(cli clifx.ICli) error {
+			// cli を立ち上げ
 			return cli.Launch()
 		}),
 		fx.Invoke(func(cli clifx.ICli, caller callerfx.ICaller, shutdowner fx.Shutdowner) error {
-			fmt.Println(cli.GetUrl())
-			body, err := caller.Run(cli.GetUrl())
+			// -url フラグの値を取得
+			url := cli.GetUrl()
+
+			// http リクエスト
+			body, err := caller.Run(url)
 			if err != nil {
 				return err
 			}
 			fmt.Printf("%s", body)
 
-			// shutdown fx.App
+			// fx.App をシャットダウン
 			if err := shutdowner.Shutdown(); err != nil {
 				return err
 			}
 
 			return nil
 		}),
+
+		// fx.App のログを出力をしない
 		fx.NopLogger,
 	)
 	fxapp.Run()
