@@ -1,21 +1,21 @@
-package callerfx
+package clientfx
 
 import (
 	"io"
 	"net/http"
 )
 
-func New() ICaller {
-	return &Caller{}
+func New() IClient {
+	return &Client{}
 }
 
-type ICaller interface {
-	Run(url string) (string, error)
+type IClient interface {
+	Get(url string) (string, error)
 }
 
-type Caller struct {}
+type Client struct {}
 
-func (c *Caller) Run(url string) (string, error) {
+func (c *Client) Get(url string) (string, error) {
 	client := http.Client{}
 	resp, err := client.Get(url)
 	if err != nil {

@@ -1,8 +1,8 @@
-package clifx
+package clientfx
 
 import "go.uber.org/fx"
 
 var Module = fx.Module(
-	"clifx",
+	"clientfx",
 	fx.Provide(New),
 )
