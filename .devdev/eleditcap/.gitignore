@@ -1,0 +1,11 @@
+# misc
+.DS_Store
+.vscode
+
+# nodejs
+node_modules
+
+# app
+dist
+.svelte-kit
+.env.local
