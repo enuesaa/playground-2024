@@ -6,6 +6,7 @@
 
 ## Links
 - https://github.com/awslabs/cognito-at-edge
+- https://dev.classmethod.jp/articles/cloudfront-lambda-url-with-post-put-request/
 
 ## 仕組み
 - Lambda@Edge が起動したとき Cookie がなかったら Cognito の Hosted UI にリダイレクトする仕組み
